@@ -1,3 +1,10 @@
+---
+title: SQLD key theorem
+tag: SQLD key theorem
+date: 2022-02-16
+categories:	SQLD
+---
+
 # SQLD 핵심정리1
 
 **<엔터티의 종류>** 
