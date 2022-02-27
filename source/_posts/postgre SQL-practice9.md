@@ -4,6 +4,10 @@ tag: postgre SQL-practice9
 date: 2022-02-10
 categories:	SQL
 ----
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
 분석을 하다가 보면 '이런 테이블을 만들면, 이런 리포트를 만들 수 있을지도 몰라'
 등의 생각이 떠오르는 경우가 종종 있다.
 그런데 그럴 때마다 사용자에 따라 테이블 생성 권한이 없어서 그냥 포기하고

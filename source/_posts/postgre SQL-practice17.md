@@ -4,6 +4,10 @@ tag: postgre SQL-practice17
 date: 2022-02-18
 categories:	SQL
 ---
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
  이제 '데이터 분석을 위한 SQL레시피' '4장'에서 '5장'으로 넘어간다.
  
  5장의 큰 주제는 '사용자를 파악하기 위한 데이터 추출'이다.

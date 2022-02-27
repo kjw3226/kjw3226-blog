@@ -4,6 +4,10 @@ tag: postgre SQL-practice20
 date: 2022-02-23
 categories:	SQL
 ---
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
 '데이터 분석을 위한 SQL 레시피' 페이지 202(제11강 5장 - 4.사용자의 방문 빈도 집계하기) 에서
 
 페이지 205까지를 보고 실습을 진행하였다.

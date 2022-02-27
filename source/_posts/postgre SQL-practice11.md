@@ -4,6 +4,10 @@ tag: postgre SQL-practice11
 data: 2022-02-12
 categories:	SQL
 ----
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
  어제에 이어서 오늘은 
  '월별 매출과 작대비 구하기', 'Z차트 구하기'를 
  실습하였다.

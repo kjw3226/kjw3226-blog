@@ -4,6 +4,9 @@ tag: postgre SQL-practice12
 date: 2022-02-13
 categories:	SQL
 ---
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
 오늘은 '4장 中 6.매출을 파악할 때 중요 포인트' 부분을 
 

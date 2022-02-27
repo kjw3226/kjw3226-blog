@@ -4,6 +4,10 @@ tag: postgre SQL-practice4
 date: 2022-02-07
 categories:	SQL
 ----
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
  어제에 이어서 오늘 오전에 
  '데이터 분석을 위한 SQL 레시피'를 보며
  

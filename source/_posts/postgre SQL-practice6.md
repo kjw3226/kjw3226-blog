@@ -4,6 +4,10 @@ tag: postgre SQL-practice6
 date: 2022-02-08
 categories:	SQL
 ----
+'예제 코드'는 여기서 다운 받아 실행하면 된다.
+
+[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+
  어제에 이어 오늘은 
  '가로 기반 데이터를 세로 기반으로 변환하기'와 
  'Redshift에서 문자열을 행으로 전개하기'
