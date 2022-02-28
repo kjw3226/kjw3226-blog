@@ -422,3 +422,8 @@ RFM 분석의 각 지표 Recency, Frequency, Monetary에 따라
 서비스 개선 검토, 사용자에 따른 메일 최적화 등 다양한 용도로 활용하기 바란다.
 
 (데이터 분석을 위한 SQL 레시피-5장 사용자를 파악하기 위한 데이터 추출 11강 7. RFM 분석으로 사용자를 3가지 관점의 그룹으로 나누기 中)
+
+[SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
+참고 도서 : 데이터 분석을 위한 SQL 레시피
+저자 : 가나키 나가토, 다미야 나오토
+출판사 : 한빛미디어

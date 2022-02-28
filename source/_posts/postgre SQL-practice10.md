@@ -139,3 +139,8 @@ ORDER BY dt
 경우가 많다. 추가로 빅데이터 분석을 할 때는 SQL에 프로그램 개발 때
 사용하는 '전처리'라는 사고 방식을 도입하는 경우도 많다.
 ('데이터 분석을 위한 SQL레시피' 4장 '9강'中)
+
+[SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
+참고 도서 : 데이터 분석을 위한 SQL 레시피
+저자 : 가나키 나가토, 다미야 나오토
+출판사 : 한빛미디어

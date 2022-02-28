@@ -145,3 +145,8 @@ FROM
 활용하면 SQL을 일괄 관리하기 힘들어질 수 있다.
 따라서 많이 사용되는 유사 테이블은 별도의 일반 테이블로 
 정의해두도록 하자.('데이터 분석을 위한 SQL레시피' 3장 中)
+
+[SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
+참고 도서 : 데이터 분석을 위한 SQL 레시피
+저자 : 가나키 나가토, 다미야 나오토
+출판사 : 한빛미디어
