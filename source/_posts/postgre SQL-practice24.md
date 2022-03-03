@@ -135,6 +135,10 @@ GROUP BY
 (데이터 분석을 위한 SQL 레시피-5장 사용자를 파악하기 위한 데이터 추출 12강 페이지 239 中)
 
 [SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
+
 참고 도서 : 데이터 분석을 위한 SQL 레시피
+
 저자 : 가나키 나가토, 다미야 나오토
+
 출판사 : 한빛미디어
+

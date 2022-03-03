@@ -1,27 +1,25 @@
 ---
-title: postgre SQL-practice27
-tag: postgre SQL-practice27
-date: 2022-03-02
+title: postgre SQL-practice28
+tag: postgre SQL-practice28
+date: 2022-03-03
 categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
 [SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
-페이지 257 ~ 263을 참고했다.
+'5장  12강 시계열에 따른 사용자 전체의 상태 변화 찾기 - 4. 액션 수에 따른 정착률 집계하기'
 
-5장  12강 시계열에 따른 사용자 전체의 상태 변화 찾기 - 3.지속과 정착에 영향을 주는 액션 집계하기
+페이지 263 ~ 270을 참고했다.
 
-의 쿼리문을 작성하는 실습을 진행했다.
-
-모든 사용자와 액션의 조합을 도출하는 쿼리문
+액션의 계급 마스터와 사용자 액션 플래그의 조합을 산출하는 쿼리문
 ```python
 WITH
 repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
- -- ■ Postgre SQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
- -- ■ Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
- -- 4강 5절 참고하기
- VALUES ('01 day repeat', 1, 1)
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
+  -- 8강 5절 참조하기
+  VALUES('14 day retention', 8, 14)
 )
 , action_log_with_index_date AS (
   SELECT
@@ -87,35 +85,49 @@ repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
  GROUP BY
   user_id, register_date, index_name, index_begin_date, idex_end_date
 )
-, mst_actions AS (
-	        SELECT 'view'   AS action
-  UNION ALL SELECT 'comment' AS action
-  UNION ALL SELECT 'follow'  AS action
+, mst_action_bucket(action, min_count, max_count) AS (
+  -- 액션 단계 마스터
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문과 UNION ALL로 대체 가능
+  VALUES
+	('comment', 0,   0)
+  , ('comment', 1,   5)
+  , ('comment', 6,  10)
+  , ('comment', 11,  9999) -- 최대값으로 간단하게 9999 입력
+  , ('follow', 0,    0)
+  , ('follow', 1,    5)
+  , ('follow', 6,   10)
+  , ('follow', 11,   9999) -- 최대값으로 간단하게 9999 입력
 )
-, mst_user_actions AS (
+, mst_user_action_bucket AS (
+  -- 사용자 마스터와 액션 단계 마스터 조합하기
   SELECT
 	 u.user_id
    , u.register_date
    , a.action
+   , a.min_count
+   , a.max_count
   FROM
-	 mst_users AS u
-   CROSS JOIN
-	mst_actions AS a
+	 mst_users as u
+  CROSS JOIN
+   mst_action_bucket AS a
 )
 SELECT *
-FROM mst_users_actions
-ORDER BY user_id, action
+FROM
+ mst_user_action_bucket
+ORDER BY
+ user_id, action, min_count
 ;
 ```
 
-사용자의 액션 로그를 0, 1의 플래그로 표현하는 쿼리문
+등록 후 7일 동안의 액션 수를 집계하는 쿼리문
 ```python
 WITH
 repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
- -- ■ Postgre SQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
- -- ■ Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
- -- 4강 5절 참고하기
- VALUES ('01 day repeat', 1, 1)
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
+  -- 8강 5절 참조하기
+  VALUES('14 day retention', 8, 14)
 )
 , action_log_with_index_date AS (
   SELECT
@@ -181,63 +193,93 @@ repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
  GROUP BY
   user_id, register_date, index_name, index_begin_date, idex_end_date
 )
-, mst_actions AS (
-	        SELECT 'view'   AS action
-  UNION ALL SELECT 'comment' AS action
-  UNION ALL SELECT 'follow'  AS action
+, mst_action_bucket(action, min_count, max_count) AS (
+  -- 액션 단계 마스터
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문과 UNION ALL로 대체 가능
+  VALUES
+	('comment', 0,   0)
+  , ('comment', 1,   5)
+  , ('comment', 6,  10)
+  , ('comment', 11,  9999) -- 최대값으로 간단하게 9999 입력
+  , ('follow', 0,    0)
+  , ('follow', 1,    5)
+  , ('follow', 6,   10)
+  , ('follow', 11,   9999) -- 최대값으로 간단하게 9999 입력
 )
-, mst_user_actions AS (
+, mst_user_action_bucket AS (
+  -- 사용자 마스터와 액션 단계 마스터 조합하기
   SELECT
 	 u.user_id
    , u.register_date
    , a.action
+   , a.min_count
+   , a.max_count
   FROM
-	 mst_users AS u
-   CROSS JOIN
-	mst_actions AS a
+	 mst_users as u
+  CROSS JOIN
+   mst_action_bucket AS a
 )
 , register_action_flag AS (
-  SELECT DISTINCT
+  -- 등록일에서 7일 후까지의 액션 수를 세고,
+  -- 액션 단계와 14일 정착 달성 플래그 계산하기
+  SELECT
 	 m.user_id
-   , m.register_date
    , m.action
+   , m.min_count
+   , m.max_count
+   , COUNT(a.action) AS action_count
    , CASE
-	  WHEN a.action IS NOT NULL THEN 1
+	  WHEN COUNT(a.action) BETWEEN m.min_count AND m.max_count THEN 1
 	  ELSE 0
-    END AS do_action
-  , index_name
-  , index_date_action
+	END AS achieve
+   , index_name
+   , index_date_action
   FROM
-	 mst_user_actions AS m
-   LEFT JOIN
-	action_log AS a
-	ON m.user_id = a.user_id
-	AND CAST(m.register_date AS date) = CAST(a.stamp AS date)
-	-- ■ BigQuery의 경우 한 번 타임스탬프 자료형으로 변환한 뒤 날짜 자료형으로 변환하기
-   --AND CAST(m.register_date AS date) = date(timestamp(a.stamp))
-    AND m.action = a.action
-   LEFT JOIN
+	 mst_user_action_bucket AS m
+	LEFT JOIN
+	  action_log AS a
+	  ON m.user_id = a.user_id
+	  -- 등록일 당일부터 7일 후까지의 액션 로그 결합하기
+	  -- ■PostgreSQL, Redshift의 경우
+	  AND CAST(a.stamp AS date)
+	      BETWEEN CAST(m.register_date AS date)
+	         AND CAST(m.register_date AS date) + interval '7 days'
+	  -- ■BigQuery의 경우
+	  -- AND date(timestamp(a.stamp))
+	  --      BETWEEN CAST(m.register_date AS date)
+	  --         AND date_add(CAST(m.register_date AS date), 7)
+	  -- ■Hive의 경우 JOIN 구문에 BETWEEN 구문을 사용할 수 없으므로 WHERE 구문을 사용해야 함
+	  AND m.action = a.action
+    LEFT JOIN
 	 user_action_flag AS f
 	 ON m.user_id = f.user_id
  WHERE
-   f.index_date_action IS NOT NULL
+  f.index_date_action IS NOT NULL
+ GROUP BY
+	m.user_id
+  , m.action
+  , m.min_count
+  , m.max_count
+  , f.index_name
+  , f.index_date_action
 )
-SELECT
-  *
+SELECT *
 FROM
  register_action_flag
 ORDER BY
- user_id, index_name, action
+ user_id, action, min_count
 ;
 ```
-액션에 따른 지속률과 정착률을 집계하는 쿼리문
+
+등록 후 7일 동안의 액션 횟수별로 14일 정착률을 집계하는 쿼리문
 ```python
 WITH
 repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
- -- ■ Postgre SQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
- -- ■ Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
- -- 4강 5절 참고하기
- VALUES ('01 day repeat', 1, 1)
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문으로 대체 가능
+  -- 8강 5절 참조하기
+  VALUES('14 day retention', 8, 14)
 )
 , action_log_with_index_date AS (
   SELECT
@@ -303,74 +345,97 @@ repeat_interval(index_name, interval_begin_date, interval_end_date) AS (
  GROUP BY
   user_id, register_date, index_name, index_begin_date, idex_end_date
 )
-, mst_actions AS (
-	        SELECT 'view'   AS action
-  UNION ALL SELECT 'comment' AS action
-  UNION ALL SELECT 'follow'  AS action
+, mst_action_bucket(action, min_count, max_count) AS (
+  -- 액션 단계 마스터
+  -- ■PostgreSQL의 경우 VALUES 구문으로 일시 테이블 생성 가능
+  -- ■Hive, Redshift, BigQuery, SparkSQL의 경우 SELECT 구문과 UNION ALL로 대체 가능
+  VALUES
+	('comment', 0,   0)
+  , ('comment', 1,   5)
+  , ('comment', 6,  10)
+  , ('comment', 11,  9999) -- 최대값으로 간단하게 9999 입력
+  , ('follow', 0,    0)
+  , ('follow', 1,    5)
+  , ('follow', 6,   10)
+  , ('follow', 11,   9999) -- 최대값으로 간단하게 9999 입력
 )
-, mst_user_actions AS (
+, mst_user_action_bucket AS (
+  -- 사용자 마스터와 액션 단계 마스터 조합하기
   SELECT
 	 u.user_id
    , u.register_date
    , a.action
+   , a.min_count
+   , a.max_count
   FROM
-	 mst_users AS u
-   CROSS JOIN
-	mst_actions AS a
+	 mst_users as u
+  CROSS JOIN
+   mst_action_bucket AS a
 )
 , register_action_flag AS (
-  SELECT DISTINCT
+  -- 등록일에서 7일 후까지의 액션 수를 세고,
+  -- 액션 단계와 14일 정착 달성 플래그 계산하기
+  SELECT
 	 m.user_id
-   , m.register_date
    , m.action
+   , m.min_count
+   , m.max_count
+   , COUNT(a.action) AS action_count
    , CASE
-	  WHEN a.action IS NOT NULL THEN 1
+	  WHEN COUNT(a.action) BETWEEN m.min_count AND m.max_count THEN 1
 	  ELSE 0
-    END AS do_action
-  , index_name
-  , index_date_action
+	END AS achieve
+   , index_name
+   , index_date_action
   FROM
-	 mst_user_actions AS m
-   LEFT JOIN
-	action_log AS a
-	ON m.user_id = a.user_id
-	AND CAST(m.register_date AS date) = CAST(a.stamp AS date)
-	-- ■ BigQuery의 경우 한 번 타임스탬프 자료형으로 변환한 뒤 날짜 자료형으로 변환하기
-   --AND CAST(m.register_date AS date) = date(timestamp(a.stamp))
-    AND m.action = a.action
-   LEFT JOIN
+	 mst_user_action_bucket AS m
+	LEFT JOIN
+	  action_log AS a
+	  ON m.user_id = a.user_id
+	  -- 등록일 당일부터 7일 후까지의 액션 로그 결합하기
+	  -- ■PostgreSQL, Redshift의 경우
+	  AND CAST(a.stamp AS date)
+	      BETWEEN CAST(m.register_date AS date)
+	         AND CAST(m.register_date AS date) + interval '7 days'
+	  -- ■BigQuery의 경우
+	  -- AND date(timestamp(a.stamp))
+	  --      BETWEEN CAST(m.register_date AS date)
+	  --         AND date_add(CAST(m.register_date AS date), 7)
+	  -- ■Hive의 경우 JOIN 구문에 BETWEEN 구문을 사용할 수 없으므로 WHERE 구문을 사용해야 함
+	  AND m.action = a.action
+    LEFT JOIN
 	 user_action_flag AS f
 	 ON m.user_id = f.user_id
  WHERE
-   f.index_date_action IS NOT NULL
+  f.index_date_action IS NOT NULL
+ GROUP BY
+	m.user_id
+  , m.action
+  , m.min_count
+  , m.max_count
+  , f.index_name
+  , f.index_date_action
 )
 SELECT
    action
- , COUNT(1) users
- , AVG(100.0 * do_action) AS usage_rate
+ --■ PostgreSQL, Redshift의 경우는 다음과 같이 문자열 연결하기
+ , min_count || '~' || max_count AS count_range
+ --■ BigQuery의 경우는 다음과 같이 문자열 연결하기
+ --, CONCAT(CAST(min_count AS string), '~', CAST(max_count AS string))
+ --  AS count_range
+ , SUM(CASE achieve WHEN 1 THEN 1 ELSE 0 END)AS achieve
  , index_name
- , AVG(CASE do_action WHEN 1 THEN 100.0 * index_date_action END) AS idx_rate
- , AVG(CASE do_action WHEN 0 THEN 100.0 * index_date_action END) AS mo_action_idx_rate
-FROM 
- register_action_flag
+ , AVG(CASE achieve WHEN 1 THEN 100.0 * index_date_action END) AS achieve_index_rate
+FROM
+   register_action_flag
 GROUP BY
- index_name, action
+   index_name, action, min_count, max_count
 ORDER BY
- index_name, action
-;
+   index_name, action, min_count;
 ```
+이처럼 액션별로 사용자를 집계하면, 사용자가 어떤 기능을 더 많이 사용하도록 유도해야 하는지 알 수 있다.
 
-특정 액션의 실행이 지속률과 정착률 상승으로 이어질 석으로 보여도, 해당 액션을 실행하는 
-
-진입 장벽이 높다면, 지속률과 정착률에 영향을 조금 주더라도 액션을 실행하는 진입 장벽이
-
-낮은 액션을 기반으로 대책을 세우는 것이 좋습니다. (예 : 동영상 업로드보다는 이미지 업로드 촉진하기 등)
-
-이번 절에서는 액션 여부를 기준으로 집계했지만, 액션 수에 따라서도 차이가 있을 수 있습니다.
-
-다음 절에서는 액션 수에 주목해서 정착률을 집계하도록 합시다.
-
-(데이터 분석을 위한 SQL 레시피-5장 사용자를 파악하기 위한 데이터 추출 12강 페이지 263 中)
+(데이터 분석을 위한 SQL 레시피-5장 사용자를 파악하기 위한 데이터 추출 12강 페이지 270 中)
 
 [SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
 

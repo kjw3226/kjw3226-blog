@@ -141,6 +141,10 @@ ORDER BY dt
 ('데이터 분석을 위한 SQL레시피' 4장 '9강'中)
 
 [SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
+
 참고 도서 : 데이터 분석을 위한 SQL 레시피
+
 저자 : 가나키 나가토, 다미야 나오토
+
 출판사 : 한빛미디어
+
