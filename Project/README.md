@@ -108,7 +108,7 @@
 ● 사용 언어 : Python
 
 ● 사용 데이터 : [Tabular Playground Series - Dec 2021](https://www.kaggle.com/c/tabular-playground-series-dec-2021/data)
-              (Train file, Test file, Submission File)
+(Train file, Test file, Submission File)
 
 ● 라이브러리 : matplotlib, numpy, seabron, pandas, plotly, sklearn, scipy
 
@@ -130,5 +130,5 @@
 
 ● 라이브러리 : matplotlib, numpy, seabron, pandas, plotly, pycaret
 
-● 내용 : 'housing'(기본 데이터 셋)을 이용해 'pycaret'과 'blend model'을 써서 
-         가장 적합한 모델을 적용하고 최종 예측 값을 출력하는 프로젝트
+● 내용 : 'housing'(기본 데이터 셋)을 이용해 'pycaret'과 'blend model'을 써서
+가장 적합한 모델을 적용하고 최종 예측 값을 출력하는 프로젝트

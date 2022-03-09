@@ -1,0 +1,3527 @@
+### Pycaret? (파이캐롯?)
+
+- Python의 오픈 소스 라이브러리
+- 머신러닝의 워크플로우를 자동화 처리(AutoML)
+- 코딩, 전처리, 모델 선택, 파라미터 튜닝 작업을 자동으로 진행
+
+
+# Pycaret install(파이캐롯 설치)
+- Pycaret을 사용하기 위해 설치한다.
+
+
+```python
+!pip install pycaret
+```
+
+    Requirement already satisfied: pycaret in /usr/local/lib/python3.7/dist-packages (2.3.6)
+    Requirement already satisfied: pandas-profiling>=2.8.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.1.1)
+    Requirement already satisfied: lightgbm>=2.3.1 in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.3.2)
+    Requirement already satisfied: kmodes>=0.10.1 in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.11.1)
+    Requirement already satisfied: imbalanced-learn==0.7.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.7.0)
+    Requirement already satisfied: scipy<=1.5.4 in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.5.4)
+    Requirement already satisfied: joblib in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.1.0)
+    Requirement already satisfied: yellowbrick>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.3.post1)
+    Requirement already satisfied: seaborn in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.11.2)
+    Requirement already satisfied: cufflinks>=0.17.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.17.3)
+    Requirement already satisfied: gensim<4.0.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.6.0)
+    Requirement already satisfied: IPython in /usr/local/lib/python3.7/dist-packages (from pycaret) (7.31.1)
+    Requirement already satisfied: wordcloud in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.5.0)
+    Requirement already satisfied: nltk in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.2.5)
+    Requirement already satisfied: ipywidgets in /usr/local/lib/python3.7/dist-packages (from pycaret) (7.6.5)
+    Requirement already satisfied: umap-learn in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.5.2)
+    Requirement already satisfied: matplotlib in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.5.1)
+    Requirement already satisfied: textblob in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.15.3)
+    Requirement already satisfied: scikit-learn==0.23.2 in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.23.2)
+    Requirement already satisfied: scikit-plot in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.3.7)
+    Requirement already satisfied: pyLDAvis in /usr/local/lib/python3.7/dist-packages (from pycaret) (3.2.2)
+    Requirement already satisfied: mlxtend>=0.17.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.19.0)
+    Requirement already satisfied: Boruta in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.3)
+    Requirement already satisfied: pyod in /usr/local/lib/python3.7/dist-packages (from pycaret) (0.9.7)
+    Requirement already satisfied: plotly>=4.4.1 in /usr/local/lib/python3.7/dist-packages (from pycaret) (5.5.0)
+    Requirement already satisfied: pyyaml<6.0.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (5.4.1)
+    Requirement already satisfied: spacy<2.4.0 in /usr/local/lib/python3.7/dist-packages (from pycaret) (2.2.4)
+    Requirement already satisfied: pandas in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.3.5)
+    Requirement already satisfied: mlflow in /usr/local/lib/python3.7/dist-packages (from pycaret) (1.23.1)
+    Requirement already satisfied: numpy>=1.13.3 in /usr/local/lib/python3.7/dist-packages (from imbalanced-learn==0.7.0->pycaret) (1.19.5)
+    Requirement already satisfied: threadpoolctl>=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn==0.23.2->pycaret) (3.0.0)
+    Requirement already satisfied: setuptools>=34.4.1 in /usr/local/lib/python3.7/dist-packages (from cufflinks>=0.17.0->pycaret) (57.4.0)
+    Requirement already satisfied: six>=1.9.0 in /usr/local/lib/python3.7/dist-packages (from cufflinks>=0.17.0->pycaret) (1.15.0)
+    Requirement already satisfied: colorlover>=0.2.1 in /usr/local/lib/python3.7/dist-packages (from cufflinks>=0.17.0->pycaret) (0.3.0)
+    Requirement already satisfied: smart-open>=1.2.1 in /usr/local/lib/python3.7/dist-packages (from gensim<4.0.0->pycaret) (5.2.1)
+    Requirement already satisfied: backcall in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (0.2.0)
+    Requirement already satisfied: decorator in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (4.4.2)
+    Requirement already satisfied: pexpect>4.3 in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (4.8.0)
+    Requirement already satisfied: traitlets>=4.2 in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (5.1.1)
+    Requirement already satisfied: jedi>=0.16 in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (0.18.1)
+    Requirement already satisfied: pygments in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (2.6.1)
+    Requirement already satisfied: pickleshare in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (0.7.5)
+    Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (0.1.3)
+    Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /usr/local/lib/python3.7/dist-packages (from IPython->pycaret) (3.0.26)
+    Requirement already satisfied: ipykernel>=4.5.1 in /usr/local/lib/python3.7/dist-packages (from ipywidgets->pycaret) (6.8.0)
+    Requirement already satisfied: jupyterlab-widgets>=1.0.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets->pycaret) (1.0.2)
+    Requirement already satisfied: nbformat>=4.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets->pycaret) (5.1.3)
+    Requirement already satisfied: widgetsnbextension~=3.5.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets->pycaret) (3.5.2)
+    Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.7/dist-packages (from ipywidgets->pycaret) (0.2.0)
+    Requirement already satisfied: debugpy<2.0,>=1.0.0 in /usr/local/lib/python3.7/dist-packages (from ipykernel>=4.5.1->ipywidgets->pycaret) (1.0.0)
+    Requirement already satisfied: jupyter-client<8.0 in /usr/local/lib/python3.7/dist-packages (from ipykernel>=4.5.1->ipywidgets->pycaret) (5.3.5)
+    Requirement already satisfied: tornado<7.0,>=4.2 in /usr/local/lib/python3.7/dist-packages (from ipykernel>=4.5.1->ipywidgets->pycaret) (5.1.1)
+    Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.7/dist-packages (from ipykernel>=4.5.1->ipywidgets->pycaret) (1.5.4)
+    Requirement already satisfied: parso<0.9.0,>=0.8.0 in /usr/local/lib/python3.7/dist-packages (from jedi>=0.16->IPython->pycaret) (0.8.3)
+    Requirement already satisfied: jupyter-core>=4.6.0 in /usr/local/lib/python3.7/dist-packages (from jupyter-client<8.0->ipykernel>=4.5.1->ipywidgets->pycaret) (4.9.1)
+    Requirement already satisfied: pyzmq>=13 in /usr/local/lib/python3.7/dist-packages (from jupyter-client<8.0->ipykernel>=4.5.1->ipywidgets->pycaret) (22.3.0)
+    Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.7/dist-packages (from jupyter-client<8.0->ipykernel>=4.5.1->ipywidgets->pycaret) (2.8.2)
+    Requirement already satisfied: wheel in /usr/local/lib/python3.7/dist-packages (from lightgbm>=2.3.1->pycaret) (0.37.1)
+    Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (4.29.1)
+    Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (21.3)
+    Requirement already satisfied: pyparsing>=2.2.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (3.0.7)
+    Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (1.3.2)
+    Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (0.11.0)
+    Requirement already satisfied: pillow>=6.2.0 in /usr/local/lib/python3.7/dist-packages (from matplotlib->pycaret) (7.1.2)
+    Requirement already satisfied: jsonschema!=2.5.0,>=2.4 in /usr/local/lib/python3.7/dist-packages (from nbformat>=4.2.0->ipywidgets->pycaret) (4.3.3)
+    Requirement already satisfied: importlib-resources>=1.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (5.4.0)
+    Requirement already satisfied: typing-extensions in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (3.10.0.2)
+    Requirement already satisfied: attrs>=17.4.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (21.4.0)
+    Requirement already satisfied: importlib-metadata in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (4.10.1)
+    Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,>=0.14.0 in /usr/local/lib/python3.7/dist-packages (from jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (0.18.1)
+    Requirement already satisfied: zipp>=3.1.0 in /usr/local/lib/python3.7/dist-packages (from importlib-resources>=1.4.0->jsonschema!=2.5.0,>=2.4->nbformat>=4.2.0->ipywidgets->pycaret) (3.7.0)
+    Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.7/dist-packages (from pandas->pycaret) (2018.9)
+    Requirement already satisfied: jinja2>=2.11.1 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (2.11.3)
+    Requirement already satisfied: pydantic>=1.8.1 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (1.9.0)
+    Requirement already satisfied: visions[type_image_path]==0.7.4 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (0.7.4)
+    Requirement already satisfied: htmlmin>=0.1.12 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (0.1.12)
+    Requirement already satisfied: phik>=0.11.1 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (0.12.0)
+    Requirement already satisfied: requests>=2.24.0 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (2.27.1)
+    Requirement already satisfied: missingno>=0.4.2 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (0.5.0)
+    Requirement already satisfied: markupsafe~=2.0.1 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (2.0.1)
+    Requirement already satisfied: tqdm>=4.48.2 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (4.62.3)
+    Requirement already satisfied: multimethod>=1.4 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (1.7)
+    Requirement already satisfied: tangled-up-in-unicode==0.2.0 in /usr/local/lib/python3.7/dist-packages (from pandas-profiling>=2.8.0->pycaret) (0.2.0)
+    Requirement already satisfied: networkx>=2.4 in /usr/local/lib/python3.7/dist-packages (from visions[type_image_path]==0.7.4->pandas-profiling>=2.8.0->pycaret) (2.6.3)
+    Requirement already satisfied: imagehash in /usr/local/lib/python3.7/dist-packages (from visions[type_image_path]==0.7.4->pandas-profiling>=2.8.0->pycaret) (4.2.1)
+    Requirement already satisfied: ptyprocess>=0.5 in /usr/local/lib/python3.7/dist-packages (from pexpect>4.3->IPython->pycaret) (0.7.0)
+    Requirement already satisfied: tenacity>=6.2.0 in /usr/local/lib/python3.7/dist-packages (from plotly>=4.4.1->pycaret) (8.0.1)
+    Requirement already satisfied: wcwidth in /usr/local/lib/python3.7/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->IPython->pycaret) (0.2.5)
+    Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests>=2.24.0->pandas-profiling>=2.8.0->pycaret) (1.26.8)
+    Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from requests>=2.24.0->pandas-profiling>=2.8.0->pycaret) (2.0.11)
+    Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests>=2.24.0->pandas-profiling>=2.8.0->pycaret) (2.10)
+    Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests>=2.24.0->pandas-profiling>=2.8.0->pycaret) (2021.10.8)
+    Requirement already satisfied: cymem<2.1.0,>=2.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (2.0.6)
+    Requirement already satisfied: srsly<1.1.0,>=1.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (1.0.5)
+    Requirement already satisfied: wasabi<1.1.0,>=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (0.9.0)
+    Requirement already satisfied: preshed<3.1.0,>=3.0.2 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (3.0.6)
+    Requirement already satisfied: plac<1.2.0,>=0.9.6 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (1.1.3)
+    Requirement already satisfied: thinc==7.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (7.4.0)
+    Requirement already satisfied: catalogue<1.1.0,>=0.0.7 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (1.0.0)
+    Requirement already satisfied: blis<0.5.0,>=0.4.0 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (0.4.1)
+    Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in /usr/local/lib/python3.7/dist-packages (from spacy<2.4.0->pycaret) (1.0.6)
+    Requirement already satisfied: notebook>=4.4.1 in /usr/local/lib/python3.7/dist-packages (from widgetsnbextension~=3.5.0->ipywidgets->pycaret) (5.3.1)
+    Requirement already satisfied: Send2Trash in /usr/local/lib/python3.7/dist-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (1.8.0)
+    Requirement already satisfied: terminado>=0.8.1 in /usr/local/lib/python3.7/dist-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (0.13.1)
+    Requirement already satisfied: nbconvert in /usr/local/lib/python3.7/dist-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (5.6.1)
+    Requirement already satisfied: PyWavelets in /usr/local/lib/python3.7/dist-packages (from imagehash->visions[type_image_path]==0.7.4->pandas-profiling>=2.8.0->pycaret) (1.2.0)
+    Requirement already satisfied: databricks-cli>=0.8.7 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (0.16.2)
+    Requirement already satisfied: cloudpickle in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (1.3.0)
+    Requirement already satisfied: Flask in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (1.1.4)
+    Requirement already satisfied: prometheus-flask-exporter in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (0.18.7)
+    Requirement already satisfied: sqlparse>=0.3.1 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (0.4.2)
+    Requirement already satisfied: click>=7.0 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (7.1.2)
+    Requirement already satisfied: querystring-parser in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (1.2.4)
+    Requirement already satisfied: docker>=4.0.0 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (5.0.3)
+    Requirement already satisfied: sqlalchemy in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (1.4.31)
+    Requirement already satisfied: gunicorn in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (20.1.0)
+    Requirement already satisfied: entrypoints in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (0.3)
+    Requirement already satisfied: gitpython>=2.1.0 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (3.1.26)
+    Requirement already satisfied: alembic in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (1.7.6)
+    Requirement already satisfied: protobuf>=3.7.0 in /usr/local/lib/python3.7/dist-packages (from mlflow->pycaret) (3.17.3)
+    Requirement already satisfied: tabulate>=0.7.7 in /usr/local/lib/python3.7/dist-packages (from databricks-cli>=0.8.7->mlflow->pycaret) (0.8.9)
+    Requirement already satisfied: websocket-client>=0.32.0 in /usr/local/lib/python3.7/dist-packages (from docker>=4.0.0->mlflow->pycaret) (1.2.3)
+    Requirement already satisfied: gitdb<5,>=4.0.1 in /usr/local/lib/python3.7/dist-packages (from gitpython>=2.1.0->mlflow->pycaret) (4.0.9)
+    Requirement already satisfied: smmap<6,>=3.0.1 in /usr/local/lib/python3.7/dist-packages (from gitdb<5,>=4.0.1->gitpython>=2.1.0->mlflow->pycaret) (5.0.0)
+    Requirement already satisfied: Mako in /usr/local/lib/python3.7/dist-packages (from alembic->mlflow->pycaret) (1.1.6)
+    Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.7/dist-packages (from sqlalchemy->mlflow->pycaret) (1.1.2)
+    Requirement already satisfied: Werkzeug<2.0,>=0.15 in /usr/local/lib/python3.7/dist-packages (from Flask->mlflow->pycaret) (1.0.1)
+    Requirement already satisfied: itsdangerous<2.0,>=0.24 in /usr/local/lib/python3.7/dist-packages (from Flask->mlflow->pycaret) (1.1.0)
+    Requirement already satisfied: mistune<2,>=0.8.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (0.8.4)
+    Requirement already satisfied: testpath in /usr/local/lib/python3.7/dist-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (0.5.0)
+    Requirement already satisfied: defusedxml in /usr/local/lib/python3.7/dist-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (0.7.1)
+    Requirement already satisfied: bleach in /usr/local/lib/python3.7/dist-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (4.1.0)
+    Requirement already satisfied: pandocfilters>=1.4.1 in /usr/local/lib/python3.7/dist-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (1.5.0)
+    Requirement already satisfied: webencodings in /usr/local/lib/python3.7/dist-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets->pycaret) (0.5.1)
+    Requirement already satisfied: prometheus-client in /usr/local/lib/python3.7/dist-packages (from prometheus-flask-exporter->mlflow->pycaret) (0.13.1)
+    Requirement already satisfied: funcy in /usr/local/lib/python3.7/dist-packages (from pyLDAvis->pycaret) (1.17)
+    Requirement already satisfied: future in /usr/local/lib/python3.7/dist-packages (from pyLDAvis->pycaret) (0.16.0)
+    Requirement already satisfied: numexpr in /usr/local/lib/python3.7/dist-packages (from pyLDAvis->pycaret) (2.8.1)
+    Requirement already satisfied: statsmodels in /usr/local/lib/python3.7/dist-packages (from pyod->pycaret) (0.13.1)
+    Requirement already satisfied: numba>=0.35 in /usr/local/lib/python3.7/dist-packages (from pyod->pycaret) (0.51.2)
+    Requirement already satisfied: llvmlite<0.35,>=0.34.0.dev0 in /usr/local/lib/python3.7/dist-packages (from numba>=0.35->pyod->pycaret) (0.34.0)
+    Requirement already satisfied: patsy>=0.5.2 in /usr/local/lib/python3.7/dist-packages (from statsmodels->pyod->pycaret) (0.5.2)
+    Requirement already satisfied: pynndescent>=0.5 in /usr/local/lib/python3.7/dist-packages (from umap-learn->pycaret) (0.5.6)
+    
+
+'bubbleplot' 그래프를 사용하기 위해 설치해준다.
+
+<'Bubbly' 패키지에 대해>
+
+Bubbly는 Plotly를 사용하여 대화형 및 애니메이션 거품 차트를
+
+그리기 위한 패키지입니다. 애니메이션 거품형 차트는 총 7개의 
+
+변수를 수용할 수 있습니다. 
+
+X축, Y축, Z축, 시간, 거품, 크기 및 색상을 컴팩트하고 매혹적인
+
+방식으로 보여줍니다. Bubbly는 다양한 사용자 정의로 사용하기
+
+쉽고 특히 Jupyter 노트북에서 사용하기에 적합하며 Kaggle 커널과
+
+같은 plotly의 오프라인 모드에서 작동하도록 설계되었습니다.
+
+
+```python
+pip install bubbly
+```
+
+    Requirement already satisfied: bubbly in /usr/local/lib/python3.7/dist-packages (1.0.2)
+    Requirement already satisfied: pandas in /usr/local/lib/python3.7/dist-packages (from bubbly) (1.3.5)
+    Requirement already satisfied: plotly in /usr/local/lib/python3.7/dist-packages (from bubbly) (5.5.0)
+    Requirement already satisfied: numpy>=1.17.3 in /usr/local/lib/python3.7/dist-packages (from pandas->bubbly) (1.19.5)
+    Requirement already satisfied: pytz>=2017.3 in /usr/local/lib/python3.7/dist-packages (from pandas->bubbly) (2018.9)
+    Requirement already satisfied: python-dateutil>=2.7.3 in /usr/local/lib/python3.7/dist-packages (from pandas->bubbly) (2.8.2)
+    Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.7/dist-packages (from python-dateutil>=2.7.3->pandas->bubbly) (1.15.0)
+    Requirement already satisfied: tenacity>=6.2.0 in /usr/local/lib/python3.7/dist-packages (from plotly->bubbly) (8.0.1)
+    
+
+'bubbleplot' 그래프를 사용하기 위해 'chart_studio' 패키지도
+
+ 설치해준다.
+
+ <'chart_studio' 패키지에 대해>
+
+ 'chart_studio'는 'plotly'를 사용하여 그래프를 그리기 위한 
+ 
+  웹 서비스를 제공한다.
+
+ import chart_studio.plotly as py
+
+ import plotly.graph_objects as go
+ 
+ 이렇게 사용하면 선 그래프와 산점도 그래프를 나타낼수도 있다.
+
+
+```python
+pip install chart_studio
+```
+
+    Requirement already satisfied: chart_studio in /usr/local/lib/python3.7/dist-packages (1.1.0)
+    Requirement already satisfied: requests in /usr/local/lib/python3.7/dist-packages (from chart_studio) (2.27.1)
+    Requirement already satisfied: plotly in /usr/local/lib/python3.7/dist-packages (from chart_studio) (5.5.0)
+    Requirement already satisfied: retrying>=1.3.3 in /usr/local/lib/python3.7/dist-packages (from chart_studio) (1.3.3)
+    Requirement already satisfied: six in /usr/local/lib/python3.7/dist-packages (from chart_studio) (1.15.0)
+    Requirement already satisfied: tenacity>=6.2.0 in /usr/local/lib/python3.7/dist-packages (from plotly->chart_studio) (8.0.1)
+    Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.7/dist-packages (from requests->chart_studio) (2.10)
+    Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.7/dist-packages (from requests->chart_studio) (2.0.11)
+    Requirement already satisfied: urllib3<1.27,>=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests->chart_studio) (1.26.8)
+    Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests->chart_studio) (2021.10.8)
+    
+
+구글 드라이브에서 '데이콘-집값 예측하기 대회' 데이터 파일을 가져오기위해 아래의 코드를 실행시킨다.
+
+
+```python
+# 구글 드라이브 연동코드
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+    Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount("/content/drive", force_remount=True).
+    
+
+# 데이터 구성
+
+### **1. train.csv : 학습 데이터**
+
+id : 데이터 고유 id
+
+OverallQual : 전반적 재료와 마감 품질
+
+YearBuilt : 완공 연도
+
+YearRemodAdd : 리모델링 연도
+
+ExterQual : 외관 재료 품질
+
+BsmtQual : 지하실 높이
+
+TotalBsmtSF : 지하실 면적 
+
+1stFlrSF : 1층 면적 
+
+GrLivArea : 지상층 생활 면적
+
+FullBath : 지상층 화장실 개수 
+
+KitchenQual : 부억 품질 
+
+GarageYrBlt : 차고 완공 연도
+
+GarageCars: 차고 자리 개수
+
+GarageArea: 차고 면적 
+
+target : 집값(달러 단위)
+
+### **2.test.csv**
+
+id : 데이터 고유 id
+
+OverallQual : 전반적 재료와 마감 품질
+
+YearBuilt : 완공 연도
+
+YearRemodAdd : 리모델링 연도
+
+ExterQual : 외관 재료 품질
+
+BsmtQual : 지하실 높이
+
+TotalBsmtSF : 지하실 면적 
+
+1stFlrSF : 1층 면적 
+
+GrLivArea : 지상층 생활 면적
+
+FullBath : 지상층 화장실 개수 
+
+KitchenQual : 부억 품질 
+
+GarageYrBlt : 차고 완공 연도
+
+GarageCars: 차고 자리 개수
+
+GarageArea: 차고 면적 
+
+
+### **3.sample_submission.csv**
+
+
+id : 데이터 고유 id
+
+target : 집값(달러 단위)
+
+
+코드 참고 : https://dacon.io/competitions/official/235869/codeshare/4267?page=1&dtype=recent
+
+yun99님 코드 올려주셔서 감사합니다.
+
+# DataLoad(데이터 불러오기)
+
+
+```python
+import pandas as pd
+import seaborn as sns
+import numpy as np
+import matplotlib.backend_bases
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly
+import warnings
+warnings.filterwarnings('ignore')
+
+train_data = pd.read_csv("/content/drive/MyDrive/housing/train.csv")
+test_data = pd.read_csv("/content/drive/MyDrive/housing/test.csv")
+```
+
+    /usr/local/lib/python3.7/dist-packages/distributed/config.py:20: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+      defaults = yaml.load(f)
+    
+
+# Data Check (데이터 확인)
+
+
+
+```python
+train_data.head()
+```
+
+
+
+
+
+  <div id="df-f5039efa-7f22-41e9-b168-45827ac39a93">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Overall Qual</th>
+      <th>Gr Liv Area</th>
+      <th>Exter Qual</th>
+      <th>Garage Cars</th>
+      <th>Garage Area</th>
+      <th>Kitchen Qual</th>
+      <th>Total Bsmt SF</th>
+      <th>1st Flr SF</th>
+      <th>Bsmt Qual</th>
+      <th>Full Bath</th>
+      <th>Year Built</th>
+      <th>Year Remod/Add</th>
+      <th>Garage Yr Blt</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>10</td>
+      <td>2392</td>
+      <td>Ex</td>
+      <td>3</td>
+      <td>968</td>
+      <td>Ex</td>
+      <td>2392</td>
+      <td>2392</td>
+      <td>Ex</td>
+      <td>2</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>386250</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>7</td>
+      <td>1352</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>466</td>
+      <td>Gd</td>
+      <td>1352</td>
+      <td>1352</td>
+      <td>Ex</td>
+      <td>2</td>
+      <td>2006</td>
+      <td>2007</td>
+      <td>2006</td>
+      <td>194000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>5</td>
+      <td>900</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>288</td>
+      <td>TA</td>
+      <td>864</td>
+      <td>900</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1967</td>
+      <td>1967</td>
+      <td>1967</td>
+      <td>123000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>5</td>
+      <td>1174</td>
+      <td>TA</td>
+      <td>2</td>
+      <td>576</td>
+      <td>Gd</td>
+      <td>680</td>
+      <td>680</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1900</td>
+      <td>2006</td>
+      <td>2000</td>
+      <td>135000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>7</td>
+      <td>1958</td>
+      <td>Gd</td>
+      <td>3</td>
+      <td>936</td>
+      <td>Gd</td>
+      <td>1026</td>
+      <td>1026</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>2005</td>
+      <td>2005</td>
+      <td>2005</td>
+      <td>250000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f5039efa-7f22-41e9-b168-45827ac39a93')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-f5039efa-7f22-41e9-b168-45827ac39a93 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-f5039efa-7f22-41e9-b168-45827ac39a93');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+```python
+test_data .head()
+```
+
+
+
+
+
+  <div id="df-601deebc-0ed4-4836-8ce1-9f8550a5b6a4">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Overall Qual</th>
+      <th>Gr Liv Area</th>
+      <th>Exter Qual</th>
+      <th>Garage Cars</th>
+      <th>Garage Area</th>
+      <th>Kitchen Qual</th>
+      <th>Total Bsmt SF</th>
+      <th>1st Flr SF</th>
+      <th>Bsmt Qual</th>
+      <th>Full Bath</th>
+      <th>Year Built</th>
+      <th>Year Remod/Add</th>
+      <th>Garage Yr Blt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>9</td>
+      <td>1800</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>702</td>
+      <td>Ex</td>
+      <td>1800</td>
+      <td>1800</td>
+      <td>Ex</td>
+      <td>2</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6</td>
+      <td>1082</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>240</td>
+      <td>TA</td>
+      <td>1082</td>
+      <td>1082</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1948</td>
+      <td>1950</td>
+      <td>1948</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6</td>
+      <td>1573</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>440</td>
+      <td>Gd</td>
+      <td>756</td>
+      <td>769</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6</td>
+      <td>2443</td>
+      <td>Gd</td>
+      <td>3</td>
+      <td>744</td>
+      <td>Gd</td>
+      <td>1158</td>
+      <td>1158</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>2004</td>
+      <td>2004</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>5</td>
+      <td>1040</td>
+      <td>TA</td>
+      <td>2</td>
+      <td>686</td>
+      <td>TA</td>
+      <td>1040</td>
+      <td>1040</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1968</td>
+      <td>1968</td>
+      <td>1991</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-601deebc-0ed4-4836-8ce1-9f8550a5b6a4')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-601deebc-0ed4-4836-8ce1-9f8550a5b6a4 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-601deebc-0ed4-4836-8ce1-9f8550a5b6a4');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+```python
+train_data.shape
+```
+
+
+
+
+    (1350, 15)
+
+
+
+
+```python
+test_data.shape
+```
+
+
+
+
+    (1350, 14)
+
+
+
+
+```python
+train_data['Bsmt Qual'].value_counts()
+```
+
+
+
+
+    TA    605
+    Gd    582
+    Ex    134
+    Fa     28
+    Po      1
+    Name: Bsmt Qual, dtype: int64
+
+
+
+
+```python
+train_data['Exter Qual'].value_counts()
+```
+
+
+
+
+    TA    808
+    Gd    485
+    Ex     49
+    Fa      8
+    Name: Exter Qual, dtype: int64
+
+
+
+
+```python
+train_data['Overall Qual'].value_counts()
+```
+
+
+
+
+    5     379
+    6     351
+    7     307
+    8     156
+    4      75
+    9      56
+    10     15
+    3       8
+    2       3
+    Name: Overall Qual, dtype: int64
+
+
+
+# Visualization(시각화)
+
+여기서 부터는 'Kaggle'을 참고하여 '시각화'를 진행하였다.
+
+
+```python
+fig = px.histogram(train_data,x="Year Remod/Add", y="Year Built")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="f08c5ea0-9ef2-4220-b52c-3f464c9580b7" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f08c5ea0-9ef2-4220-b52c-3f464c9580b7")) {                    Plotly.newPlot(                        "f08c5ea0-9ef2-4220-b52c-3f464c9580b7",                        [{"alignmentgroup":"True","bingroup":"x","histfunc":"sum","hovertemplate":"Year Remod/Add=%{x}<br>sum of Year Built=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"x":[2003,2007,1967,2006,2005,2010,1957,1981,2002,2003,1950,1991,1985,1950,2002,1975,2005,2005,1993,2006,1954,1979,1999,1955,2006,1950,1950,1984,2004,2007,2003,1976,1983,1950,1993,1970,1964,1978,1950,1950,1996,1961,2008,1982,1977,1996,2006,2008,1973,1980,1974,1994,1997,1961,2003,2004,2002,1950,2006,1953,1963,2005,1954,2005,1990,2000,1952,2007,1972,2007,2005,1980,1967,2001,1977,1994,2008,1987,1951,1956,2006,1950,1995,1958,2006,1962,1968,2005,1965,2003,2006,1975,1980,1971,2007,2000,2005,2006,2007,2007,1959,1958,2006,2007,1968,1997,1958,2005,1972,2002,2004,2005,1990,2006,2002,1952,1994,1950,2006,2005,1999,2001,2000,1996,2005,1999,1971,1998,2003,1975,1971,1962,2000,1950,2008,2004,1960,1975,1970,2007,1976,2008,1997,1994,1950,1964,1958,1976,1950,1962,2008,1977,2006,1958,1968,1966,2000,1997,1956,1976,1977,1966,2006,2005,2004,1994,1984,1978,2003,2004,2006,2007,2005,2008,1995,2003,1987,1995,2002,1994,2007,2006,1998,1976,2007,2000,2001,1986,2005,1992,2000,1964,1980,1989,1977,2005,2004,1950,1959,2007,1999,2000,1968,1998,1976,2003,1991,2003,1977,2003,1960,1996,2005,2007,1990,1990,1958,2008,1987,1975,1997,2006,2005,1950,1953,2004,1965,1958,1996,2004,1978,1976,1950,2006,1950,1962,2007,1977,2006,1963,1950,2003,2007,2000,2004,2008,1954,2004,1967,1993,1996,2006,1950,1950,2007,1966,2001,2002,1950,2009,2006,2000,2004,1970,2006,2010,2003,1999,1957,1974,2007,2000,2001,1965,1950,2009,2001,1952,2002,1961,1950,1996,2006,2005,1963,2006,1986,2004,1963,1985,2010,1979,2003,1970,2001,1960,1983,1978,2008,1972,2005,1950,1963,1992,1964,1970,1993,1970,1979,2000,1978,1960,2002,1950,1950,2008,1950,1998,2001,1995,1977,1950,1977,1960,2005,1950,1971,1975,1984,1961,1952,1957,2000,2004,1992,1978,2005,2006,1991,1999,2005,2010,2003,2007,1996,1971,1950,2006,1995,1967,1968,2007,2005,1984,2006,2006,1982,1974,2004,2004,1978,2006,1998,1966,2000,1960,1998,1972,1977,1950,1955,1971,1972,2008,1965,1994,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,2000,2009,1969,1968,1995,2007,1972,1996,2004,1996,2007,2007,1997,2006,1990,1952,1958,1958,1950,1950,1950,1960,1953,1992,2009,1969,1997,1971,1960,2005,2008,1956,2008,1978,2006,2005,1975,2002,1977,2000,1950,1993,1959,1987,1981,1977,2006,1958,1961,1978,2002,1997,1950,2006,2007,1968,1950,1967,1970,1956,1970,1996,1996,2005,2009,2003,2002,2003,1988,1998,1968,1965,1976,1997,1993,2007,1996,2009,1950,2002,1966,1996,1950,2004,1998,2006,1970,2005,2004,1953,1970,1990,1998,1970,1964,2000,1950,2004,1986,2008,1994,1950,1950,1998,1970,2005,2004,1990,2007,1993,1950,1950,2004,1999,1952,2005,1957,1969,2001,1968,1981,2002,1992,1994,2001,2009,1985,1999,1964,2000,2000,1962,2006,1992,2003,1976,2007,2009,1968,1995,2005,2002,2003,1994,2005,2006,1961,1976,1991,1950,1985,1950,1959,1976,2004,1984,1969,1991,1994,2000,1962,2003,2007,2006,1952,2005,1978,2002,1976,1978,2006,1997,1954,1992,1950,1991,2007,2005,1978,2004,1950,1978,1999,1955,1950,1998,2003,1973,1950,1989,1968,1983,1993,2005,1950,1950,1970,1968,1968,2000,1994,2005,1994,1950,2004,1999,1975,2004,1981,1998,1950,1950,2006,2005,1950,1968,1994,1975,1978,1956,1976,2004,1998,2006,1972,1950,1959,1954,1957,1950,1967,1950,2005,2006,1996,1979,1960,1964,2007,1997,1960,1954,1968,1983,1987,1950,2006,1955,1975,1950,1989,1987,1978,1958,1996,1987,1977,1969,1976,2007,2005,1984,1998,1968,1950,1963,1994,2008,1995,2004,2006,2007,1950,2001,1998,1968,1994,2006,2008,1975,2007,2008,2007,1996,1973,2002,1977,1994,2006,2009,2000,1987,1990,1954,1963,1978,1950,1993,1963,1959,2000,2010,2007,1998,2007,1950,1990,1969,2004,1976,1993,2003,2005,2006,2001,1950,2005,1954,1999,1998,2006,1980,2008,1950,1950,2004,1999,1970,1950,2007,2007,2007,1998,1991,2009,2005,1977,2007,1951,2005,2000,1975,1961,2002,1974,1961,2007,1972,2006,2000,2006,2004,1981,2008,1977,1996,1955,2007,1973,2006,1995,1996,2000,2003,1971,1965,2005,1998,1978,2005,1963,1950,1950,1951,1960,2001,2000,1994,2006,2000,1983,2005,2003,2001,1950,1993,1976,1950,1991,2001,1994,1966,1991,1952,2004,2001,1976,1995,1950,1973,1998,2004,2008,2007,2005,1964,2000,1967,1950,2004,2004,1950,1978,2004,1999,1996,1977,1979,2007,2002,1982,1965,2001,1950,1995,1995,2003,2004,1962,1950,1995,1950,2004,2006,2007,1992,1966,1993,1962,1956,1997,2005,2005,1958,2002,2007,1991,1995,1950,1973,1980,1964,2004,1971,1956,1992,2005,1972,1995,2005,2008,1952,1989,1985,1950,2004,1950,1996,2007,2001,1996,1965,1950,1955,1969,1997,1998,1995,2002,1993,2001,1954,2002,1976,2002,2003,2000,1950,1997,1950,2002,1985,2008,2002,2006,1992,1956,2001,2008,1974,1977,1963,1950,1962,1987,1994,1972,1969,2000,2005,1950,2009,1956,1986,1966,1968,2007,1970,2003,1955,1950,2005,1950,1981,2002,2005,1997,2007,2008,1958,2006,2004,1964,1991,2008,1973,2004,1980,1950,2006,2004,2003,2006,1988,1994,1978,1995,1979,2006,2003,1990,2006,1989,2000,1991,1998,2008,1950,1977,1996,2003,1958,1950,1969,2008,1974,2008,1950,2007,1968,1968,1965,2008,1996,1984,1950,2006,2002,2007,2004,1999,2006,1972,2003,2004,2000,1990,1998,1950,1996,1999,2001,2006,1963,2007,2004,1950,2005,2005,1976,1953,1995,1999,2006,1977,2002,2007,1950,2003,1972,1992,1950,2007,2004,1950,1998,2008,1996,1979,2003,2006,2008,2007,2006,1950,2005,1999,1950,2002,1950,1973,1955,1966,1976,2006,1950,1999,1976,2006,1992,1969,1978,1997,2006,1950,2006,1955,1996,2006,2006,1961,1987,2007,2006,1959,1994,1995,1993,1950,1997,1950,1992,1957,1967,2002,2008,1962,1990,2003,2005,1953,2003,1972,1950,1960,1950,2006,2000,1969,2006,2003,2004,2007,1990,1950,1954,1983,1950,1996,1991,1956,1998,1975,1950,1977,1979,2006,2006,1991,2003,2000,2007,1976,2004,2003,1998,1984,1985,2006,1976,1957,1950,1976,1994,1997,1994,1959,2007,1956,1951,2002,2004,2000,2004,1954,1989,2006,1998,2008,2004,1995,2005,1979,2000,1964,1950,1950,1995,2002,1981,2005,1980,1971,2009,2007,2003,1950,1950,1978,1977,1977,1991,1995,2004,2006,1961,1960,1974,1950,1997,1970,2002,1982,1989,1994,1980,2003,1950,2000,1950,1997,1950,1980,1978,1954,1994,2006,1950,1957,1963,2003,2007,1995,1993,2006,1969,2003,1975,1989,1970,1966,2003,1966,1962,2005,2003,2000,1958,1976,1957,1963,1995,2007,1971,1958,1980,1991,1998,1996,2007,1999,1984,1972,1962,1968,2005,1990,2009,1970,1977,2004,2001,2004,1950,1975,2007,1950,1955,2003,2002,2006,1950,1983,2009,1978,1981,1998,2002,1996,2007,1971,1971,1998,1994,2009,1962,1988,2008,1950,2006,1950,1969,1989,1979,1954,1998,2009,1977,1967,1973,1976,2002,1970,1965,2000,2008,2001,1950,1984,1991,1956,2004,2006,1963,1975,1988,2003,2006,2009,1958,2005,1967,1998,2005,1994,1950,1960,2006,1961,1980,1990,1959,1950,1976,1993,1994,1998,2006,1993,1950,2004,1998,2006,1994,1984,1999,1950,2003,2004,1972,2005,1992,2008,1985,1966,1996,2000,2008,1999,1960,2005,1950,1962,2007,1955,2003,1974,1970,1960,1979,1998,1977,1950,2005,1954,2003,1992,1955,1996,1965,2006,2006,2006,1961,2003,1962,2003,1995,1961,1966,2006,1996,2006,2005,1963,1950,1997,2000,1995,1997,2006,1967,1974,1978],"xaxis":"x","y":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"yaxis":"y","type":"histogram"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Remod/Add"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sum of Year Built"}},"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('f08c5ea0-9ef2-4220-b52c-3f464c9580b7');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train' 데이터 값을 가져왔고, X축이 리모델링연도 y축이 완공연도를
+ 
+의미한다.
+
+
+```python
+fig = px.histogram(test_data,x="Year Remod/Add", y="Year Built")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="04bb2855-5e5c-46ea-999e-742def4c9dea" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("04bb2855-5e5c-46ea-999e-742def4c9dea")) {                    Plotly.newPlot(                        "04bb2855-5e5c-46ea-999e-742def4c9dea",                        [{"alignmentgroup":"True","bingroup":"x","histfunc":"sum","hovertemplate":"Year Remod/Add=%{x}<br>sum of Year Built=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"x":[2007,1950,2000,2004,1968,1950,2006,1963,1963,2003,1994,1971,1981,1957,1950,2000,1961,1990,2000,2001,1983,1950,1998,2006,2006,2008,1998,2000,1963,1950,1955,1950,2005,1963,2002,1950,1999,1988,2007,2006,2001,1959,1950,1969,1989,2000,2002,1950,2000,1966,1994,1991,1968,1976,2007,1972,2006,1966,1957,1950,1950,1994,1950,2000,2007,1963,1999,2004,2005,1950,2000,2004,1975,2000,2002,1969,1950,1970,1960,2010,1995,2003,1999,2005,1955,1976,1950,1974,1954,1970,1950,1950,1950,1950,1986,1995,2000,1954,1969,1988,2007,2005,1976,2005,2008,2006,1950,1965,1998,2007,1950,2003,1979,1950,1954,1967,1988,2005,1968,2006,2007,1967,1971,2007,2006,2007,2001,2002,2006,1951,2009,1978,1990,2005,1998,2009,2007,1964,2007,1966,1998,1966,1970,2002,1950,2004,1994,1950,2007,1974,2000,1971,1950,2007,1999,1990,1959,2007,1958,1971,2006,2005,1959,1998,1960,1976,1972,1973,1998,1976,2008,2005,1990,2002,1990,1976,1950,1988,1967,1953,1950,1956,2006,1990,2000,1980,1981,2002,1956,2000,2007,1966,2000,2000,1976,2006,2008,1954,1950,1988,1950,2003,2007,1950,1996,1984,1999,2009,1966,1974,2005,1964,2006,2006,1974,1950,1985,1994,1959,2005,1989,2005,2006,2005,2005,2004,1984,1997,2006,1950,1989,1961,1990,2006,1999,1950,1999,1992,2004,1989,1973,1997,1971,1965,2002,2007,1976,1965,2002,1963,2007,2004,1950,1967,2008,1967,1972,1972,2006,1964,2006,2008,2007,1990,2006,1973,2002,2004,1982,1990,2007,1995,2005,1950,1992,1988,1956,1950,1999,2003,2006,2007,1977,1993,1961,1972,1992,1950,1993,1980,1967,1999,2004,1999,1986,1950,1950,2000,1976,1950,1998,1987,1993,1998,1957,2004,1976,1975,1954,2001,1950,1998,1977,1950,1963,2002,2003,1950,1950,2000,2008,1981,2005,1995,1978,2007,1980,1950,2004,2005,2008,2001,1958,1972,2005,2006,1973,1977,1994,2008,1970,1964,1992,1950,1993,2002,1950,2007,2003,1989,1965,2006,1970,1993,1950,1997,1953,2007,2000,1953,1950,2006,2006,1953,1999,1973,1976,1950,1998,2008,1994,2006,1961,1998,1997,1996,1997,1999,2007,1994,2010,2005,1953,1995,1999,1967,1950,1966,1980,1978,1950,2004,1965,1971,2007,1950,2007,1966,1950,1964,1959,2007,1980,1975,2005,1997,2006,2001,1958,2002,1950,2006,2005,1989,1950,1950,2006,1967,1967,1996,1999,1979,1966,2004,1997,2007,1993,2009,1993,1995,2005,2005,2004,2000,2002,1998,1997,2006,1996,2002,1950,1953,1998,2005,2004,1950,2003,1992,1962,2006,1998,2007,1999,1991,2006,2003,2003,1950,2004,1980,1995,2000,1964,1960,2003,1960,1998,1960,1993,1954,1955,1995,1969,2007,1970,2005,2010,2005,2007,1995,1951,1999,1995,2000,1994,2000,1998,2008,1980,1972,1950,2009,1998,1958,2007,2000,2008,1993,1959,1979,2006,2007,1984,2000,2005,2003,2006,1950,1990,1991,2004,1961,1998,2004,1963,2007,2006,1956,2010,2005,2007,2004,2003,2003,1999,1993,1998,2003,1978,2005,2006,2005,1978,2000,1950,1964,2009,2006,2005,2004,2004,1959,2007,2006,2009,1996,2006,2004,1959,1998,2005,2000,1969,1956,1980,2006,1957,2004,1950,1976,1972,1976,2007,2006,2004,1995,1954,2007,1993,2002,1971,1950,1950,1970,2002,2006,1958,2006,1970,1977,1958,1972,1996,1971,1998,2006,1950,1992,2003,1998,2005,2003,2004,1996,2001,2005,1954,1995,2004,2006,1992,1997,1999,2002,1950,2006,1959,1950,1995,1968,2008,1972,1997,1950,2009,1997,1950,2007,2006,2003,1958,1977,1995,1950,2005,1950,1996,2008,1991,1950,2006,2007,2009,1956,1950,1971,2003,1950,1984,1950,2007,2006,1959,2007,2006,1956,2006,1950,2008,1983,1970,2001,1950,2006,2007,1965,1985,2010,2006,1950,1976,2010,2006,2010,2005,2000,2000,1989,2007,2007,1999,1950,1996,2007,2004,2004,2008,1950,2007,1993,1950,1995,1997,1982,1977,2007,2002,1950,1998,1978,2007,2000,1980,1993,1950,1950,2000,1979,2002,1994,2006,1998,1957,2007,1993,2004,1998,2006,2005,2000,1964,1972,2006,1999,2006,1968,1964,1995,2006,1985,1954,1994,2005,1970,1956,1971,1950,1950,2002,2003,1960,1963,1954,2002,1993,1966,2008,2006,1950,1951,2005,1953,2008,1996,1996,2004,1972,1953,2001,1950,2002,2006,2001,2006,1998,1950,1990,1962,2001,1953,2000,1995,1999,1965,2007,2006,1953,2004,2007,1998,1958,1999,1950,1973,1993,2006,1999,2006,1954,1993,2003,2006,2006,1986,1950,2000,2006,1979,2001,1972,1980,1950,1950,1963,2000,1950,2003,2006,1995,1995,1959,1963,2007,1997,1973,1992,1992,1950,1956,2002,1958,1959,2000,2001,2006,2005,1967,1986,1999,1997,1965,1950,1950,1999,1999,2006,2007,1950,2006,2005,1968,1987,1999,1977,2009,2007,1998,1964,1950,2005,2002,2007,2004,1984,1950,1995,2009,1950,1984,1952,2001,1991,1962,1998,2002,1962,2006,2007,1950,1961,1976,1961,2000,2005,2004,2005,1994,1952,1978,1950,2007,1953,2003,2006,1950,1978,1952,1974,1950,1950,2007,1962,1969,2008,2005,1960,2008,2005,2006,1950,2005,2006,1960,1950,1975,1956,1962,2007,1950,2007,2007,1956,2005,1957,2000,1992,2009,1969,1998,1950,1992,2000,1979,1998,1955,2006,1997,1986,1996,1968,1988,1994,2009,1975,2005,2010,1980,1971,2005,1987,2007,1965,1967,1962,2000,2006,1969,2001,1996,2005,2008,1951,1996,2004,2006,1950,1992,1993,1958,1958,1997,1986,1980,2003,1985,1950,2007,1986,1977,1987,2006,2005,2000,1959,2000,1997,1998,1970,1995,1998,1972,1965,1965,1995,1960,2006,1951,1968,1960,1998,1957,1986,2004,1972,2001,1950,1994,1993,2005,2002,1962,1967,2007,2008,1975,1999,1993,1973,2000,1989,1975,1967,1965,1966,2006,1998,2007,2004,2000,1950,2003,2006,1967,1977,2005,2004,2003,1977,2007,1987,1996,2002,1960,1963,2008,2008,2007,2005,1970,1975,1999,1997,1998,2004,2007,1950,1950,1950,1950,1950,1997,2006,1995,1969,1994,2003,1968,2005,1950,2009,1994,1971,1998,1969,1950,1950,2005,1959,1998,2000,1967,1993,1994,1973,1970,1956,1999,1965,1998,1978,2007,1998,2003,1978,2007,2008,2007,2008,1951,1976,2002,1969,1975,1950,1975,1967,2000,2006,2007,1997,2003,1997,2008,2007,2005,1966,1985,1950,2002,2001,2000,1969,2003,1950,2004,2003,1999,1980,1980,2003,1952,1968,1963,1980,2005,2007,2004,2000,1999,1999,2000,1950,1957,2008,2007,1950,1956,2008,1993,1958,2003,2000,1993,1967,1950,2003,1977,2003,1950,2005,1968,2002,1997,1950,2004,1974,1996,1988,2006,1992,1996,1998,2001,1962,2006,2001,2004,2004,1991,1950,1950,1989,1994,2002,1964,1996,2007,2008,1950,2008,1951,1976,1997,2005,1999,1959,1973,2002,2003,1950,1967,1995,2000,1950,2002,2006,2009,1999,2004,1990,2005,2008,1977,1991,1991,2002,2009,2005,2008,1998,1996,1950,1980,1950,1950,1977,1991,2002,2000,2001,1955,1994,2001,1984,2008,2000,1950,2004,1972,1995,2003,2004,2007,2007,1950,1955,1973,1960,2007,1950,2004,1963,1977,1968,1997,1967,1950,1950,1965,2000,2003,2006,1965,1993,2006,1968,1973,1953,2005,2003,2003,1950,1976,2007,1958,1950,1950,1984,1997,2008,2007,1967,1950,2004,1950,2007,2002,1958,1994,2004,1999,1954,2008,2005,1950,1976,1991,2002,2007,2000,1972,2001,1978,1957,1950,1996,1950,1950,1992,2006,1975,1983,1980,1976,1968,2001,1988,2006,1950,1996,2000,1968,2000,1965,2006,1968,1970,2005,1980,1950,1963,1957,1958,2007,1994,2006,1978,1993,2005,2006,1950,1991,1995,1974,1956,1964,1966,1971,2007,2005,2000,1974,1977,2003,2001,1974,1977,2008,1972,2000,2002,2003,1968,2006,1981,2008,1964,1950,2005,1950],"xaxis":"x","y":[2007,1948,2000,2004,1968,1923,2005,1963,1963,2003,1977,1971,1980,1957,1941,1951,1961,1990,2000,1948,1958,1940,1998,2006,2006,2008,1958,2000,1963,1929,1955,1950,2005,1963,2001,1920,1999,1978,2007,2006,2001,1959,1940,1969,1988,1931,2002,1941,1965,1966,1993,1990,1968,1976,2006,1972,2006,1966,1957,1942,1923,1994,1939,1999,2007,1963,1999,2004,2005,1941,1954,2004,1975,1937,2002,1969,1927,1970,1960,1962,1930,2003,1998,2004,1955,1976,1925,1974,1954,1970,1924,1916,1930,1924,1986,1994,1999,1954,1969,1988,2007,2005,1976,2005,2007,2006,1900,1920,1997,2006,1950,2003,1979,1926,1954,1967,1980,2005,1968,2005,2007,1967,1971,1920,2005,2007,2001,2002,2006,1951,2009,1978,1990,2005,1998,2009,2007,1964,2007,1966,1998,1966,1970,1948,1920,2004,1994,1946,2007,1974,1958,1960,1945,2006,1999,1919,1959,2006,1958,1971,2006,2005,1959,1998,1960,1976,1972,1973,1998,1976,2008,2005,1918,1910,1969,1976,1921,1988,1967,1926,1923,1956,2006,1990,2000,1964,1981,2002,1956,2000,2006,1966,2000,1954,1976,2006,2007,1954,1939,1988,1900,2003,2007,1946,1996,1984,1974,2008,1966,1974,2005,1964,1972,2006,1974,1920,1985,1993,1959,2004,1989,1959,2005,2005,2005,1966,1984,1908,2006,1947,1988,1961,1932,2006,1998,1924,1998,1980,2003,1987,1973,1997,1971,1958,1948,2007,1976,1915,2002,1963,2007,2003,1915,1967,2007,1967,1972,1972,2006,1964,2005,2008,2007,1990,1995,1973,2001,2004,1982,1935,2007,1994,2005,1921,1930,1988,1956,1934,1999,1984,2006,2007,1977,1976,1961,1972,1992,1924,1992,1980,1967,1999,2003,1999,1978,1920,1920,1999,1976,1921,1890,1916,1964,1998,1957,2004,1976,1975,1954,2001,1915,1978,1977,1939,1963,1904,1968,1927,1945,1999,1966,1975,2004,1954,1978,2007,1936,1910,2003,2005,2007,2000,1958,1955,1954,2006,1973,1977,1977,2008,1900,1964,1992,1934,1900,1970,1931,2006,2003,1989,1965,2006,1970,1992,1925,1997,1953,2007,2000,1953,1939,2005,2005,1953,1924,1973,1976,1900,1998,1982,1994,2006,1961,1997,1996,1995,1996,1999,2006,1993,2009,2005,1953,1977,1999,1967,1940,1966,1980,1978,1910,2004,1965,1971,1961,1915,2007,1966,1941,1964,1959,1950,1937,1975,2004,1996,2005,2001,1958,2002,1920,1973,2004,1988,1948,1915,2006,1967,1967,1995,1957,1979,1966,2004,1997,2006,1993,2009,1993,1995,1930,2004,2004,2000,1994,1998,1997,2005,1955,2001,1918,1953,1998,2005,2004,1936,2003,1991,1962,2005,1998,2006,1998,1991,2004,2003,1999,1930,2003,1980,1994,2000,1964,1960,1982,1960,1997,1960,1910,1954,1955,1961,1969,1935,1970,2005,2009,1954,1927,1961,1951,1999,1994,2000,1954,1975,1998,2008,1980,1972,1941,1983,1998,1958,2006,1956,2007,1992,1959,1979,2005,2006,1984,2000,1969,1910,2006,1922,1910,1980,2003,1961,1997,2004,1963,2006,2005,1956,2010,2005,2007,1920,2003,2003,1979,1910,1984,1924,1978,1900,2006,2004,1978,1957,1941,1964,2009,1939,2004,2003,2004,1959,1925,1971,1948,1996,2005,2003,1959,1997,1994,1999,1969,1956,1962,2006,1957,2004,1901,1976,1972,1976,2007,2005,2003,1972,1954,2005,1993,2002,1971,1915,1930,1970,1971,2005,1956,1973,1970,1977,1958,1972,1996,1971,1997,2006,1941,1977,2003,1939,1967,1928,2004,1949,1965,2005,1954,1930,1971,2006,1992,1925,1920,2001,1920,2006,1959,1921,1994,1968,2008,1972,1959,1937,2008,1935,1929,2006,2005,2003,1958,1977,1994,1937,1952,1941,1995,1966,1990,1936,2005,2007,2008,1956,1910,1971,2003,1936,1984,1929,2006,1958,1959,2007,2006,1956,2005,1950,1923,1983,1970,2001,1920,2006,2007,1965,1940,2009,2006,1940,1976,2010,2006,2009,2004,1972,2000,1989,1972,2007,1925,1915,1995,2007,2004,2003,1991,1925,2007,1993,1950,1993,1996,1982,1977,2006,1915,1940,1998,1978,2006,2000,1975,1993,1931,1948,2000,1979,2002,1993,2005,1997,1957,2007,1993,1926,1960,2005,2005,2000,1964,1972,1982,1964,2005,1968,1964,1994,2005,1958,1954,1993,2004,1915,1956,1971,1925,1915,2002,2003,1960,1963,1954,1890,1955,1966,2007,1959,1925,1951,1948,1953,1977,1940,1900,2004,1971,1953,1930,1948,1948,2006,1956,2006,1959,1924,1990,1962,2000,1953,2000,1995,1999,1965,2007,2006,1953,2003,2006,1998,1958,1999,1948,1973,1920,1900,1999,2006,1954,1967,1963,2006,2006,1986,1939,1973,2005,1979,2002,1972,1980,1925,1948,1963,2000,1900,1900,1924,1995,1946,1959,1963,1930,1997,1973,1992,1992,1932,1956,2002,1958,1959,2000,2001,2005,1910,1967,1986,1999,1996,1965,1910,1948,1999,1998,1941,2007,1946,2006,1948,1968,1987,1999,1977,2008,2007,1998,1964,1905,2004,2002,2007,1976,1984,1937,1906,2008,1923,1963,1952,2001,1991,1920,1954,1945,1962,2006,1961,1938,1961,1976,1961,1937,2005,1923,2004,1976,1952,1978,1900,2007,1953,2003,2005,1920,1978,1952,1974,1917,1946,1994,1962,1969,1966,1948,1960,2007,2005,1923,1915,2004,2005,1960,1920,1975,1956,1962,2007,1939,2007,2007,1956,2004,1957,1960,1991,2008,1969,1998,1950,1992,1969,1969,1998,1955,2005,1997,1985,1961,1968,1988,1956,2008,1975,2005,2009,1980,1971,2005,1987,2006,1892,1967,1962,1999,2005,1969,1962,1994,2005,2007,1951,1920,2004,2006,1900,1992,1992,1958,1958,1996,1986,1980,2003,1978,1900,2006,1986,1977,1972,2005,2004,2000,1959,2000,1997,1998,1970,1994,1900,1972,1965,1965,1995,1960,2005,1951,1968,1960,1998,1957,1986,1968,1972,2001,1926,1920,1993,2005,1957,1962,1967,2007,2007,1975,1999,1947,1973,1905,1957,1975,1967,1965,1966,2006,1994,1999,2004,1999,1950,2003,2006,1967,1977,2004,2004,2003,1977,2006,1879,1996,2002,1960,1963,2008,1965,2006,1950,1970,1967,1999,1920,1998,2003,1917,1896,1924,1925,1935,1948,1926,2005,1995,1957,1993,2003,1968,2004,1921,1971,1994,1971,1978,1969,1941,1920,2004,1959,1998,1999,1967,1992,1993,1949,1970,1956,1999,1965,1997,1960,1953,1910,2002,1978,2006,2008,2007,2008,1951,1976,2002,1969,1975,1939,1975,1967,2000,2006,2007,1997,2003,1996,2008,2007,2004,1966,1940,1939,2001,2001,1940,1969,1910,1918,2003,2003,1910,1980,1980,2003,1952,1968,1963,1920,2005,2007,1953,1999,1999,1999,1918,1920,1957,2008,2007,1925,1956,2007,1925,1958,2003,1910,1992,1967,1946,1963,1965,1949,1916,1976,1968,2002,1996,1919,2004,1974,1976,1958,2005,1992,1995,1958,1946,1962,2005,1950,2004,2004,1990,1920,1948,1988,1993,1880,1964,1996,1958,2008,1940,2008,1951,1976,1950,1940,1999,1959,1973,2002,2003,1937,1967,1942,1932,1916,2002,2005,2009,1998,2004,1990,1988,2008,1977,1990,1950,2002,2009,1971,2007,1998,1995,1950,1980,1928,1935,1977,1912,2002,2000,2001,1922,1915,2001,1984,2008,1999,1948,1972,1972,1995,2002,2004,2006,2007,1940,1955,1973,1920,2007,1938,2004,1963,1977,1968,1996,1967,1923,1927,1965,1999,1930,2006,1898,1993,2006,1968,1948,1953,2005,1968,1993,1920,1976,2007,1958,1920,1920,1984,1939,2007,2007,1967,1935,2004,1901,1988,2002,1938,1916,2003,1999,1954,2007,2004,1920,1976,1959,1966,2006,1920,1972,2000,1978,1957,1928,1995,1895,1926,1992,2006,1975,1983,1957,1976,1968,1976,1988,1958,1950,1996,1999,1968,1999,1965,2005,1968,1970,2005,1980,1920,1963,1957,1958,2006,1925,2006,1978,1993,2005,2006,1941,1986,1918,1974,1956,1964,1966,1971,2005,2005,1900,1974,1977,1981,1962,1974,1977,2008,1954,2000,2002,2003,1968,2006,1981,2008,1964,1920,2004,1900],"yaxis":"y","type":"histogram"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Remod/Add"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sum of Year Built"}},"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"relative"},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('04bb2855-5e5c-46ea-999e-742def4c9dea');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'test' 데이터 값을 가져왔고, X축이 리모델링연도 y축이 완공연도를
+ 
+의미한다.
+
+
+```python
+fig.update_layout(
+    font_family="Courier New",
+    font_color="blue",
+    title_font_family="Times New Roman",
+    title_font_color="red",
+    legend_title_font_color="green"
+)
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="11c60402-ed80-41c6-8059-7018f7fe6e41" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("11c60402-ed80-41c6-8059-7018f7fe6e41")) {                    Plotly.newPlot(                        "11c60402-ed80-41c6-8059-7018f7fe6e41",                        [{"alignmentgroup":"True","bingroup":"x","histfunc":"sum","hovertemplate":"Year Remod/Add=%{x}<br>sum of Year Built=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"x":[2007,1950,2000,2004,1968,1950,2006,1963,1963,2003,1994,1971,1981,1957,1950,2000,1961,1990,2000,2001,1983,1950,1998,2006,2006,2008,1998,2000,1963,1950,1955,1950,2005,1963,2002,1950,1999,1988,2007,2006,2001,1959,1950,1969,1989,2000,2002,1950,2000,1966,1994,1991,1968,1976,2007,1972,2006,1966,1957,1950,1950,1994,1950,2000,2007,1963,1999,2004,2005,1950,2000,2004,1975,2000,2002,1969,1950,1970,1960,2010,1995,2003,1999,2005,1955,1976,1950,1974,1954,1970,1950,1950,1950,1950,1986,1995,2000,1954,1969,1988,2007,2005,1976,2005,2008,2006,1950,1965,1998,2007,1950,2003,1979,1950,1954,1967,1988,2005,1968,2006,2007,1967,1971,2007,2006,2007,2001,2002,2006,1951,2009,1978,1990,2005,1998,2009,2007,1964,2007,1966,1998,1966,1970,2002,1950,2004,1994,1950,2007,1974,2000,1971,1950,2007,1999,1990,1959,2007,1958,1971,2006,2005,1959,1998,1960,1976,1972,1973,1998,1976,2008,2005,1990,2002,1990,1976,1950,1988,1967,1953,1950,1956,2006,1990,2000,1980,1981,2002,1956,2000,2007,1966,2000,2000,1976,2006,2008,1954,1950,1988,1950,2003,2007,1950,1996,1984,1999,2009,1966,1974,2005,1964,2006,2006,1974,1950,1985,1994,1959,2005,1989,2005,2006,2005,2005,2004,1984,1997,2006,1950,1989,1961,1990,2006,1999,1950,1999,1992,2004,1989,1973,1997,1971,1965,2002,2007,1976,1965,2002,1963,2007,2004,1950,1967,2008,1967,1972,1972,2006,1964,2006,2008,2007,1990,2006,1973,2002,2004,1982,1990,2007,1995,2005,1950,1992,1988,1956,1950,1999,2003,2006,2007,1977,1993,1961,1972,1992,1950,1993,1980,1967,1999,2004,1999,1986,1950,1950,2000,1976,1950,1998,1987,1993,1998,1957,2004,1976,1975,1954,2001,1950,1998,1977,1950,1963,2002,2003,1950,1950,2000,2008,1981,2005,1995,1978,2007,1980,1950,2004,2005,2008,2001,1958,1972,2005,2006,1973,1977,1994,2008,1970,1964,1992,1950,1993,2002,1950,2007,2003,1989,1965,2006,1970,1993,1950,1997,1953,2007,2000,1953,1950,2006,2006,1953,1999,1973,1976,1950,1998,2008,1994,2006,1961,1998,1997,1996,1997,1999,2007,1994,2010,2005,1953,1995,1999,1967,1950,1966,1980,1978,1950,2004,1965,1971,2007,1950,2007,1966,1950,1964,1959,2007,1980,1975,2005,1997,2006,2001,1958,2002,1950,2006,2005,1989,1950,1950,2006,1967,1967,1996,1999,1979,1966,2004,1997,2007,1993,2009,1993,1995,2005,2005,2004,2000,2002,1998,1997,2006,1996,2002,1950,1953,1998,2005,2004,1950,2003,1992,1962,2006,1998,2007,1999,1991,2006,2003,2003,1950,2004,1980,1995,2000,1964,1960,2003,1960,1998,1960,1993,1954,1955,1995,1969,2007,1970,2005,2010,2005,2007,1995,1951,1999,1995,2000,1994,2000,1998,2008,1980,1972,1950,2009,1998,1958,2007,2000,2008,1993,1959,1979,2006,2007,1984,2000,2005,2003,2006,1950,1990,1991,2004,1961,1998,2004,1963,2007,2006,1956,2010,2005,2007,2004,2003,2003,1999,1993,1998,2003,1978,2005,2006,2005,1978,2000,1950,1964,2009,2006,2005,2004,2004,1959,2007,2006,2009,1996,2006,2004,1959,1998,2005,2000,1969,1956,1980,2006,1957,2004,1950,1976,1972,1976,2007,2006,2004,1995,1954,2007,1993,2002,1971,1950,1950,1970,2002,2006,1958,2006,1970,1977,1958,1972,1996,1971,1998,2006,1950,1992,2003,1998,2005,2003,2004,1996,2001,2005,1954,1995,2004,2006,1992,1997,1999,2002,1950,2006,1959,1950,1995,1968,2008,1972,1997,1950,2009,1997,1950,2007,2006,2003,1958,1977,1995,1950,2005,1950,1996,2008,1991,1950,2006,2007,2009,1956,1950,1971,2003,1950,1984,1950,2007,2006,1959,2007,2006,1956,2006,1950,2008,1983,1970,2001,1950,2006,2007,1965,1985,2010,2006,1950,1976,2010,2006,2010,2005,2000,2000,1989,2007,2007,1999,1950,1996,2007,2004,2004,2008,1950,2007,1993,1950,1995,1997,1982,1977,2007,2002,1950,1998,1978,2007,2000,1980,1993,1950,1950,2000,1979,2002,1994,2006,1998,1957,2007,1993,2004,1998,2006,2005,2000,1964,1972,2006,1999,2006,1968,1964,1995,2006,1985,1954,1994,2005,1970,1956,1971,1950,1950,2002,2003,1960,1963,1954,2002,1993,1966,2008,2006,1950,1951,2005,1953,2008,1996,1996,2004,1972,1953,2001,1950,2002,2006,2001,2006,1998,1950,1990,1962,2001,1953,2000,1995,1999,1965,2007,2006,1953,2004,2007,1998,1958,1999,1950,1973,1993,2006,1999,2006,1954,1993,2003,2006,2006,1986,1950,2000,2006,1979,2001,1972,1980,1950,1950,1963,2000,1950,2003,2006,1995,1995,1959,1963,2007,1997,1973,1992,1992,1950,1956,2002,1958,1959,2000,2001,2006,2005,1967,1986,1999,1997,1965,1950,1950,1999,1999,2006,2007,1950,2006,2005,1968,1987,1999,1977,2009,2007,1998,1964,1950,2005,2002,2007,2004,1984,1950,1995,2009,1950,1984,1952,2001,1991,1962,1998,2002,1962,2006,2007,1950,1961,1976,1961,2000,2005,2004,2005,1994,1952,1978,1950,2007,1953,2003,2006,1950,1978,1952,1974,1950,1950,2007,1962,1969,2008,2005,1960,2008,2005,2006,1950,2005,2006,1960,1950,1975,1956,1962,2007,1950,2007,2007,1956,2005,1957,2000,1992,2009,1969,1998,1950,1992,2000,1979,1998,1955,2006,1997,1986,1996,1968,1988,1994,2009,1975,2005,2010,1980,1971,2005,1987,2007,1965,1967,1962,2000,2006,1969,2001,1996,2005,2008,1951,1996,2004,2006,1950,1992,1993,1958,1958,1997,1986,1980,2003,1985,1950,2007,1986,1977,1987,2006,2005,2000,1959,2000,1997,1998,1970,1995,1998,1972,1965,1965,1995,1960,2006,1951,1968,1960,1998,1957,1986,2004,1972,2001,1950,1994,1993,2005,2002,1962,1967,2007,2008,1975,1999,1993,1973,2000,1989,1975,1967,1965,1966,2006,1998,2007,2004,2000,1950,2003,2006,1967,1977,2005,2004,2003,1977,2007,1987,1996,2002,1960,1963,2008,2008,2007,2005,1970,1975,1999,1997,1998,2004,2007,1950,1950,1950,1950,1950,1997,2006,1995,1969,1994,2003,1968,2005,1950,2009,1994,1971,1998,1969,1950,1950,2005,1959,1998,2000,1967,1993,1994,1973,1970,1956,1999,1965,1998,1978,2007,1998,2003,1978,2007,2008,2007,2008,1951,1976,2002,1969,1975,1950,1975,1967,2000,2006,2007,1997,2003,1997,2008,2007,2005,1966,1985,1950,2002,2001,2000,1969,2003,1950,2004,2003,1999,1980,1980,2003,1952,1968,1963,1980,2005,2007,2004,2000,1999,1999,2000,1950,1957,2008,2007,1950,1956,2008,1993,1958,2003,2000,1993,1967,1950,2003,1977,2003,1950,2005,1968,2002,1997,1950,2004,1974,1996,1988,2006,1992,1996,1998,2001,1962,2006,2001,2004,2004,1991,1950,1950,1989,1994,2002,1964,1996,2007,2008,1950,2008,1951,1976,1997,2005,1999,1959,1973,2002,2003,1950,1967,1995,2000,1950,2002,2006,2009,1999,2004,1990,2005,2008,1977,1991,1991,2002,2009,2005,2008,1998,1996,1950,1980,1950,1950,1977,1991,2002,2000,2001,1955,1994,2001,1984,2008,2000,1950,2004,1972,1995,2003,2004,2007,2007,1950,1955,1973,1960,2007,1950,2004,1963,1977,1968,1997,1967,1950,1950,1965,2000,2003,2006,1965,1993,2006,1968,1973,1953,2005,2003,2003,1950,1976,2007,1958,1950,1950,1984,1997,2008,2007,1967,1950,2004,1950,2007,2002,1958,1994,2004,1999,1954,2008,2005,1950,1976,1991,2002,2007,2000,1972,2001,1978,1957,1950,1996,1950,1950,1992,2006,1975,1983,1980,1976,1968,2001,1988,2006,1950,1996,2000,1968,2000,1965,2006,1968,1970,2005,1980,1950,1963,1957,1958,2007,1994,2006,1978,1993,2005,2006,1950,1991,1995,1974,1956,1964,1966,1971,2007,2005,2000,1974,1977,2003,2001,1974,1977,2008,1972,2000,2002,2003,1968,2006,1981,2008,1964,1950,2005,1950],"xaxis":"x","y":[2007,1948,2000,2004,1968,1923,2005,1963,1963,2003,1977,1971,1980,1957,1941,1951,1961,1990,2000,1948,1958,1940,1998,2006,2006,2008,1958,2000,1963,1929,1955,1950,2005,1963,2001,1920,1999,1978,2007,2006,2001,1959,1940,1969,1988,1931,2002,1941,1965,1966,1993,1990,1968,1976,2006,1972,2006,1966,1957,1942,1923,1994,1939,1999,2007,1963,1999,2004,2005,1941,1954,2004,1975,1937,2002,1969,1927,1970,1960,1962,1930,2003,1998,2004,1955,1976,1925,1974,1954,1970,1924,1916,1930,1924,1986,1994,1999,1954,1969,1988,2007,2005,1976,2005,2007,2006,1900,1920,1997,2006,1950,2003,1979,1926,1954,1967,1980,2005,1968,2005,2007,1967,1971,1920,2005,2007,2001,2002,2006,1951,2009,1978,1990,2005,1998,2009,2007,1964,2007,1966,1998,1966,1970,1948,1920,2004,1994,1946,2007,1974,1958,1960,1945,2006,1999,1919,1959,2006,1958,1971,2006,2005,1959,1998,1960,1976,1972,1973,1998,1976,2008,2005,1918,1910,1969,1976,1921,1988,1967,1926,1923,1956,2006,1990,2000,1964,1981,2002,1956,2000,2006,1966,2000,1954,1976,2006,2007,1954,1939,1988,1900,2003,2007,1946,1996,1984,1974,2008,1966,1974,2005,1964,1972,2006,1974,1920,1985,1993,1959,2004,1989,1959,2005,2005,2005,1966,1984,1908,2006,1947,1988,1961,1932,2006,1998,1924,1998,1980,2003,1987,1973,1997,1971,1958,1948,2007,1976,1915,2002,1963,2007,2003,1915,1967,2007,1967,1972,1972,2006,1964,2005,2008,2007,1990,1995,1973,2001,2004,1982,1935,2007,1994,2005,1921,1930,1988,1956,1934,1999,1984,2006,2007,1977,1976,1961,1972,1992,1924,1992,1980,1967,1999,2003,1999,1978,1920,1920,1999,1976,1921,1890,1916,1964,1998,1957,2004,1976,1975,1954,2001,1915,1978,1977,1939,1963,1904,1968,1927,1945,1999,1966,1975,2004,1954,1978,2007,1936,1910,2003,2005,2007,2000,1958,1955,1954,2006,1973,1977,1977,2008,1900,1964,1992,1934,1900,1970,1931,2006,2003,1989,1965,2006,1970,1992,1925,1997,1953,2007,2000,1953,1939,2005,2005,1953,1924,1973,1976,1900,1998,1982,1994,2006,1961,1997,1996,1995,1996,1999,2006,1993,2009,2005,1953,1977,1999,1967,1940,1966,1980,1978,1910,2004,1965,1971,1961,1915,2007,1966,1941,1964,1959,1950,1937,1975,2004,1996,2005,2001,1958,2002,1920,1973,2004,1988,1948,1915,2006,1967,1967,1995,1957,1979,1966,2004,1997,2006,1993,2009,1993,1995,1930,2004,2004,2000,1994,1998,1997,2005,1955,2001,1918,1953,1998,2005,2004,1936,2003,1991,1962,2005,1998,2006,1998,1991,2004,2003,1999,1930,2003,1980,1994,2000,1964,1960,1982,1960,1997,1960,1910,1954,1955,1961,1969,1935,1970,2005,2009,1954,1927,1961,1951,1999,1994,2000,1954,1975,1998,2008,1980,1972,1941,1983,1998,1958,2006,1956,2007,1992,1959,1979,2005,2006,1984,2000,1969,1910,2006,1922,1910,1980,2003,1961,1997,2004,1963,2006,2005,1956,2010,2005,2007,1920,2003,2003,1979,1910,1984,1924,1978,1900,2006,2004,1978,1957,1941,1964,2009,1939,2004,2003,2004,1959,1925,1971,1948,1996,2005,2003,1959,1997,1994,1999,1969,1956,1962,2006,1957,2004,1901,1976,1972,1976,2007,2005,2003,1972,1954,2005,1993,2002,1971,1915,1930,1970,1971,2005,1956,1973,1970,1977,1958,1972,1996,1971,1997,2006,1941,1977,2003,1939,1967,1928,2004,1949,1965,2005,1954,1930,1971,2006,1992,1925,1920,2001,1920,2006,1959,1921,1994,1968,2008,1972,1959,1937,2008,1935,1929,2006,2005,2003,1958,1977,1994,1937,1952,1941,1995,1966,1990,1936,2005,2007,2008,1956,1910,1971,2003,1936,1984,1929,2006,1958,1959,2007,2006,1956,2005,1950,1923,1983,1970,2001,1920,2006,2007,1965,1940,2009,2006,1940,1976,2010,2006,2009,2004,1972,2000,1989,1972,2007,1925,1915,1995,2007,2004,2003,1991,1925,2007,1993,1950,1993,1996,1982,1977,2006,1915,1940,1998,1978,2006,2000,1975,1993,1931,1948,2000,1979,2002,1993,2005,1997,1957,2007,1993,1926,1960,2005,2005,2000,1964,1972,1982,1964,2005,1968,1964,1994,2005,1958,1954,1993,2004,1915,1956,1971,1925,1915,2002,2003,1960,1963,1954,1890,1955,1966,2007,1959,1925,1951,1948,1953,1977,1940,1900,2004,1971,1953,1930,1948,1948,2006,1956,2006,1959,1924,1990,1962,2000,1953,2000,1995,1999,1965,2007,2006,1953,2003,2006,1998,1958,1999,1948,1973,1920,1900,1999,2006,1954,1967,1963,2006,2006,1986,1939,1973,2005,1979,2002,1972,1980,1925,1948,1963,2000,1900,1900,1924,1995,1946,1959,1963,1930,1997,1973,1992,1992,1932,1956,2002,1958,1959,2000,2001,2005,1910,1967,1986,1999,1996,1965,1910,1948,1999,1998,1941,2007,1946,2006,1948,1968,1987,1999,1977,2008,2007,1998,1964,1905,2004,2002,2007,1976,1984,1937,1906,2008,1923,1963,1952,2001,1991,1920,1954,1945,1962,2006,1961,1938,1961,1976,1961,1937,2005,1923,2004,1976,1952,1978,1900,2007,1953,2003,2005,1920,1978,1952,1974,1917,1946,1994,1962,1969,1966,1948,1960,2007,2005,1923,1915,2004,2005,1960,1920,1975,1956,1962,2007,1939,2007,2007,1956,2004,1957,1960,1991,2008,1969,1998,1950,1992,1969,1969,1998,1955,2005,1997,1985,1961,1968,1988,1956,2008,1975,2005,2009,1980,1971,2005,1987,2006,1892,1967,1962,1999,2005,1969,1962,1994,2005,2007,1951,1920,2004,2006,1900,1992,1992,1958,1958,1996,1986,1980,2003,1978,1900,2006,1986,1977,1972,2005,2004,2000,1959,2000,1997,1998,1970,1994,1900,1972,1965,1965,1995,1960,2005,1951,1968,1960,1998,1957,1986,1968,1972,2001,1926,1920,1993,2005,1957,1962,1967,2007,2007,1975,1999,1947,1973,1905,1957,1975,1967,1965,1966,2006,1994,1999,2004,1999,1950,2003,2006,1967,1977,2004,2004,2003,1977,2006,1879,1996,2002,1960,1963,2008,1965,2006,1950,1970,1967,1999,1920,1998,2003,1917,1896,1924,1925,1935,1948,1926,2005,1995,1957,1993,2003,1968,2004,1921,1971,1994,1971,1978,1969,1941,1920,2004,1959,1998,1999,1967,1992,1993,1949,1970,1956,1999,1965,1997,1960,1953,1910,2002,1978,2006,2008,2007,2008,1951,1976,2002,1969,1975,1939,1975,1967,2000,2006,2007,1997,2003,1996,2008,2007,2004,1966,1940,1939,2001,2001,1940,1969,1910,1918,2003,2003,1910,1980,1980,2003,1952,1968,1963,1920,2005,2007,1953,1999,1999,1999,1918,1920,1957,2008,2007,1925,1956,2007,1925,1958,2003,1910,1992,1967,1946,1963,1965,1949,1916,1976,1968,2002,1996,1919,2004,1974,1976,1958,2005,1992,1995,1958,1946,1962,2005,1950,2004,2004,1990,1920,1948,1988,1993,1880,1964,1996,1958,2008,1940,2008,1951,1976,1950,1940,1999,1959,1973,2002,2003,1937,1967,1942,1932,1916,2002,2005,2009,1998,2004,1990,1988,2008,1977,1990,1950,2002,2009,1971,2007,1998,1995,1950,1980,1928,1935,1977,1912,2002,2000,2001,1922,1915,2001,1984,2008,1999,1948,1972,1972,1995,2002,2004,2006,2007,1940,1955,1973,1920,2007,1938,2004,1963,1977,1968,1996,1967,1923,1927,1965,1999,1930,2006,1898,1993,2006,1968,1948,1953,2005,1968,1993,1920,1976,2007,1958,1920,1920,1984,1939,2007,2007,1967,1935,2004,1901,1988,2002,1938,1916,2003,1999,1954,2007,2004,1920,1976,1959,1966,2006,1920,1972,2000,1978,1957,1928,1995,1895,1926,1992,2006,1975,1983,1957,1976,1968,1976,1988,1958,1950,1996,1999,1968,1999,1965,2005,1968,1970,2005,1980,1920,1963,1957,1958,2006,1925,2006,1978,1993,2005,2006,1941,1986,1918,1974,1956,1964,1966,1971,2005,2005,1900,1974,1977,1981,1962,1974,1977,2008,1954,2000,2002,2003,1968,2006,1981,2008,1964,1920,2004,1900],"yaxis":"y","type":"histogram"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Remod/Add"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sum of Year Built"}},"legend":{"tracegroupgap":0,"title":{"font":{"color":"green"}}},"margin":{"t":60},"barmode":"relative","font":{"family":"Courier New","color":"blue"},"title":{"font":{"family":"Times New Roman","color":"red"}}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('11c60402-ed80-41c6-8059-7018f7fe6e41');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train' 데이터를 가져왔고, x축이 집값, y축이 완공연도를 의미한다.
+
+
+```python
+fig = px.density_heatmap(train_data, x="target", y="Year Built",marginal_x="histogram", marginal_y="histogram")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="9e027dc1-2e18-43a1-9b2e-c89206006852" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9e027dc1-2e18-43a1-9b2e-c89206006852")) {                    Plotly.newPlot(                        "9e027dc1-2e18-43a1-9b2e-c89206006852",                        [{"coloraxis":"coloraxis","hovertemplate":"target=%{x}<br>Year Built=%{y}<br>count=%{z}<extra></extra>","name":"","x":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190,137000,135960,172000,115000,173000,115000,107000,130000,374000,112000,350000,165000,134000,127000,263000,95000,167000,146000,152000,90000,165000,128500,370967,137000,190000,145000,142500,315500,152400,260000,206000,155000,284500,187500,200000,173000,146500,220000,124000,155000,164000,250000,110000,185000,119900,80900,116000,247000,79400,194500,190000,120000,135500,227000,185000,154000,297000,239000,126000,108000,149000,160000,290000,250764,345000,123000,163000,246000,137000,180000,252000,130000,207500,123000,462000,195000,277500,171925,173500,159895,149900,144000,254000,185000,152500,117000,125000,470000,85500,197600,342000,139500,212000,202665,176500,136000,263550,108000,336820,158000,345000,223000,98000,159000,216837,184000,167300,189000,139000,121000,122500,144000,285000,63000,150500,155000,155000,170000,163500,314813,134000,339750,213000,136500,115000,136300,137500,128000,140000,171000,310000,190000,229800,113500,193500,107000,117000,207500,112000,107000,143500,123000,298236,375000,150000,139500,152000,156000,183000,214000,191000,207500,134500,218689,325000,165500,244000,239500,215000,143000,124900,120000,315000,197900,199900,190000,220000,190000,213000,230000,215000,144750,143000,143500,165000,195800,185500,144000,159500,166000,175000,325000,116000,128900,128200,187500,250000,213000,175000,130000,110000,237000,315000,170000,335000,155000,130000,297900,385000,123000,256900,290000,196000,125000,136000,130000,129500,110000,202000,175000,153000,161000,75000,200000,80000,220000,248900,159500,249000,133000,113000,300000,318000,89471,167000,392500,80400,230000,218500,166000,306000,117000,119000,113000,267300,124400,220000,144000,200100,264500,176432,164900,225000,268000,232000,204500,239686,225000,146000,129000,227875,251000,189000,375000,109900,164500,209000,135000,230000,129000,122500,229000,280000,145000,148000,342643,168000,158000,127000,212000,290941,134900,150000,163000,270000,126500,128500,292500,372500,162000,305900,76000,167000,147000,115400,106500,260000,240050,148000,173000,188900,145250,223500,105000,35311,227680,67000,159500,226000,138000,127000,144000,157500,157000,189000,108000,105500,180000,207500,163000,124500,252000,129000,132000,131750,148500,203000,175900,179200,188000,124500,308030,133900,383970,202500,123000,99500,152000,147500,178900,129000,179540,300000,142500,134500,145500,137000,178900,360000,148800,142500,315000,189950,129250,327000,193000,183500,127000,161750,155000,144000,198000,112500,293077,145000,231000,240900,250000,129500,278000,345474,105000,150000,231500,171500,71000,200000,138500,172000,143450,315000,264966,135000,152000,316000,131250,242000,281500,215000,219210,99900,146500,119000,141000,50000,105000,87500,141000,153000,119000,208300,223000,140000,112000,141500,275000,426000,103500,446261,149500,169985,173500,149900,282000,104500,270000,140200,213000,120000,181900,159000,149900,186500,128600,140500,158900,195000,161500,68500,141500,193000,158900,91000,150000,80000,127500,116050,147900,134450,184000,398800,214900,150750,208500,143000,181000,110000,142600,170000,191750,255000,203000,625000,186000,161000,90350,155000,124900,96500,214000,165250,194000,129500,178000,173000,112900,197000,140000,177500,120500,119000,147500,128500,190000,208000,239900,165600,128000,218000,215000,167000,200825,156500,137000,155000,105000,145000,135000,116500,184000,132000,319900,136500,200000,163000,108480,175500,245000,127500,188000,165000,253293,147000,196000,157500,191000,246900,139000,338500,183000,114000,155000,118000,214000,154000,156000,188500,169000,211000,287500,149900,206000,136500,129900,150000,139000,275000,102000,118000,144000,219990,250000,163000,127000,193000,180000,132000,144900,238500,167240,55993,199500,212500,255900,205000,158000,194000,279500,224000,190000,122000,187500,179400,280000,157500,152000,138887,147000,227000,135500,113000,185000,117000,200000,127500,171000,215000,138000,180000,140000,82000,93850,174000,144000,128500,235000,315000,213490,136500,126000,193000,137000,148000,219500,110000,181000,120000,122250,140000,181000,116000,134000,215000,213000,172500,165000,181500,263000,210000,221500,140000,137000,142000,146000,112500,103600,143000,154900,226700,221370,170000,129000,151500,158000,235876,115000,79500,109500,244000,139000,144500,149000,220000,130000,124000,126000,209000,140000,148000,140000,121500,270000,156450,151000,177000,257000,144152,174000,162000,126000,160000,128000,137000,230348,198000,234000,181000,290000,129900,180500,355000,125000,191000,437154,335000,200624,174000,212500,212000,161000,83500,129000,120750,301500,197000,173733,119000,301000,137450,127500,140000,170000,167000,475000,136870,132500,405000,394432,210400,252000,282922,138400,109900,146900,269500,279000,153900,135000,161000,212999,178000,155500,349265,111000,213250,348000,319900,103000,156500,58500,137000,141000,156000,106000,68400,245000,213133,168165,206300,172000,233170,379000,153500,187500,137500,146500,230000,120000,141000,228500,165000,174500,591587,149900,202500,269500,369900,158500,182900,222000,148500,165000,122500,241000,83000,441929,217500,403000,175000,136500,172500,161000,280750,126000,165000,326000,110000,127000,119900,141000,156500,132000,153000,140750,142000,215000,156500,136500,131500,290000,103500,310000,129500,149000,238000,211000,226500,195000,135000,115000,412500,230000,152000,174000,172500,151400,208900,192500,294464,337500,173500,160000,187000,122000,136500,144500,162500,126000,120000,195500,181000,240000,171500,192000,294000,286000,145000,94750,130000,113000,129000,257000,265979,234000,157900,135000,272000,194000,284000,185101,298751,139000,155000,114504,125500,120000,185000,151000,213000,166800,215000,231713,158000,145000,100000,94900,128000,147000,115000,170000,144000,135000,260000,94500,187000,165000,230000,123500,150000,119500,102000,130000,140000,260000,325000,251000,745000,131500,138000,120500,138800,328000,277500,188700,260000,285000,205000,112500,221000,125000,205000,615000,248000,114900,224500,83000,135000,180000,195000,287000,193879,189000,157500,222500,182000,170000,137900,139000,117500,129500,168000,135000,119500,206900,268000,280000,103000,402861,150000,235000,159950,185750,283463,144000,214000,79275,108500,229000,143000,148400,202900,201490,189500,175900,217300,162000,239799,354000,145000,136000,404000,113500,153000,121000,133000,163500,157000,254750,300000,241500,184000,165500,128000,153337,224000,200000,124000,175000,185000,269500,124000,359100,410000,82500,134900,131000,188000,99500,256000,183000,360000,143000,131000,132500,171900,108000,139500,160000,332000,142125,137500,129500,438780,187100,303477,155000,179900,309000,123000,184900,155900,263400,178000,384500,150000,203000,199900,213000,204000,155000,375000,183500,159000,142500,260000,180500,130000,210000,189000,320000,217500,86000,155000,105000,147110,100500,170000,80000,174000,73000,88000,193000,475000,188000,242500,178000,270000,324000,177594,179665,126500,378000,165000,125600,230000,87000,103400,125000,129000,148000,149350,64000,217000,174000,245700,191500,119900,145000,300000,281213,125000,325300,145000,173000,468000,252000,139950,250000,291000,198600,133700,178000,133000,188500,89500,177000,132000,260000,143000,124000,227000,149900,110000,115000,139500,415000,225000,226000,137500,145000,117600,141000,167800,170000,173000,344133,127000,290000,146000,161000,114000,118000,131400,118500,158000,185000,177625,187000,148000,118000,82500,127000,332200,85000,162000,200000,177000,242000,85000,178000,215000,180400,219500,152000,177000,150900,116000,105000,287000,236000,175000,270000,210000,318061,135750,155000,211000,233000,313000,257500,131000,170000,300000,350000,451950,149000,125500,184000,108500,207000,180500,128500,106500,125000,272000,211500,126175,140000,143000,287090,276000,209000,118500,109000,194000,160000,192000,151000,350000,145000,160000,137500,167500,170000,82000,108000,237500,184100,138000,180000,248000,110500,213000,80000,300000,105000,215700,150000,124000,206000,144800,255000,217000,139000,166000,257000,262500,200000,290000,148000,274725,108959,130000,168000,164900,88000,164500,152000,174900,134500,209500,294000,254000,129900,197500,169000,202500,100000,325624,190000,140000,255000,142000,226001,149700,125500,214000,139500,85500,125900,138500,185850,205000,252678,12789,196000,250000,154000,181000,119000,122000,338931,105000,122000,240000,335000,377426,110000,144000,370878,160500,373000,195500,285000,168000,201000,89500,88000,209200,239900,323262,169500,182000,210000,75200,370000,139400,162500,228500,197000,154000,340000,320000,157000,215000,91000,180000,205000,124500,228950,180000,275000,186000,139500,110000,145000,128900,387000,556581,186700,110000,201800,224900,173900,485000,157900,174000,113500,224900,148000,146000,145000,117000,281000,122000,116500,153000,143000,128000,172000,178000,135000,227000,194700,123000,120000,143000,200000,250000,126000,187500,152500,91000,170000,176400,108000,271500,180000,385000,257500,142500,178000,173000,336860,337000,152000,151000,114000,120000,261329,153000,445000,157000,160000,148000,220000,146000,190000,125500,135000,105500,270000,238000,129500,91300,140000,319000,250000,205000,98600,279500,105000,153575,228000,128000,154000,535000,116000,122900,155000,133500,75000,240000,131750,108500,204000,390000,143000,131000,140000],"xaxis":"x","xbingroup":"x","y":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"yaxis":"y","ybingroup":"y","type":"histogram2d"},{"alignmentgroup":"True","bingroup":"x","hovertemplate":"target=%{x}<br>count=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#0d0887"},"name":"","offsetgroup":"","opacity":0.5,"showlegend":false,"x":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190,137000,135960,172000,115000,173000,115000,107000,130000,374000,112000,350000,165000,134000,127000,263000,95000,167000,146000,152000,90000,165000,128500,370967,137000,190000,145000,142500,315500,152400,260000,206000,155000,284500,187500,200000,173000,146500,220000,124000,155000,164000,250000,110000,185000,119900,80900,116000,247000,79400,194500,190000,120000,135500,227000,185000,154000,297000,239000,126000,108000,149000,160000,290000,250764,345000,123000,163000,246000,137000,180000,252000,130000,207500,123000,462000,195000,277500,171925,173500,159895,149900,144000,254000,185000,152500,117000,125000,470000,85500,197600,342000,139500,212000,202665,176500,136000,263550,108000,336820,158000,345000,223000,98000,159000,216837,184000,167300,189000,139000,121000,122500,144000,285000,63000,150500,155000,155000,170000,163500,314813,134000,339750,213000,136500,115000,136300,137500,128000,140000,171000,310000,190000,229800,113500,193500,107000,117000,207500,112000,107000,143500,123000,298236,375000,150000,139500,152000,156000,183000,214000,191000,207500,134500,218689,325000,165500,244000,239500,215000,143000,124900,120000,315000,197900,199900,190000,220000,190000,213000,230000,215000,144750,143000,143500,165000,195800,185500,144000,159500,166000,175000,325000,116000,128900,128200,187500,250000,213000,175000,130000,110000,237000,315000,170000,335000,155000,130000,297900,385000,123000,256900,290000,196000,125000,136000,130000,129500,110000,202000,175000,153000,161000,75000,200000,80000,220000,248900,159500,249000,133000,113000,300000,318000,89471,167000,392500,80400,230000,218500,166000,306000,117000,119000,113000,267300,124400,220000,144000,200100,264500,176432,164900,225000,268000,232000,204500,239686,225000,146000,129000,227875,251000,189000,375000,109900,164500,209000,135000,230000,129000,122500,229000,280000,145000,148000,342643,168000,158000,127000,212000,290941,134900,150000,163000,270000,126500,128500,292500,372500,162000,305900,76000,167000,147000,115400,106500,260000,240050,148000,173000,188900,145250,223500,105000,35311,227680,67000,159500,226000,138000,127000,144000,157500,157000,189000,108000,105500,180000,207500,163000,124500,252000,129000,132000,131750,148500,203000,175900,179200,188000,124500,308030,133900,383970,202500,123000,99500,152000,147500,178900,129000,179540,300000,142500,134500,145500,137000,178900,360000,148800,142500,315000,189950,129250,327000,193000,183500,127000,161750,155000,144000,198000,112500,293077,145000,231000,240900,250000,129500,278000,345474,105000,150000,231500,171500,71000,200000,138500,172000,143450,315000,264966,135000,152000,316000,131250,242000,281500,215000,219210,99900,146500,119000,141000,50000,105000,87500,141000,153000,119000,208300,223000,140000,112000,141500,275000,426000,103500,446261,149500,169985,173500,149900,282000,104500,270000,140200,213000,120000,181900,159000,149900,186500,128600,140500,158900,195000,161500,68500,141500,193000,158900,91000,150000,80000,127500,116050,147900,134450,184000,398800,214900,150750,208500,143000,181000,110000,142600,170000,191750,255000,203000,625000,186000,161000,90350,155000,124900,96500,214000,165250,194000,129500,178000,173000,112900,197000,140000,177500,120500,119000,147500,128500,190000,208000,239900,165600,128000,218000,215000,167000,200825,156500,137000,155000,105000,145000,135000,116500,184000,132000,319900,136500,200000,163000,108480,175500,245000,127500,188000,165000,253293,147000,196000,157500,191000,246900,139000,338500,183000,114000,155000,118000,214000,154000,156000,188500,169000,211000,287500,149900,206000,136500,129900,150000,139000,275000,102000,118000,144000,219990,250000,163000,127000,193000,180000,132000,144900,238500,167240,55993,199500,212500,255900,205000,158000,194000,279500,224000,190000,122000,187500,179400,280000,157500,152000,138887,147000,227000,135500,113000,185000,117000,200000,127500,171000,215000,138000,180000,140000,82000,93850,174000,144000,128500,235000,315000,213490,136500,126000,193000,137000,148000,219500,110000,181000,120000,122250,140000,181000,116000,134000,215000,213000,172500,165000,181500,263000,210000,221500,140000,137000,142000,146000,112500,103600,143000,154900,226700,221370,170000,129000,151500,158000,235876,115000,79500,109500,244000,139000,144500,149000,220000,130000,124000,126000,209000,140000,148000,140000,121500,270000,156450,151000,177000,257000,144152,174000,162000,126000,160000,128000,137000,230348,198000,234000,181000,290000,129900,180500,355000,125000,191000,437154,335000,200624,174000,212500,212000,161000,83500,129000,120750,301500,197000,173733,119000,301000,137450,127500,140000,170000,167000,475000,136870,132500,405000,394432,210400,252000,282922,138400,109900,146900,269500,279000,153900,135000,161000,212999,178000,155500,349265,111000,213250,348000,319900,103000,156500,58500,137000,141000,156000,106000,68400,245000,213133,168165,206300,172000,233170,379000,153500,187500,137500,146500,230000,120000,141000,228500,165000,174500,591587,149900,202500,269500,369900,158500,182900,222000,148500,165000,122500,241000,83000,441929,217500,403000,175000,136500,172500,161000,280750,126000,165000,326000,110000,127000,119900,141000,156500,132000,153000,140750,142000,215000,156500,136500,131500,290000,103500,310000,129500,149000,238000,211000,226500,195000,135000,115000,412500,230000,152000,174000,172500,151400,208900,192500,294464,337500,173500,160000,187000,122000,136500,144500,162500,126000,120000,195500,181000,240000,171500,192000,294000,286000,145000,94750,130000,113000,129000,257000,265979,234000,157900,135000,272000,194000,284000,185101,298751,139000,155000,114504,125500,120000,185000,151000,213000,166800,215000,231713,158000,145000,100000,94900,128000,147000,115000,170000,144000,135000,260000,94500,187000,165000,230000,123500,150000,119500,102000,130000,140000,260000,325000,251000,745000,131500,138000,120500,138800,328000,277500,188700,260000,285000,205000,112500,221000,125000,205000,615000,248000,114900,224500,83000,135000,180000,195000,287000,193879,189000,157500,222500,182000,170000,137900,139000,117500,129500,168000,135000,119500,206900,268000,280000,103000,402861,150000,235000,159950,185750,283463,144000,214000,79275,108500,229000,143000,148400,202900,201490,189500,175900,217300,162000,239799,354000,145000,136000,404000,113500,153000,121000,133000,163500,157000,254750,300000,241500,184000,165500,128000,153337,224000,200000,124000,175000,185000,269500,124000,359100,410000,82500,134900,131000,188000,99500,256000,183000,360000,143000,131000,132500,171900,108000,139500,160000,332000,142125,137500,129500,438780,187100,303477,155000,179900,309000,123000,184900,155900,263400,178000,384500,150000,203000,199900,213000,204000,155000,375000,183500,159000,142500,260000,180500,130000,210000,189000,320000,217500,86000,155000,105000,147110,100500,170000,80000,174000,73000,88000,193000,475000,188000,242500,178000,270000,324000,177594,179665,126500,378000,165000,125600,230000,87000,103400,125000,129000,148000,149350,64000,217000,174000,245700,191500,119900,145000,300000,281213,125000,325300,145000,173000,468000,252000,139950,250000,291000,198600,133700,178000,133000,188500,89500,177000,132000,260000,143000,124000,227000,149900,110000,115000,139500,415000,225000,226000,137500,145000,117600,141000,167800,170000,173000,344133,127000,290000,146000,161000,114000,118000,131400,118500,158000,185000,177625,187000,148000,118000,82500,127000,332200,85000,162000,200000,177000,242000,85000,178000,215000,180400,219500,152000,177000,150900,116000,105000,287000,236000,175000,270000,210000,318061,135750,155000,211000,233000,313000,257500,131000,170000,300000,350000,451950,149000,125500,184000,108500,207000,180500,128500,106500,125000,272000,211500,126175,140000,143000,287090,276000,209000,118500,109000,194000,160000,192000,151000,350000,145000,160000,137500,167500,170000,82000,108000,237500,184100,138000,180000,248000,110500,213000,80000,300000,105000,215700,150000,124000,206000,144800,255000,217000,139000,166000,257000,262500,200000,290000,148000,274725,108959,130000,168000,164900,88000,164500,152000,174900,134500,209500,294000,254000,129900,197500,169000,202500,100000,325624,190000,140000,255000,142000,226001,149700,125500,214000,139500,85500,125900,138500,185850,205000,252678,12789,196000,250000,154000,181000,119000,122000,338931,105000,122000,240000,335000,377426,110000,144000,370878,160500,373000,195500,285000,168000,201000,89500,88000,209200,239900,323262,169500,182000,210000,75200,370000,139400,162500,228500,197000,154000,340000,320000,157000,215000,91000,180000,205000,124500,228950,180000,275000,186000,139500,110000,145000,128900,387000,556581,186700,110000,201800,224900,173900,485000,157900,174000,113500,224900,148000,146000,145000,117000,281000,122000,116500,153000,143000,128000,172000,178000,135000,227000,194700,123000,120000,143000,200000,250000,126000,187500,152500,91000,170000,176400,108000,271500,180000,385000,257500,142500,178000,173000,336860,337000,152000,151000,114000,120000,261329,153000,445000,157000,160000,148000,220000,146000,190000,125500,135000,105500,270000,238000,129500,91300,140000,319000,250000,205000,98600,279500,105000,153575,228000,128000,154000,535000,116000,122900,155000,133500,75000,240000,131750,108500,204000,390000,143000,131000,140000],"xaxis":"x3","yaxis":"y3","type":"histogram"},{"alignmentgroup":"True","bingroup":"y","hovertemplate":"Year Built=%{y}<br>count=%{x}<extra></extra>","legendgroup":"","marker":{"color":"#0d0887"},"name":"","offsetgroup":"","opacity":0.5,"showlegend":false,"xaxis":"x2","y":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"yaxis":"y2","type":"histogram"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.7363],"title":{"text":"target"}},"yaxis":{"anchor":"x","domain":[0.0,0.7326],"title":{"text":"Year Built"}},"xaxis2":{"anchor":"y2","domain":[0.7413,1.0],"matches":"x2","showticklabels":false,"showline":false,"ticks":"","showgrid":true},"yaxis2":{"anchor":"x2","domain":[0.0,0.7326],"matches":"y","showticklabels":false,"showgrid":true},"xaxis3":{"anchor":"y3","domain":[0.0,0.7363],"matches":"x","showticklabels":false,"showgrid":true},"yaxis3":{"anchor":"x3","domain":[0.7426,1.0],"matches":"y3","showticklabels":false,"showline":false,"ticks":"","showgrid":true},"xaxis4":{"anchor":"y4","domain":[0.7413,1.0],"matches":"x2","showticklabels":false,"showgrid":true,"showline":false,"ticks":""},"yaxis4":{"anchor":"x4","domain":[0.7426,1.0],"matches":"y3","showticklabels":false,"showline":false,"ticks":"","showgrid":true},"coloraxis":{"colorbar":{"title":{"text":"count"}},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"legend":{"tracegroupgap":0},"margin":{"t":60},"barmode":"overlay"},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('9e027dc1-2e18-43a1-9b2e-c89206006852');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train' 데이터를 가져왔고, x축이 집값, y축이 완공연도를 의미한다.
+
+
+```python
+ps = train_data.head(20)
+from bubbly.bubbly import bubbleplot 
+from plotly.offline import iplot
+import chart_studio.plotly as py
+
+
+figure = bubbleplot(dataset=ps, x_column='target', y_column='Year Built', 
+    bubble_column='target', size_column='Year Built', color_column='target', 
+    x_logscale=True, scale_bubble=2, height=300)
+
+iplot(figure)
+
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="d12745d6-036c-4097-85f0-399eb572993a" class="plotly-graph-div" style="height:300px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d12745d6-036c-4097-85f0-399eb572993a")) {                    Plotly.newPlot(                        "d12745d6-036c-4097-85f0-399eb572993a",                        [{"marker":{"color":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190],"size":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006],"sizemode":"area","sizeref":0.31390625},"mode":"markers","text":["386250","194000","123000","135000","250000","269500","156500","278000","421250","232500","64000","179900","174000","105000","255000","235000","220000","149500","315000","174190"],"x":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190],"y":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006],"type":"scatter"}],                        {"height":300,"hovermode":"closest","margin":{"b":50,"pad":5,"t":50},"showlegend":false,"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"autorange":false,"range":[4.661994574764371,5.84952151043457],"type":"log"},"yaxis":{"autorange":false,"range":[1330.0,2812.6]}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('d12745d6-036c-4097-85f0-399eb572993a');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train_data'를 사용하였고 x 축은 '완공연도'를 의미하고 y 축은 '집값'을 의미한다.
+
+
+```python
+x = train_data['Year Built']
+y = train_data['target']
+fig = px.scatter(train_data, x, y, trendline="ols")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="76675cf2-acfd-4787-ac23-7e2017a05f03" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("76675cf2-acfd-4787-ac23-7e2017a05f03")) {                    Plotly.newPlot(                        "76675cf2-acfd-4787-ac23-7e2017a05f03",                        [{"hovertemplate":"Year Built=%{x}<br>target=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","showlegend":false,"x":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"xaxis":"x","y":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190,137000,135960,172000,115000,173000,115000,107000,130000,374000,112000,350000,165000,134000,127000,263000,95000,167000,146000,152000,90000,165000,128500,370967,137000,190000,145000,142500,315500,152400,260000,206000,155000,284500,187500,200000,173000,146500,220000,124000,155000,164000,250000,110000,185000,119900,80900,116000,247000,79400,194500,190000,120000,135500,227000,185000,154000,297000,239000,126000,108000,149000,160000,290000,250764,345000,123000,163000,246000,137000,180000,252000,130000,207500,123000,462000,195000,277500,171925,173500,159895,149900,144000,254000,185000,152500,117000,125000,470000,85500,197600,342000,139500,212000,202665,176500,136000,263550,108000,336820,158000,345000,223000,98000,159000,216837,184000,167300,189000,139000,121000,122500,144000,285000,63000,150500,155000,155000,170000,163500,314813,134000,339750,213000,136500,115000,136300,137500,128000,140000,171000,310000,190000,229800,113500,193500,107000,117000,207500,112000,107000,143500,123000,298236,375000,150000,139500,152000,156000,183000,214000,191000,207500,134500,218689,325000,165500,244000,239500,215000,143000,124900,120000,315000,197900,199900,190000,220000,190000,213000,230000,215000,144750,143000,143500,165000,195800,185500,144000,159500,166000,175000,325000,116000,128900,128200,187500,250000,213000,175000,130000,110000,237000,315000,170000,335000,155000,130000,297900,385000,123000,256900,290000,196000,125000,136000,130000,129500,110000,202000,175000,153000,161000,75000,200000,80000,220000,248900,159500,249000,133000,113000,300000,318000,89471,167000,392500,80400,230000,218500,166000,306000,117000,119000,113000,267300,124400,220000,144000,200100,264500,176432,164900,225000,268000,232000,204500,239686,225000,146000,129000,227875,251000,189000,375000,109900,164500,209000,135000,230000,129000,122500,229000,280000,145000,148000,342643,168000,158000,127000,212000,290941,134900,150000,163000,270000,126500,128500,292500,372500,162000,305900,76000,167000,147000,115400,106500,260000,240050,148000,173000,188900,145250,223500,105000,35311,227680,67000,159500,226000,138000,127000,144000,157500,157000,189000,108000,105500,180000,207500,163000,124500,252000,129000,132000,131750,148500,203000,175900,179200,188000,124500,308030,133900,383970,202500,123000,99500,152000,147500,178900,129000,179540,300000,142500,134500,145500,137000,178900,360000,148800,142500,315000,189950,129250,327000,193000,183500,127000,161750,155000,144000,198000,112500,293077,145000,231000,240900,250000,129500,278000,345474,105000,150000,231500,171500,71000,200000,138500,172000,143450,315000,264966,135000,152000,316000,131250,242000,281500,215000,219210,99900,146500,119000,141000,50000,105000,87500,141000,153000,119000,208300,223000,140000,112000,141500,275000,426000,103500,446261,149500,169985,173500,149900,282000,104500,270000,140200,213000,120000,181900,159000,149900,186500,128600,140500,158900,195000,161500,68500,141500,193000,158900,91000,150000,80000,127500,116050,147900,134450,184000,398800,214900,150750,208500,143000,181000,110000,142600,170000,191750,255000,203000,625000,186000,161000,90350,155000,124900,96500,214000,165250,194000,129500,178000,173000,112900,197000,140000,177500,120500,119000,147500,128500,190000,208000,239900,165600,128000,218000,215000,167000,200825,156500,137000,155000,105000,145000,135000,116500,184000,132000,319900,136500,200000,163000,108480,175500,245000,127500,188000,165000,253293,147000,196000,157500,191000,246900,139000,338500,183000,114000,155000,118000,214000,154000,156000,188500,169000,211000,287500,149900,206000,136500,129900,150000,139000,275000,102000,118000,144000,219990,250000,163000,127000,193000,180000,132000,144900,238500,167240,55993,199500,212500,255900,205000,158000,194000,279500,224000,190000,122000,187500,179400,280000,157500,152000,138887,147000,227000,135500,113000,185000,117000,200000,127500,171000,215000,138000,180000,140000,82000,93850,174000,144000,128500,235000,315000,213490,136500,126000,193000,137000,148000,219500,110000,181000,120000,122250,140000,181000,116000,134000,215000,213000,172500,165000,181500,263000,210000,221500,140000,137000,142000,146000,112500,103600,143000,154900,226700,221370,170000,129000,151500,158000,235876,115000,79500,109500,244000,139000,144500,149000,220000,130000,124000,126000,209000,140000,148000,140000,121500,270000,156450,151000,177000,257000,144152,174000,162000,126000,160000,128000,137000,230348,198000,234000,181000,290000,129900,180500,355000,125000,191000,437154,335000,200624,174000,212500,212000,161000,83500,129000,120750,301500,197000,173733,119000,301000,137450,127500,140000,170000,167000,475000,136870,132500,405000,394432,210400,252000,282922,138400,109900,146900,269500,279000,153900,135000,161000,212999,178000,155500,349265,111000,213250,348000,319900,103000,156500,58500,137000,141000,156000,106000,68400,245000,213133,168165,206300,172000,233170,379000,153500,187500,137500,146500,230000,120000,141000,228500,165000,174500,591587,149900,202500,269500,369900,158500,182900,222000,148500,165000,122500,241000,83000,441929,217500,403000,175000,136500,172500,161000,280750,126000,165000,326000,110000,127000,119900,141000,156500,132000,153000,140750,142000,215000,156500,136500,131500,290000,103500,310000,129500,149000,238000,211000,226500,195000,135000,115000,412500,230000,152000,174000,172500,151400,208900,192500,294464,337500,173500,160000,187000,122000,136500,144500,162500,126000,120000,195500,181000,240000,171500,192000,294000,286000,145000,94750,130000,113000,129000,257000,265979,234000,157900,135000,272000,194000,284000,185101,298751,139000,155000,114504,125500,120000,185000,151000,213000,166800,215000,231713,158000,145000,100000,94900,128000,147000,115000,170000,144000,135000,260000,94500,187000,165000,230000,123500,150000,119500,102000,130000,140000,260000,325000,251000,745000,131500,138000,120500,138800,328000,277500,188700,260000,285000,205000,112500,221000,125000,205000,615000,248000,114900,224500,83000,135000,180000,195000,287000,193879,189000,157500,222500,182000,170000,137900,139000,117500,129500,168000,135000,119500,206900,268000,280000,103000,402861,150000,235000,159950,185750,283463,144000,214000,79275,108500,229000,143000,148400,202900,201490,189500,175900,217300,162000,239799,354000,145000,136000,404000,113500,153000,121000,133000,163500,157000,254750,300000,241500,184000,165500,128000,153337,224000,200000,124000,175000,185000,269500,124000,359100,410000,82500,134900,131000,188000,99500,256000,183000,360000,143000,131000,132500,171900,108000,139500,160000,332000,142125,137500,129500,438780,187100,303477,155000,179900,309000,123000,184900,155900,263400,178000,384500,150000,203000,199900,213000,204000,155000,375000,183500,159000,142500,260000,180500,130000,210000,189000,320000,217500,86000,155000,105000,147110,100500,170000,80000,174000,73000,88000,193000,475000,188000,242500,178000,270000,324000,177594,179665,126500,378000,165000,125600,230000,87000,103400,125000,129000,148000,149350,64000,217000,174000,245700,191500,119900,145000,300000,281213,125000,325300,145000,173000,468000,252000,139950,250000,291000,198600,133700,178000,133000,188500,89500,177000,132000,260000,143000,124000,227000,149900,110000,115000,139500,415000,225000,226000,137500,145000,117600,141000,167800,170000,173000,344133,127000,290000,146000,161000,114000,118000,131400,118500,158000,185000,177625,187000,148000,118000,82500,127000,332200,85000,162000,200000,177000,242000,85000,178000,215000,180400,219500,152000,177000,150900,116000,105000,287000,236000,175000,270000,210000,318061,135750,155000,211000,233000,313000,257500,131000,170000,300000,350000,451950,149000,125500,184000,108500,207000,180500,128500,106500,125000,272000,211500,126175,140000,143000,287090,276000,209000,118500,109000,194000,160000,192000,151000,350000,145000,160000,137500,167500,170000,82000,108000,237500,184100,138000,180000,248000,110500,213000,80000,300000,105000,215700,150000,124000,206000,144800,255000,217000,139000,166000,257000,262500,200000,290000,148000,274725,108959,130000,168000,164900,88000,164500,152000,174900,134500,209500,294000,254000,129900,197500,169000,202500,100000,325624,190000,140000,255000,142000,226001,149700,125500,214000,139500,85500,125900,138500,185850,205000,252678,12789,196000,250000,154000,181000,119000,122000,338931,105000,122000,240000,335000,377426,110000,144000,370878,160500,373000,195500,285000,168000,201000,89500,88000,209200,239900,323262,169500,182000,210000,75200,370000,139400,162500,228500,197000,154000,340000,320000,157000,215000,91000,180000,205000,124500,228950,180000,275000,186000,139500,110000,145000,128900,387000,556581,186700,110000,201800,224900,173900,485000,157900,174000,113500,224900,148000,146000,145000,117000,281000,122000,116500,153000,143000,128000,172000,178000,135000,227000,194700,123000,120000,143000,200000,250000,126000,187500,152500,91000,170000,176400,108000,271500,180000,385000,257500,142500,178000,173000,336860,337000,152000,151000,114000,120000,261329,153000,445000,157000,160000,148000,220000,146000,190000,125500,135000,105500,270000,238000,129500,91300,140000,319000,250000,205000,98600,279500,105000,153575,228000,128000,154000,535000,116000,122900,155000,133500,75000,240000,131750,108500,204000,390000,143000,131000,140000],"yaxis":"y","type":"scattergl"},{"hovertemplate":"<b>OLS trendline</b><br>target = 1461.37 * Year Built + -2.69685e+06<br>R<sup>2</sup>=0.298156<br><br>Year Built=%{x}<br>target=%{y} <b>(trend)</b><extra></extra>","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"lines","name":"","showlegend":false,"x":[1880,1880,1880,1882,1885,1885,1890,1890,1890,1892,1893,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1908,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1912,1913,1914,1914,1914,1914,1915,1915,1915,1915,1915,1915,1915,1915,1915,1916,1916,1916,1917,1918,1918,1918,1918,1919,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1921,1921,1921,1921,1921,1921,1922,1922,1922,1922,1922,1922,1922,1922,1922,1923,1923,1923,1923,1923,1924,1924,1924,1924,1924,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1927,1927,1927,1927,1927,1928,1928,1928,1928,1928,1928,1929,1929,1929,1929,1929,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1931,1931,1932,1932,1934,1934,1934,1935,1935,1935,1935,1936,1936,1936,1936,1936,1936,1937,1937,1938,1938,1938,1938,1938,1938,1938,1938,1938,1939,1939,1939,1939,1939,1939,1939,1939,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1941,1941,1941,1941,1941,1941,1941,1941,1941,1941,1942,1942,1942,1942,1945,1945,1945,1945,1945,1946,1946,1947,1947,1947,1947,1947,1948,1948,1948,1948,1948,1948,1949,1949,1949,1949,1949,1949,1949,1949,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1951,1951,1951,1951,1951,1951,1951,1952,1952,1952,1952,1952,1952,1952,1952,1952,1952,1953,1953,1953,1953,1953,1953,1953,1953,1953,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1973,1973,1973,1973,1973,1973,1973,1973,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1975,1975,1975,1975,1975,1975,1975,1975,1975,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1979,1979,1979,1979,1979,1979,1979,1979,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1981,1981,1981,1981,1981,1981,1982,1982,1983,1983,1983,1983,1983,1984,1984,1984,1984,1984,1984,1984,1984,1984,1984,1985,1985,1985,1985,1986,1986,1986,1987,1987,1987,1988,1988,1988,1989,1989,1989,1989,1989,1990,1990,1990,1990,1990,1990,1990,1990,1991,1991,1991,1991,1991,1991,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010],"xaxis":"x","y":[50517.7431581812,50517.7431581812,50517.7431581812,53440.4737347858,57824.569599693175,57824.569599693175,65131.39604120562,65131.39604120562,65131.39604120562,68054.12661781069,69515.49190611299,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,91435.97123064985,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,97281.43238386,98742.7976721623,100204.1629604646,100204.1629604646,100204.1629604646,100204.1629604646,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,103126.89353706967,103126.89353706967,103126.89353706967,104588.25882537197,106049.62411367474,106049.62411367474,106049.62411367474,106049.62411367474,107510.98940197704,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,113356.45055518718,113356.45055518718,113356.45055518718,113356.45055518718,113356.45055518718,114817.81584348949,114817.81584348949,114817.81584348949,114817.81584348949,114817.81584348949,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,119201.91170839686,119201.91170839686,119201.91170839686,119201.91170839686,119201.91170839686,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,122124.64228500193,122124.64228500193,122124.64228500193,122124.64228500193,122124.64228500193,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,125047.37286160653,125047.37286160653,126508.7381499093,126508.7381499093,129431.46872651391,129431.46872651391,129431.46872651391,130892.83401481668,130892.83401481668,130892.83401481668,130892.83401481668,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,133815.56459142128,133815.56459142128,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,141122.39103293372,141122.39103293372,141122.39103293372,141122.39103293372,145506.4868978411,145506.4868978411,145506.4868978411,145506.4868978411,145506.4868978411,146967.85218614386,146967.85218614386,148429.21747444617,148429.21747444617,148429.21747444617,148429.21747444617,148429.21747444617,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,199577.00256503234,199577.00256503234,201038.36785333464,201038.36785333464,201038.36785333464,201038.36785333464,201038.36785333464,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,203961.0984299397,203961.0984299397,203961.0984299397,203961.0984299397,205422.463718242,205422.463718242,205422.463718242,206883.82900654478,206883.82900654478,206883.82900654478,208345.19429484708,208345.19429484708,208345.19429484708,209806.55958314938,209806.55958314938,209806.55958314938,209806.55958314938,209806.55958314938,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,240495.23063750146],"yaxis":"y","type":"scattergl"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Built"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"target"}},"legend":{"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('76675cf2-acfd-4787-ac23-7e2017a05f03');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train_data'를 사용하였고 x축은 '리모델링 연도'를 의미하고 y축은 '집값'를 의미한다.
+
+
+```python
+x = train_data['Year Remod/Add']
+y = train_data['Year Built']
+fig = px.scatter(train_data, x, y, trendline="lowess")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="5d7a4d6b-bd76-4275-9c02-bd7800460889" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5d7a4d6b-bd76-4275-9c02-bd7800460889")) {                    Plotly.newPlot(                        "5d7a4d6b-bd76-4275-9c02-bd7800460889",                        [{"hovertemplate":"Year Remod/Add=%{x}<br>Year Built=%{y}<extra></extra>","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","showlegend":false,"x":[2003,2007,1967,2006,2005,2010,1957,1981,2002,2003,1950,1991,1985,1950,2002,1975,2005,2005,1993,2006,1954,1979,1999,1955,2006,1950,1950,1984,2004,2007,2003,1976,1983,1950,1993,1970,1964,1978,1950,1950,1996,1961,2008,1982,1977,1996,2006,2008,1973,1980,1974,1994,1997,1961,2003,2004,2002,1950,2006,1953,1963,2005,1954,2005,1990,2000,1952,2007,1972,2007,2005,1980,1967,2001,1977,1994,2008,1987,1951,1956,2006,1950,1995,1958,2006,1962,1968,2005,1965,2003,2006,1975,1980,1971,2007,2000,2005,2006,2007,2007,1959,1958,2006,2007,1968,1997,1958,2005,1972,2002,2004,2005,1990,2006,2002,1952,1994,1950,2006,2005,1999,2001,2000,1996,2005,1999,1971,1998,2003,1975,1971,1962,2000,1950,2008,2004,1960,1975,1970,2007,1976,2008,1997,1994,1950,1964,1958,1976,1950,1962,2008,1977,2006,1958,1968,1966,2000,1997,1956,1976,1977,1966,2006,2005,2004,1994,1984,1978,2003,2004,2006,2007,2005,2008,1995,2003,1987,1995,2002,1994,2007,2006,1998,1976,2007,2000,2001,1986,2005,1992,2000,1964,1980,1989,1977,2005,2004,1950,1959,2007,1999,2000,1968,1998,1976,2003,1991,2003,1977,2003,1960,1996,2005,2007,1990,1990,1958,2008,1987,1975,1997,2006,2005,1950,1953,2004,1965,1958,1996,2004,1978,1976,1950,2006,1950,1962,2007,1977,2006,1963,1950,2003,2007,2000,2004,2008,1954,2004,1967,1993,1996,2006,1950,1950,2007,1966,2001,2002,1950,2009,2006,2000,2004,1970,2006,2010,2003,1999,1957,1974,2007,2000,2001,1965,1950,2009,2001,1952,2002,1961,1950,1996,2006,2005,1963,2006,1986,2004,1963,1985,2010,1979,2003,1970,2001,1960,1983,1978,2008,1972,2005,1950,1963,1992,1964,1970,1993,1970,1979,2000,1978,1960,2002,1950,1950,2008,1950,1998,2001,1995,1977,1950,1977,1960,2005,1950,1971,1975,1984,1961,1952,1957,2000,2004,1992,1978,2005,2006,1991,1999,2005,2010,2003,2007,1996,1971,1950,2006,1995,1967,1968,2007,2005,1984,2006,2006,1982,1974,2004,2004,1978,2006,1998,1966,2000,1960,1998,1972,1977,1950,1955,1971,1972,2008,1965,1994,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,2000,2009,1969,1968,1995,2007,1972,1996,2004,1996,2007,2007,1997,2006,1990,1952,1958,1958,1950,1950,1950,1960,1953,1992,2009,1969,1997,1971,1960,2005,2008,1956,2008,1978,2006,2005,1975,2002,1977,2000,1950,1993,1959,1987,1981,1977,2006,1958,1961,1978,2002,1997,1950,2006,2007,1968,1950,1967,1970,1956,1970,1996,1996,2005,2009,2003,2002,2003,1988,1998,1968,1965,1976,1997,1993,2007,1996,2009,1950,2002,1966,1996,1950,2004,1998,2006,1970,2005,2004,1953,1970,1990,1998,1970,1964,2000,1950,2004,1986,2008,1994,1950,1950,1998,1970,2005,2004,1990,2007,1993,1950,1950,2004,1999,1952,2005,1957,1969,2001,1968,1981,2002,1992,1994,2001,2009,1985,1999,1964,2000,2000,1962,2006,1992,2003,1976,2007,2009,1968,1995,2005,2002,2003,1994,2005,2006,1961,1976,1991,1950,1985,1950,1959,1976,2004,1984,1969,1991,1994,2000,1962,2003,2007,2006,1952,2005,1978,2002,1976,1978,2006,1997,1954,1992,1950,1991,2007,2005,1978,2004,1950,1978,1999,1955,1950,1998,2003,1973,1950,1989,1968,1983,1993,2005,1950,1950,1970,1968,1968,2000,1994,2005,1994,1950,2004,1999,1975,2004,1981,1998,1950,1950,2006,2005,1950,1968,1994,1975,1978,1956,1976,2004,1998,2006,1972,1950,1959,1954,1957,1950,1967,1950,2005,2006,1996,1979,1960,1964,2007,1997,1960,1954,1968,1983,1987,1950,2006,1955,1975,1950,1989,1987,1978,1958,1996,1987,1977,1969,1976,2007,2005,1984,1998,1968,1950,1963,1994,2008,1995,2004,2006,2007,1950,2001,1998,1968,1994,2006,2008,1975,2007,2008,2007,1996,1973,2002,1977,1994,2006,2009,2000,1987,1990,1954,1963,1978,1950,1993,1963,1959,2000,2010,2007,1998,2007,1950,1990,1969,2004,1976,1993,2003,2005,2006,2001,1950,2005,1954,1999,1998,2006,1980,2008,1950,1950,2004,1999,1970,1950,2007,2007,2007,1998,1991,2009,2005,1977,2007,1951,2005,2000,1975,1961,2002,1974,1961,2007,1972,2006,2000,2006,2004,1981,2008,1977,1996,1955,2007,1973,2006,1995,1996,2000,2003,1971,1965,2005,1998,1978,2005,1963,1950,1950,1951,1960,2001,2000,1994,2006,2000,1983,2005,2003,2001,1950,1993,1976,1950,1991,2001,1994,1966,1991,1952,2004,2001,1976,1995,1950,1973,1998,2004,2008,2007,2005,1964,2000,1967,1950,2004,2004,1950,1978,2004,1999,1996,1977,1979,2007,2002,1982,1965,2001,1950,1995,1995,2003,2004,1962,1950,1995,1950,2004,2006,2007,1992,1966,1993,1962,1956,1997,2005,2005,1958,2002,2007,1991,1995,1950,1973,1980,1964,2004,1971,1956,1992,2005,1972,1995,2005,2008,1952,1989,1985,1950,2004,1950,1996,2007,2001,1996,1965,1950,1955,1969,1997,1998,1995,2002,1993,2001,1954,2002,1976,2002,2003,2000,1950,1997,1950,2002,1985,2008,2002,2006,1992,1956,2001,2008,1974,1977,1963,1950,1962,1987,1994,1972,1969,2000,2005,1950,2009,1956,1986,1966,1968,2007,1970,2003,1955,1950,2005,1950,1981,2002,2005,1997,2007,2008,1958,2006,2004,1964,1991,2008,1973,2004,1980,1950,2006,2004,2003,2006,1988,1994,1978,1995,1979,2006,2003,1990,2006,1989,2000,1991,1998,2008,1950,1977,1996,2003,1958,1950,1969,2008,1974,2008,1950,2007,1968,1968,1965,2008,1996,1984,1950,2006,2002,2007,2004,1999,2006,1972,2003,2004,2000,1990,1998,1950,1996,1999,2001,2006,1963,2007,2004,1950,2005,2005,1976,1953,1995,1999,2006,1977,2002,2007,1950,2003,1972,1992,1950,2007,2004,1950,1998,2008,1996,1979,2003,2006,2008,2007,2006,1950,2005,1999,1950,2002,1950,1973,1955,1966,1976,2006,1950,1999,1976,2006,1992,1969,1978,1997,2006,1950,2006,1955,1996,2006,2006,1961,1987,2007,2006,1959,1994,1995,1993,1950,1997,1950,1992,1957,1967,2002,2008,1962,1990,2003,2005,1953,2003,1972,1950,1960,1950,2006,2000,1969,2006,2003,2004,2007,1990,1950,1954,1983,1950,1996,1991,1956,1998,1975,1950,1977,1979,2006,2006,1991,2003,2000,2007,1976,2004,2003,1998,1984,1985,2006,1976,1957,1950,1976,1994,1997,1994,1959,2007,1956,1951,2002,2004,2000,2004,1954,1989,2006,1998,2008,2004,1995,2005,1979,2000,1964,1950,1950,1995,2002,1981,2005,1980,1971,2009,2007,2003,1950,1950,1978,1977,1977,1991,1995,2004,2006,1961,1960,1974,1950,1997,1970,2002,1982,1989,1994,1980,2003,1950,2000,1950,1997,1950,1980,1978,1954,1994,2006,1950,1957,1963,2003,2007,1995,1993,2006,1969,2003,1975,1989,1970,1966,2003,1966,1962,2005,2003,2000,1958,1976,1957,1963,1995,2007,1971,1958,1980,1991,1998,1996,2007,1999,1984,1972,1962,1968,2005,1990,2009,1970,1977,2004,2001,2004,1950,1975,2007,1950,1955,2003,2002,2006,1950,1983,2009,1978,1981,1998,2002,1996,2007,1971,1971,1998,1994,2009,1962,1988,2008,1950,2006,1950,1969,1989,1979,1954,1998,2009,1977,1967,1973,1976,2002,1970,1965,2000,2008,2001,1950,1984,1991,1956,2004,2006,1963,1975,1988,2003,2006,2009,1958,2005,1967,1998,2005,1994,1950,1960,2006,1961,1980,1990,1959,1950,1976,1993,1994,1998,2006,1993,1950,2004,1998,2006,1994,1984,1999,1950,2003,2004,1972,2005,1992,2008,1985,1966,1996,2000,2008,1999,1960,2005,1950,1962,2007,1955,2003,1974,1970,1960,1979,1998,1977,1950,2005,1954,2003,1992,1955,1996,1965,2006,2006,2006,1961,2003,1962,2003,1995,1961,1966,2006,1996,2006,2005,1963,1950,1997,2000,1995,1997,2006,1967,1974,1978],"xaxis":"x","y":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"yaxis":"y","type":"scattergl"},{"hovertemplate":"<b>LOWESS trendline</b><br><br>Year Remod/Add=%{x}<br>Year Built=%{y} <b>(trend)</b><extra></extra>","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"lines","name":"","showlegend":false,"x":[1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1951,1951,1951,1951,1952,1952,1952,1952,1952,1952,1952,1952,1952,1953,1953,1953,1953,1953,1953,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1957,1957,1957,1957,1957,1957,1957,1957,1957,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1959,1959,1959,1959,1959,1959,1959,1959,1959,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1973,1973,1973,1973,1973,1973,1973,1973,1973,1974,1974,1974,1974,1974,1974,1974,1974,1974,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1975,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1979,1979,1979,1979,1979,1979,1979,1979,1979,1979,1979,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1981,1981,1981,1981,1981,1981,1981,1981,1982,1982,1982,1982,1983,1983,1983,1983,1983,1983,1983,1984,1984,1984,1984,1984,1984,1984,1984,1984,1984,1984,1985,1985,1985,1985,1985,1985,1985,1985,1986,1986,1986,1986,1987,1987,1987,1987,1987,1987,1987,1987,1987,1987,1988,1988,1988,1988,1989,1989,1989,1989,1989,1989,1989,1989,1989,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1990,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1991,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010,2010,2010,2010,2010],"xaxis":"x","y":[1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1945.673070700584,1946.880440150467,1946.880440150467,1946.880440150467,1946.880440150467,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1948.0837472685398,1949.2833830191398,1949.2833830191398,1949.2833830191398,1949.2833830191398,1949.2833830191398,1949.2833830191398,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1950.4797361177723,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1951.6731815048615,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1952.8640586806382,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1954.052676746361,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1955.23930475774,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1956.4241682534343,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1957.6074330051235,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1958.7892066581437,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1959.9695191193603,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1961.1482993032819,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1962.3253522450143,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1963.5003400332555,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1964.6727405842773,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1965.8417863195984,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1967.0063726785268,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1968.1649210153594,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1969.3151124364308,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1970.4534284885183,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1971.57438027897,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1972.6695632831932,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1973.7280913275226,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1974.7438750607857,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1975.7302622528755,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1976.7122602489471,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1977.7003571917605,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1978.6871317460484,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1979.6727781019197,1980.658594813561,1980.658594813561,1980.658594813561,1980.658594813561,1980.658594813561,1980.658594813561,1980.658594813561,1980.658594813561,1981.643595303265,1981.643595303265,1981.643595303265,1981.643595303265,1982.6310207481995,1982.6310207481995,1982.6310207481995,1982.6310207481995,1982.6310207481995,1982.6310207481995,1982.6310207481995,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1983.6147322917366,1984.5967643623158,1984.5967643623158,1984.5967643623158,1984.5967643623158,1984.5967643623158,1984.5967643623158,1984.5967643623158,1984.5967643623158,1985.5767363171196,1985.5767363171196,1985.5767363171196,1985.5767363171196,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1986.5642360706092,1987.5413992596013,1987.5413992596013,1987.5413992596013,1987.5413992596013,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1988.5171266181524,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1989.501510452806,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1990.4637424526966,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1991.4381472049265,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1992.4174370257572,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1993.422168850993,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1994.4296130644072,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1995.4382143930834,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1996.4472761835495,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1997.4565533882608,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1998.4659936064422,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,1999.4755960651078,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2000.4853754294393,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2001.4953619554426,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2002.505580125098,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2003.5160425430201,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2004.5267186444592,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2005.5375504881733,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2006.5484704608705,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2007.5594253263093,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2008.5703685487586,2009.581257347618,2009.581257347618,2009.581257347618,2009.581257347618,2009.581257347618],"yaxis":"y","type":"scattergl"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Remod/Add"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Year Built"}},"legend":{"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('5d7a4d6b-bd76-4275-9c02-bd7800460889');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'train_data'를 사용하였고 x축은 '리모델링 연도'를 의미하고 y축은 '완공연도'를 의미한다.
+
+
+```python
+fig = px.scatter(train_data, x='Year Built', y='target',color='Year Built', trendline="ols")
+fig.show()
+```
+
+
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+    <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax) {MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>                <div id="5f5a4136-c19c-4be8-8d8b-5fc426bec882" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5f5a4136-c19c-4be8-8d8b-5fc426bec882")) {                    Plotly.newPlot(                        "5f5a4136-c19c-4be8-8d8b-5fc426bec882",                        [{"hovertemplate":"Year Built=%{marker.color}<br>target=%{y}<extra></extra>","legendgroup":"","marker":{"color":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"coloraxis":"coloraxis","symbol":"circle"},"mode":"markers","name":"","showlegend":false,"x":[2003,2006,1967,1900,2005,2009,1957,1981,2001,2003,1920,1990,1985,1935,2002,1960,2005,2004,1993,2006,1954,1979,1963,1955,2005,1936,1924,1984,2003,1918,2003,1976,1983,1947,1992,1900,1964,1978,1950,1926,1923,1961,2007,1982,1977,1996,2005,2007,1941,1980,1974,1994,1997,1961,2003,2004,1910,1932,1941,1953,1963,2004,1954,2004,1971,1910,1952,2006,1972,2007,2005,1980,1967,2001,1977,1959,2007,1987,1951,1956,1939,1900,1995,1958,2005,1962,1968,2004,1965,2003,2005,1955,1980,1971,2007,1999,2005,2006,2007,2007,1959,1958,2006,1992,1968,1925,1958,2005,1972,1952,2004,1915,1990,2005,1958,1952,1993,1940,2006,1949,1998,2001,1910,1996,2004,1890,1971,1921,2003,1954,1971,1962,1992,1934,1977,2003,1960,1974,1970,2007,1976,2007,1996,1951,1927,1964,1958,1976,1925,1962,2008,1977,2005,1958,1968,1966,1954,1957,1956,1976,1977,1966,2006,2004,1977,1994,1984,1978,2003,2004,2005,2006,1982,2008,1994,2003,1987,1995,2001,1994,1930,1940,1998,1967,2006,2000,2000,1986,2004,1978,2000,1964,1980,1977,1977,2005,2004,1920,1959,2007,1963,1893,1968,1935,1976,2003,1990,2003,1977,1910,1960,1995,2004,2007,1989,1970,1958,2007,1981,1975,1967,2006,2005,1925,1953,2004,1965,1958,1996,2004,1978,1976,1930,2005,1945,1962,2006,1977,2005,1963,1941,2002,2007,1937,2004,2008,1900,1956,1967,1993,1996,1972,1950,1945,2006,1966,1994,1962,1920,2008,2006,1951,2004,1970,2006,2009,2003,1999,1957,1974,2007,2000,2001,1965,1946,2009,2001,1952,2002,1961,1885,1996,2006,2005,1963,2006,1882,2004,1963,1985,2009,1979,1900,1914,1977,1960,1983,1978,2008,1972,2004,1928,1941,1992,1964,1970,1993,1970,1963,2000,1978,1960,2001,1950,1949,2008,1920,1890,2001,1994,1977,1916,1977,1960,2005,1924,1971,1925,1984,1961,1952,1957,1956,1948,1930,1978,2005,2005,1991,1998,1930,2009,1972,2007,1924,1971,1923,2006,1914,1967,1968,2007,2004,1984,1953,1959,1930,1974,2003,2004,1978,2006,1918,1966,2000,1960,1997,1972,1977,1940,1955,1971,1972,2007,1965,1993,2003,2002,1970,2000,2007,1961,1994,1997,1990,1970,1999,1965,1969,1968,1994,2007,1954,1996,2004,1993,1960,2007,1997,2006,1920,1952,1958,1938,1910,1930,1910,1960,1953,1940,2009,1969,1996,1971,1960,2005,2007,1956,2008,1978,2006,2005,1975,2002,1977,2000,1939,1993,1959,1960,1962,1977,2005,1958,1961,1978,2002,1997,1927,1950,2007,1968,1930,1955,1970,1956,1970,1996,1957,2005,2009,2002,1959,2003,1920,1979,1968,1965,1976,1993,1993,2005,1995,2009,1915,1913,1966,1890,1926,2004,1940,2006,1950,2004,2003,1953,1920,1929,1998,1970,1964,1916,1941,2004,1986,2008,1993,1942,1929,1998,1970,2005,1900,1918,1936,1931,1928,1927,1910,1999,1939,2005,1957,1969,1975,1921,1981,2002,1925,1993,1964,2008,1962,1999,1964,1999,1999,1962,2005,1961,1900,1976,1972,2003,1968,1995,2004,1974,2003,1993,2005,2006,1961,1976,1958,1924,1985,1926,1959,1976,2004,1968,1969,1908,1993,2000,1962,1954,2006,2005,1952,2005,1978,2002,1976,1978,2006,1996,1954,1992,1941,1990,2007,2005,1978,1926,1914,1978,1966,1955,1922,1959,1910,1973,1931,1988,1968,1928,1968,1950,1950,1930,1970,1968,1968,2000,1932,2005,1925,1938,2004,1955,1975,2003,1910,1997,1945,1920,2005,2005,1918,1968,1993,1975,1978,1956,1976,2003,1997,2005,1972,1938,1959,1954,1957,1925,1967,1921,2005,2006,1995,1965,1960,1964,2007,1920,1930,1954,1968,1983,1950,1928,2006,1955,1975,1940,1989,1958,1978,1958,1957,1987,1977,1969,1915,2007,2005,1984,1998,1968,1938,1963,1993,2007,1937,2003,2005,1976,1950,2001,1998,1954,1922,2005,2008,1957,2007,2007,2007,1925,1973,1950,1977,1994,2006,2009,1938,1986,1925,1954,1963,1978,1919,1892,1963,1959,2000,2010,2006,1998,2007,1930,1916,1969,2003,1976,1993,1976,1928,2006,2001,1915,2005,1954,1998,1997,2006,1926,1910,1914,1948,2004,1999,1970,1920,2007,2007,2006,1997,1990,2009,2005,1977,1966,1951,1921,1999,1975,1961,2002,1974,1961,2006,1972,2005,2000,2005,1950,1981,2008,1977,1995,1955,2006,1973,2006,1995,1995,1999,2003,1971,1965,2004,1926,1964,2004,1963,1925,1939,1951,1960,1929,1957,1922,1953,1977,1983,1978,2003,2001,1910,1993,1976,1927,1991,2001,1994,1966,1926,1952,2003,2001,1976,1994,1949,1973,1997,2003,2007,2006,2005,1964,2000,1967,1926,2004,1915,1939,1915,2004,1998,1995,1977,1979,2006,2001,1940,1965,1929,1945,1963,1958,1880,1926,1962,1928,1977,1940,2003,2006,2007,1958,1966,1910,1962,1956,1997,2004,2005,1958,2002,2006,1964,1994,1924,1973,1980,1964,1926,1971,1956,1946,2005,1972,1995,2005,2007,1952,1989,1984,1942,1967,1945,1995,2006,2000,1996,1965,1923,1940,1969,1996,1962,1934,1995,1992,1977,1954,2002,1976,2002,2003,2000,1910,1964,1920,1960,1985,2008,2001,2006,1992,1956,2001,2007,1974,1977,1963,1880,1962,1956,1948,1972,1969,1992,2004,1900,2009,1956,1935,1966,1968,2006,1970,2002,1955,1920,2003,1949,1980,2002,2004,1997,2007,2007,1958,2006,2004,1964,1991,2008,1973,2003,1980,1949,1921,2004,2003,2005,1988,1994,1978,1950,1979,1954,2003,1938,1997,1989,2000,1880,1934,2008,1940,1977,1960,2002,1958,1920,1969,2008,1974,1949,1926,2006,1968,1968,1965,2008,1950,1984,1917,2006,2001,2007,2003,1965,2005,1972,2003,2004,1950,1925,1997,1938,1996,1998,2000,1980,1963,2006,2004,1947,2005,2005,1976,1953,1994,1999,2006,1977,1970,2006,1920,2003,1972,1968,1936,2006,1925,1925,1998,2008,1995,1979,2003,2006,2008,2007,2006,1925,2004,1999,1948,2002,1925,1973,1955,1966,1976,1966,1948,1998,1976,2005,1992,1969,1978,1996,2005,1950,2005,1955,1996,2005,2005,1961,1936,2006,2006,1959,1993,1935,1993,1922,1997,1942,1991,1957,1967,2002,1971,1962,1955,1952,2005,1953,2003,1972,1949,1960,1940,2005,2000,1969,2005,1956,2003,2007,1961,1925,1954,1961,1947,1920,1991,1956,1956,1975,1939,1977,1947,2006,1910,1990,2003,2000,1967,1976,2004,2003,1998,1940,1984,1959,1976,1957,1939,1976,1993,1996,1994,1930,2007,1956,1951,1996,2004,2000,1957,1954,1936,2006,1998,2008,2004,1938,2004,1942,1923,1964,1950,1936,1955,2001,1981,1955,1980,1971,2008,2007,2003,1912,1940,1978,1977,1977,1991,1995,1971,2006,1961,1960,1955,1941,1940,1970,2002,1950,1970,1994,1925,2003,1910,2000,1941,1997,1939,1980,1978,1954,1954,2005,1922,1957,1950,1968,2007,1995,1960,2006,1969,1967,1961,1940,1970,1966,1959,1966,1962,1922,1974,2000,1958,1976,1957,1963,1885,2007,1971,1958,1980,1951,1997,1957,1922,1999,1984,1972,1962,1968,2005,1965,2009,1923,1977,2003,1968,2004,1920,1975,2006,1915,1955,2003,1959,2005,1947,1983,2009,1978,1981,1998,2002,1995,2007,1971,1971,1997,1993,2009,1962,1988,2008,1922,2005,1930,1969,1989,1979,1954,1998,2008,1977,1967,1973,1976,2001,1970,1965,1999,2008,1958,1940,1930,1990,1956,2004,2005,1963,1921,1965,2003,2005,2008,1958,1962,1967,1998,2005,1994,1926,1941,2006,1961,1980,1954,1959,1940,1976,1992,1961,1998,2005,1900,1929,2004,1997,2006,1994,1984,1948,1922,2003,2004,1972,2005,1992,2007,1941,1966,1996,1966,2008,1999,1960,2005,1910,1962,2007,1955,2003,1974,1900,1960,1979,1965,1977,1910,1965,1954,2002,1927,1955,1938,1965,2005,2006,2006,1961,2002,1962,1915,1994,1961,1966,2006,1953,1949,1915,1963,1925,1974,1959,1920,1996,2006,1967,1974,1978],"xaxis":"x","y":[386250,194000,123000,135000,250000,269500,156500,278000,421250,232500,64000,179900,174000,105000,255000,235000,220000,149500,315000,174190,137000,135960,172000,115000,173000,115000,107000,130000,374000,112000,350000,165000,134000,127000,263000,95000,167000,146000,152000,90000,165000,128500,370967,137000,190000,145000,142500,315500,152400,260000,206000,155000,284500,187500,200000,173000,146500,220000,124000,155000,164000,250000,110000,185000,119900,80900,116000,247000,79400,194500,190000,120000,135500,227000,185000,154000,297000,239000,126000,108000,149000,160000,290000,250764,345000,123000,163000,246000,137000,180000,252000,130000,207500,123000,462000,195000,277500,171925,173500,159895,149900,144000,254000,185000,152500,117000,125000,470000,85500,197600,342000,139500,212000,202665,176500,136000,263550,108000,336820,158000,345000,223000,98000,159000,216837,184000,167300,189000,139000,121000,122500,144000,285000,63000,150500,155000,155000,170000,163500,314813,134000,339750,213000,136500,115000,136300,137500,128000,140000,171000,310000,190000,229800,113500,193500,107000,117000,207500,112000,107000,143500,123000,298236,375000,150000,139500,152000,156000,183000,214000,191000,207500,134500,218689,325000,165500,244000,239500,215000,143000,124900,120000,315000,197900,199900,190000,220000,190000,213000,230000,215000,144750,143000,143500,165000,195800,185500,144000,159500,166000,175000,325000,116000,128900,128200,187500,250000,213000,175000,130000,110000,237000,315000,170000,335000,155000,130000,297900,385000,123000,256900,290000,196000,125000,136000,130000,129500,110000,202000,175000,153000,161000,75000,200000,80000,220000,248900,159500,249000,133000,113000,300000,318000,89471,167000,392500,80400,230000,218500,166000,306000,117000,119000,113000,267300,124400,220000,144000,200100,264500,176432,164900,225000,268000,232000,204500,239686,225000,146000,129000,227875,251000,189000,375000,109900,164500,209000,135000,230000,129000,122500,229000,280000,145000,148000,342643,168000,158000,127000,212000,290941,134900,150000,163000,270000,126500,128500,292500,372500,162000,305900,76000,167000,147000,115400,106500,260000,240050,148000,173000,188900,145250,223500,105000,35311,227680,67000,159500,226000,138000,127000,144000,157500,157000,189000,108000,105500,180000,207500,163000,124500,252000,129000,132000,131750,148500,203000,175900,179200,188000,124500,308030,133900,383970,202500,123000,99500,152000,147500,178900,129000,179540,300000,142500,134500,145500,137000,178900,360000,148800,142500,315000,189950,129250,327000,193000,183500,127000,161750,155000,144000,198000,112500,293077,145000,231000,240900,250000,129500,278000,345474,105000,150000,231500,171500,71000,200000,138500,172000,143450,315000,264966,135000,152000,316000,131250,242000,281500,215000,219210,99900,146500,119000,141000,50000,105000,87500,141000,153000,119000,208300,223000,140000,112000,141500,275000,426000,103500,446261,149500,169985,173500,149900,282000,104500,270000,140200,213000,120000,181900,159000,149900,186500,128600,140500,158900,195000,161500,68500,141500,193000,158900,91000,150000,80000,127500,116050,147900,134450,184000,398800,214900,150750,208500,143000,181000,110000,142600,170000,191750,255000,203000,625000,186000,161000,90350,155000,124900,96500,214000,165250,194000,129500,178000,173000,112900,197000,140000,177500,120500,119000,147500,128500,190000,208000,239900,165600,128000,218000,215000,167000,200825,156500,137000,155000,105000,145000,135000,116500,184000,132000,319900,136500,200000,163000,108480,175500,245000,127500,188000,165000,253293,147000,196000,157500,191000,246900,139000,338500,183000,114000,155000,118000,214000,154000,156000,188500,169000,211000,287500,149900,206000,136500,129900,150000,139000,275000,102000,118000,144000,219990,250000,163000,127000,193000,180000,132000,144900,238500,167240,55993,199500,212500,255900,205000,158000,194000,279500,224000,190000,122000,187500,179400,280000,157500,152000,138887,147000,227000,135500,113000,185000,117000,200000,127500,171000,215000,138000,180000,140000,82000,93850,174000,144000,128500,235000,315000,213490,136500,126000,193000,137000,148000,219500,110000,181000,120000,122250,140000,181000,116000,134000,215000,213000,172500,165000,181500,263000,210000,221500,140000,137000,142000,146000,112500,103600,143000,154900,226700,221370,170000,129000,151500,158000,235876,115000,79500,109500,244000,139000,144500,149000,220000,130000,124000,126000,209000,140000,148000,140000,121500,270000,156450,151000,177000,257000,144152,174000,162000,126000,160000,128000,137000,230348,198000,234000,181000,290000,129900,180500,355000,125000,191000,437154,335000,200624,174000,212500,212000,161000,83500,129000,120750,301500,197000,173733,119000,301000,137450,127500,140000,170000,167000,475000,136870,132500,405000,394432,210400,252000,282922,138400,109900,146900,269500,279000,153900,135000,161000,212999,178000,155500,349265,111000,213250,348000,319900,103000,156500,58500,137000,141000,156000,106000,68400,245000,213133,168165,206300,172000,233170,379000,153500,187500,137500,146500,230000,120000,141000,228500,165000,174500,591587,149900,202500,269500,369900,158500,182900,222000,148500,165000,122500,241000,83000,441929,217500,403000,175000,136500,172500,161000,280750,126000,165000,326000,110000,127000,119900,141000,156500,132000,153000,140750,142000,215000,156500,136500,131500,290000,103500,310000,129500,149000,238000,211000,226500,195000,135000,115000,412500,230000,152000,174000,172500,151400,208900,192500,294464,337500,173500,160000,187000,122000,136500,144500,162500,126000,120000,195500,181000,240000,171500,192000,294000,286000,145000,94750,130000,113000,129000,257000,265979,234000,157900,135000,272000,194000,284000,185101,298751,139000,155000,114504,125500,120000,185000,151000,213000,166800,215000,231713,158000,145000,100000,94900,128000,147000,115000,170000,144000,135000,260000,94500,187000,165000,230000,123500,150000,119500,102000,130000,140000,260000,325000,251000,745000,131500,138000,120500,138800,328000,277500,188700,260000,285000,205000,112500,221000,125000,205000,615000,248000,114900,224500,83000,135000,180000,195000,287000,193879,189000,157500,222500,182000,170000,137900,139000,117500,129500,168000,135000,119500,206900,268000,280000,103000,402861,150000,235000,159950,185750,283463,144000,214000,79275,108500,229000,143000,148400,202900,201490,189500,175900,217300,162000,239799,354000,145000,136000,404000,113500,153000,121000,133000,163500,157000,254750,300000,241500,184000,165500,128000,153337,224000,200000,124000,175000,185000,269500,124000,359100,410000,82500,134900,131000,188000,99500,256000,183000,360000,143000,131000,132500,171900,108000,139500,160000,332000,142125,137500,129500,438780,187100,303477,155000,179900,309000,123000,184900,155900,263400,178000,384500,150000,203000,199900,213000,204000,155000,375000,183500,159000,142500,260000,180500,130000,210000,189000,320000,217500,86000,155000,105000,147110,100500,170000,80000,174000,73000,88000,193000,475000,188000,242500,178000,270000,324000,177594,179665,126500,378000,165000,125600,230000,87000,103400,125000,129000,148000,149350,64000,217000,174000,245700,191500,119900,145000,300000,281213,125000,325300,145000,173000,468000,252000,139950,250000,291000,198600,133700,178000,133000,188500,89500,177000,132000,260000,143000,124000,227000,149900,110000,115000,139500,415000,225000,226000,137500,145000,117600,141000,167800,170000,173000,344133,127000,290000,146000,161000,114000,118000,131400,118500,158000,185000,177625,187000,148000,118000,82500,127000,332200,85000,162000,200000,177000,242000,85000,178000,215000,180400,219500,152000,177000,150900,116000,105000,287000,236000,175000,270000,210000,318061,135750,155000,211000,233000,313000,257500,131000,170000,300000,350000,451950,149000,125500,184000,108500,207000,180500,128500,106500,125000,272000,211500,126175,140000,143000,287090,276000,209000,118500,109000,194000,160000,192000,151000,350000,145000,160000,137500,167500,170000,82000,108000,237500,184100,138000,180000,248000,110500,213000,80000,300000,105000,215700,150000,124000,206000,144800,255000,217000,139000,166000,257000,262500,200000,290000,148000,274725,108959,130000,168000,164900,88000,164500,152000,174900,134500,209500,294000,254000,129900,197500,169000,202500,100000,325624,190000,140000,255000,142000,226001,149700,125500,214000,139500,85500,125900,138500,185850,205000,252678,12789,196000,250000,154000,181000,119000,122000,338931,105000,122000,240000,335000,377426,110000,144000,370878,160500,373000,195500,285000,168000,201000,89500,88000,209200,239900,323262,169500,182000,210000,75200,370000,139400,162500,228500,197000,154000,340000,320000,157000,215000,91000,180000,205000,124500,228950,180000,275000,186000,139500,110000,145000,128900,387000,556581,186700,110000,201800,224900,173900,485000,157900,174000,113500,224900,148000,146000,145000,117000,281000,122000,116500,153000,143000,128000,172000,178000,135000,227000,194700,123000,120000,143000,200000,250000,126000,187500,152500,91000,170000,176400,108000,271500,180000,385000,257500,142500,178000,173000,336860,337000,152000,151000,114000,120000,261329,153000,445000,157000,160000,148000,220000,146000,190000,125500,135000,105500,270000,238000,129500,91300,140000,319000,250000,205000,98600,279500,105000,153575,228000,128000,154000,535000,116000,122900,155000,133500,75000,240000,131750,108500,204000,390000,143000,131000,140000],"yaxis":"y","type":"scattergl"},{"hovertemplate":"<b>OLS trendline</b><br>target = 1461.37 * Year Built + -2.69685e+06<br>R<sup>2</sup>=0.298156<br><br>Year Built=%{x}<br>target=%{y} <b>(trend)</b><extra></extra>","legendgroup":"","marker":{"symbol":"circle"},"mode":"lines","name":"","showlegend":false,"x":[1880,1880,1880,1882,1885,1885,1890,1890,1890,1892,1893,1900,1900,1900,1900,1900,1900,1900,1900,1900,1900,1908,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1910,1912,1913,1914,1914,1914,1914,1915,1915,1915,1915,1915,1915,1915,1915,1915,1916,1916,1916,1917,1918,1918,1918,1918,1919,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1920,1921,1921,1921,1921,1921,1921,1922,1922,1922,1922,1922,1922,1922,1922,1922,1923,1923,1923,1923,1923,1924,1924,1924,1924,1924,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1925,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1926,1927,1927,1927,1927,1927,1928,1928,1928,1928,1928,1928,1929,1929,1929,1929,1929,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1930,1931,1931,1932,1932,1934,1934,1934,1935,1935,1935,1935,1936,1936,1936,1936,1936,1936,1937,1937,1938,1938,1938,1938,1938,1938,1938,1938,1938,1939,1939,1939,1939,1939,1939,1939,1939,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1940,1941,1941,1941,1941,1941,1941,1941,1941,1941,1941,1942,1942,1942,1942,1945,1945,1945,1945,1945,1946,1946,1947,1947,1947,1947,1947,1948,1948,1948,1948,1948,1948,1949,1949,1949,1949,1949,1949,1949,1949,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1950,1951,1951,1951,1951,1951,1951,1951,1952,1952,1952,1952,1952,1952,1952,1952,1952,1952,1953,1953,1953,1953,1953,1953,1953,1953,1953,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1954,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1955,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1956,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1957,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1958,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1959,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1960,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1961,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1962,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1963,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1964,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1965,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1966,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1967,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1968,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1969,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1970,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1971,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1972,1973,1973,1973,1973,1973,1973,1973,1973,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1974,1975,1975,1975,1975,1975,1975,1975,1975,1975,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1976,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1977,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1978,1979,1979,1979,1979,1979,1979,1979,1979,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1980,1981,1981,1981,1981,1981,1981,1982,1982,1983,1983,1983,1983,1983,1984,1984,1984,1984,1984,1984,1984,1984,1984,1984,1985,1985,1985,1985,1986,1986,1986,1987,1987,1987,1988,1988,1988,1989,1989,1989,1989,1989,1990,1990,1990,1990,1990,1990,1990,1990,1991,1991,1991,1991,1991,1991,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1992,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1993,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1994,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1995,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1996,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1997,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1998,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,1999,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2000,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2001,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2002,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2003,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2004,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2005,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2006,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2007,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2008,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2009,2010],"xaxis":"x","y":[50517.7431581812,50517.7431581812,50517.7431581812,53440.4737347858,57824.569599693175,57824.569599693175,65131.39604120562,65131.39604120562,65131.39604120562,68054.12661781069,69515.49190611299,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,79745.0489242305,91435.97123064985,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,94358.70180725493,97281.43238386,98742.7976721623,100204.1629604646,100204.1629604646,100204.1629604646,100204.1629604646,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,101665.52824876737,103126.89353706967,103126.89353706967,103126.89353706967,104588.25882537197,106049.62411367474,106049.62411367474,106049.62411367474,106049.62411367474,107510.98940197704,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,108972.35469027981,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,110433.71997858211,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,111895.08526688442,113356.45055518718,113356.45055518718,113356.45055518718,113356.45055518718,113356.45055518718,114817.81584348949,114817.81584348949,114817.81584348949,114817.81584348949,114817.81584348949,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,116279.18113179179,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,117740.54642009456,119201.91170839686,119201.91170839686,119201.91170839686,119201.91170839686,119201.91170839686,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,120663.27699669916,122124.64228500193,122124.64228500193,122124.64228500193,122124.64228500193,122124.64228500193,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,123586.00757330423,125047.37286160653,125047.37286160653,126508.7381499093,126508.7381499093,129431.46872651391,129431.46872651391,129431.46872651391,130892.83401481668,130892.83401481668,130892.83401481668,130892.83401481668,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,132354.19930311898,133815.56459142128,133815.56459142128,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,135276.92987972405,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,136738.29516802635,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,138199.66045632865,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,139661.02574463142,141122.39103293372,141122.39103293372,141122.39103293372,141122.39103293372,145506.4868978411,145506.4868978411,145506.4868978411,145506.4868978411,145506.4868978411,146967.85218614386,146967.85218614386,148429.21747444617,148429.21747444617,148429.21747444617,148429.21747444617,148429.21747444617,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,149890.58276274847,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,151351.94805105124,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,152813.31333935354,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,154274.67862765584,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,155736.0439159586,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,157197.4092042609,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,158658.7744925632,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,160120.13978086598,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,161581.50506916828,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,163042.8703574706,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,164504.23564577335,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,165965.60093407566,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,167426.96622237796,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,168888.33151068073,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,170349.69679898303,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,171811.06208728533,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,173272.4273755881,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,174733.7926638904,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,176195.1579521927,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,177656.52324049547,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,179117.88852879778,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,180579.25381710054,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,182040.61910540285,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,183501.98439370515,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,184963.34968200792,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,186424.71497031022,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,187886.08025861252,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,189347.4455469153,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,190808.8108352176,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,192270.1761235199,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,193731.54141182266,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,195192.90670012496,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,196654.27198842727,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,198115.63727673003,199577.00256503234,199577.00256503234,201038.36785333464,201038.36785333464,201038.36785333464,201038.36785333464,201038.36785333464,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,202499.7331416374,203961.0984299397,203961.0984299397,203961.0984299397,203961.0984299397,205422.463718242,205422.463718242,205422.463718242,206883.82900654478,206883.82900654478,206883.82900654478,208345.19429484708,208345.19429484708,208345.19429484708,209806.55958314938,209806.55958314938,209806.55958314938,209806.55958314938,209806.55958314938,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,211267.92487145215,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,212729.29015975446,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,214190.65544805722,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,215652.02073635953,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,217113.38602466183,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,218574.7513129646,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,220036.1166012669,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,221497.4818895692,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,222958.84717787197,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,224420.21246617427,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,225881.57775447657,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,227342.94304277934,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,228804.30833108164,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,230265.67361938395,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,231727.0389076867,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,233188.40419598902,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,234649.76948429132,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,236111.1347725941,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,237572.5000608964,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,239033.8653491987,240495.23063750146],"yaxis":"y","type":"scattergl"}],                        {"template":{"data":{"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Year Built"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"target"}},"coloraxis":{"colorbar":{"title":{"text":"Year Built"}},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"legend":{"tracegroupgap":0},"margin":{"t":60}},                        {"responsive": true}                    ).then(function(){
+
+var gd = document.getElementById('5f5a4136-c19c-4be8-8d8b-5fc426bec882');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                            </script>        </div>
+</body>
+</html>
+
+
+데이터는 'trian_data'를 사용하였고, 'x'축은 '완공연도 'y'축은 '집값'을 의미한다.
+
+# Data Cleanup(데이터 정리)
+- 데이터를 보기 좋게 정리해준다.
+
+
+
+```python
+# 데이터 변수 순서 정리
+cols1=['id', 'Year Built', 'Year Remod/Add', 'Garage Yr Blt',  'Overall Qual', 'Exter Qual', 'Bsmt Qual', 'Kitchen Qual', 'Gr Liv Area', 'Total Bsmt SF', '1st Flr SF', 'Garage Area', 'Full Bath', 'Garage Cars', 'target']
+train_data=train_data[cols1]
+cols2=['id', 'Year Built', 'Year Remod/Add', 'Garage Yr Blt',  'Overall Qual', 'Exter Qual', 'Bsmt Qual', 'Kitchen Qual', 'Gr Liv Area', 'Total Bsmt SF', '1st Flr SF', 'Garage Area', 'Full Bath', 'Garage Cars']
+test_data=test_data[cols2]
+train_data.head(3)
+```
+
+
+
+
+
+  <div id="df-1f3b74b4-1d35-47a5-a0e0-9d77b831a9ad">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Year Built</th>
+      <th>Year Remod/Add</th>
+      <th>Garage Yr Blt</th>
+      <th>Overall Qual</th>
+      <th>Exter Qual</th>
+      <th>Bsmt Qual</th>
+      <th>Kitchen Qual</th>
+      <th>Gr Liv Area</th>
+      <th>Total Bsmt SF</th>
+      <th>1st Flr SF</th>
+      <th>Garage Area</th>
+      <th>Full Bath</th>
+      <th>Garage Cars</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>2003</td>
+      <td>10</td>
+      <td>Ex</td>
+      <td>Ex</td>
+      <td>Ex</td>
+      <td>2392</td>
+      <td>2392</td>
+      <td>2392</td>
+      <td>968</td>
+      <td>2</td>
+      <td>3</td>
+      <td>386250</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2006</td>
+      <td>2007</td>
+      <td>2006</td>
+      <td>7</td>
+      <td>Gd</td>
+      <td>Ex</td>
+      <td>Gd</td>
+      <td>1352</td>
+      <td>1352</td>
+      <td>1352</td>
+      <td>466</td>
+      <td>2</td>
+      <td>2</td>
+      <td>194000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>1967</td>
+      <td>1967</td>
+      <td>1967</td>
+      <td>5</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>900</td>
+      <td>864</td>
+      <td>900</td>
+      <td>288</td>
+      <td>1</td>
+      <td>1</td>
+      <td>123000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-1f3b74b4-1d35-47a5-a0e0-9d77b831a9ad')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-1f3b74b4-1d35-47a5-a0e0-9d77b831a9ad button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-1f3b74b4-1d35-47a5-a0e0-9d77b831a9ad');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+년도와 관련된 변수를 2022-변수로 바꿔준다.
+
+
+```python
+train_data['Year Built']=2022-train_data['Year Built']
+train_data['Year Remod/Add']=2022-train_data['Year Remod/Add']
+train_data['Garage Yr Blt']=2022-train_data['Garage Yr Blt']
+test_data['Year Built']=2022-test_data['Year Built']
+test_data['Year Remod/Add']=2022-test_data['Year Remod/Add']
+test_data['Garage Yr Blt']=2022-test_data['Garage Yr Blt']
+```
+
+# Modelling(모델링)
+
+## pycaret setup()(파이캐롯 셋업)
+- 파이캐롯을 사용하기 위해 먼저 환경세팅을 해줍니다.
+
+
+```python
+def NMAE(true, pred): # NMAE의 경우 pycaret에서 지원하지 않습니다. 
+    mae = np.mean(np.abs(true-pred))
+    score = mae / np.mean(np.abs(true))
+    return score 
+```
+
+
+```python
+from pycaret.classification import *
+reg = setup(data = train_data,
+            target = 'target',
+            normalize=True,
+            normalize_method='robust',
+            data_split_shuffle = False, 
+            create_clusters = False,
+            use_gpu = True,
+            silent = True,
+            fold=10)
+```
+
+
+
+  <div id="df-33696b69-fb29-4b5d-9043-0813e22b78f2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>session_id</td>
+      <td>8347</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Target</td>
+      <td>target</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Target Type</td>
+      <td>Multiclass</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Label Encoded</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Original Data</td>
+      <td>(1350, 15)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Missing Values</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Numeric Features</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Categorical Features</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ordinal Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>High Cardinality Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>High Cardinality Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Transformed Train Set</td>
+      <td>(944, 38)</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Transformed Test Set</td>
+      <td>(406, 38)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Shuffle Train-Test</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Stratify Train-Test</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Fold Generator</td>
+      <td>StratifiedKFold</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Fold Number</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>CPU Jobs</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Use GPU</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Log Experiment</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Experiment Name</td>
+      <td>clf-default-name</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>USI</td>
+      <td>fb49</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Imputation Type</td>
+      <td>simple</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Iterative Imputation Iteration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Numeric Imputer</td>
+      <td>mean</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Iterative Imputation Numeric Model</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Categorical Imputer</td>
+      <td>constant</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Iterative Imputation Categorical Model</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Unknown Categoricals Handling</td>
+      <td>least_frequent</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Normalize</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Normalize Method</td>
+      <td>robust</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Transformation</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Transformation Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>PCA</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>PCA Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>PCA Components</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Ignore Low Variance</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Combine Rare Levels</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Rare Level Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Numeric Binning</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Remove Outliers</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Outliers Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Remove Multicollinearity</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Multicollinearity Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Remove Perfect Collinearity</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Clustering</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Clustering Iteration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Polynomial Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Polynomial Degree</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Trignometry Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Polynomial Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Group Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Feature Selection</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Feature Selection Method</td>
+      <td>classic</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Features Selection Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Feature Interaction</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Feature Ratio</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Interaction Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Fix Imbalance</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Fix Imbalance Method</td>
+      <td>SMOTE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-33696b69-fb29-4b5d-9043-0813e22b78f2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-33696b69-fb29-4b5d-9043-0813e22b78f2 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-33696b69-fb29-4b5d-9043-0813e22b78f2');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+## Compare_Model() (컴페어 모델)
+- pycaret을 사용해서 각각 모델을 모두 비교하고 
+  가장 적합한 모델을 적용해 준다.
+
+
+```python
+rf = create_model('rf', fold=5)
+```
+
+
+
+  <div id="df-5808959f-c20d-4546-bd84-aa32ca9e87ea">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>NMAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0106</td>
+      <td>0.0</td>
+      <td>0.0077</td>
+      <td>0.0044</td>
+      <td>0.0062</td>
+      <td>0.0079</td>
+      <td>0.0080</td>
+      <td>0.1333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0053</td>
+      <td>0.0</td>
+      <td>0.0042</td>
+      <td>0.0026</td>
+      <td>0.0035</td>
+      <td>0.0014</td>
+      <td>0.0014</td>
+      <td>0.1269</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0034</td>
+      <td>-0.0034</td>
+      <td>0.1415</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0053</td>
+      <td>0.0</td>
+      <td>0.0040</td>
+      <td>0.0053</td>
+      <td>0.0053</td>
+      <td>0.0019</td>
+      <td>0.0019</td>
+      <td>0.1607</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0160</td>
+      <td>0.0</td>
+      <td>0.0117</td>
+      <td>0.0133</td>
+      <td>0.0142</td>
+      <td>0.0131</td>
+      <td>0.0131</td>
+      <td>0.1499</td>
+    </tr>
+    <tr>
+      <th>Mean</th>
+      <td>0.0074</td>
+      <td>0.0</td>
+      <td>0.0055</td>
+      <td>0.0051</td>
+      <td>0.0058</td>
+      <td>0.0042</td>
+      <td>0.0042</td>
+      <td>0.1425</td>
+    </tr>
+    <tr>
+      <th>SD</th>
+      <td>0.0054</td>
+      <td>0.0</td>
+      <td>0.0039</td>
+      <td>0.0045</td>
+      <td>0.0047</td>
+      <td>0.0057</td>
+      <td>0.0057</td>
+      <td>0.0119</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-5808959f-c20d-4546-bd84-aa32ca9e87ea')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-5808959f-c20d-4546-bd84-aa32ca9e87ea button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-5808959f-c20d-4546-bd84-aa32ca9e87ea');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+```python
+top =compare_models(sort = 'NMAE',n_select = 3, include = ['dt','lightgbm','rf'],fold=3) 
+```
+
+
+
+  <div id="df-2d688dff-2a74-47ee-8f14-bdd93b75a14b">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>NMAE</th>
+      <th>TT (Sec)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>rf</th>
+      <td>Random Forest Classifier</td>
+      <td>0.0074</td>
+      <td>0.0</td>
+      <td>0.0047</td>
+      <td>0.0052</td>
+      <td>0.0059</td>
+      <td>0.0041</td>
+      <td>0.0041</td>
+      <td>0.1410</td>
+      <td>5.1133</td>
+    </tr>
+    <tr>
+      <th>lightgbm</th>
+      <td>Light Gradient Boosting Machine</td>
+      <td>0.0085</td>
+      <td>0.0</td>
+      <td>0.0047</td>
+      <td>0.0079</td>
+      <td>0.0077</td>
+      <td>0.0051</td>
+      <td>0.0052</td>
+      <td>0.1598</td>
+      <td>39.0667</td>
+    </tr>
+    <tr>
+      <th>dt</th>
+      <td>Decision Tree Classifier</td>
+      <td>0.0053</td>
+      <td>0.0</td>
+      <td>0.0027</td>
+      <td>0.0057</td>
+      <td>0.0047</td>
+      <td>0.0023</td>
+      <td>0.0023</td>
+      <td>0.1685</td>
+      <td>0.0767</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-2d688dff-2a74-47ee-8f14-bdd93b75a14b')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-2d688dff-2a74-47ee-8f14-bdd93b75a14b button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-2d688dff-2a74-47ee-8f14-bdd93b75a14b');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+## Blend Model (블렌드 모델)
+- 모델을 합쳐준다.
+
+
+
+
+
+```python
+blender = blend_models(top,fold=3)
+predict_model(blender)
+```
+
+
+
+  <div id="df-492c144d-1b33-41e4-bc40-0d852a9fc8b3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>NMAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0016</td>
+      <td>-0.0016</td>
+      <td>0.1577</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0031</td>
+      <td>-0.0031</td>
+      <td>0.1348</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0211</td>
+      <td>0.0</td>
+      <td>0.0135</td>
+      <td>0.0105</td>
+      <td>0.0140</td>
+      <td>0.0179</td>
+      <td>0.0181</td>
+      <td>0.1172</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0033</td>
+      <td>-0.0034</td>
+      <td>0.1554</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0106</td>
+      <td>0.0</td>
+      <td>0.0064</td>
+      <td>0.0106</td>
+      <td>0.0106</td>
+      <td>0.0082</td>
+      <td>0.0083</td>
+      <td>0.1492</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0034</td>
+      <td>-0.0034</td>
+      <td>0.1100</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0033</td>
+      <td>-0.0033</td>
+      <td>0.1148</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.0000</td>
+      <td>0.0</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>-0.0031</td>
+      <td>-0.0031</td>
+      <td>0.1424</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.0106</td>
+      <td>0.0</td>
+      <td>0.0066</td>
+      <td>0.0053</td>
+      <td>0.0071</td>
+      <td>0.0072</td>
+      <td>0.0072</td>
+      <td>0.1616</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.0106</td>
+      <td>0.0</td>
+      <td>0.0063</td>
+      <td>0.0106</td>
+      <td>0.0106</td>
+      <td>0.0077</td>
+      <td>0.0078</td>
+      <td>0.1432</td>
+    </tr>
+    <tr>
+      <th>Mean</th>
+      <td>0.0053</td>
+      <td>0.0</td>
+      <td>0.0033</td>
+      <td>0.0037</td>
+      <td>0.0042</td>
+      <td>0.0023</td>
+      <td>0.0023</td>
+      <td>0.1386</td>
+    </tr>
+    <tr>
+      <th>SD</th>
+      <td>0.0071</td>
+      <td>0.0</td>
+      <td>0.0045</td>
+      <td>0.0048</td>
+      <td>0.0054</td>
+      <td>0.0071</td>
+      <td>0.0071</td>
+      <td>0.0178</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-492c144d-1b33-41e4-bc40-0d852a9fc8b3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-492c144d-1b33-41e4-bc40-0d852a9fc8b3 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-492c144d-1b33-41e4-bc40-0d852a9fc8b3');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="df-971023d3-67a6-43d1-bab8-6c7b23629854">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>NMAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Voting Classifier</td>
+      <td>0.0074</td>
+      <td>0</td>
+      <td>0.0037</td>
+      <td>0.0061</td>
+      <td>0.0066</td>
+      <td>0.0047</td>
+      <td>0.0047</td>
+      <td>0.1314</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-971023d3-67a6-43d1-bab8-6c7b23629854')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-971023d3-67a6-43d1-bab8-6c7b23629854 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-971023d3-67a6-43d1-bab8-6c7b23629854');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    /tmp/ipykernel_2771/627861920.py in <module>
+          1 blender = blend_models(top)
+    ----> 2 predict_model(blender)
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/classification.py in predict_model(estimator, data, probability_threshold, encoded_labels, raw_score, drift_report, round, verbose)
+       2032         round=round,
+       2033         verbose=verbose,
+    -> 2034         ml_usecase=MLUsecase.CLASSIFICATION,
+       2035     )
+       2036 
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/internal/tabular.py in predict_model(estimator, data, probability_threshold, encoded_labels, drift_report, raw_score, round, verbose, ml_usecase, display)
+       8868         pred = pred.astype(int)
+       8869         if not raw_score:
+    -> 8870             score = [s[pred[i]] for i, s in enumerate(score)]
+       8871         try:
+       8872             score = pd.DataFrame(score)
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/internal/tabular.py in <listcomp>(.0)
+       8868         pred = pred.astype(int)
+       8869         if not raw_score:
+    -> 8870             score = [s[pred[i]] for i, s in enumerate(score)]
+       8871         try:
+       8872             score = pd.DataFrame(score)
+    
+
+    IndexError: index 129900 is out of bounds for axis 0 with size 498
+
+
+## Finalize Model(최종 모델)
+- 최종 예측 모델과 예측 값을 출력한다.
+
+
+```python
+final_blend = finalize_model(blender)  
+predict_model(final_blend)
+```
+
+
+
+  <div id="df-6c660318-2186-4149-8962-d3286bf656c9">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>NMAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Voting Classifier</td>
+      <td>0.9729</td>
+      <td>0</td>
+      <td>0.9588</td>
+      <td>0.9793</td>
+      <td>0.974</td>
+      <td>0.9728</td>
+      <td>0.9728</td>
+      <td>0.0017</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6c660318-2186-4149-8962-d3286bf656c9')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6c660318-2186-4149-8962-d3286bf656c9 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6c660318-2186-4149-8962-d3286bf656c9');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    /tmp/ipykernel_2771/3595545920.py in <module>
+          1 final_blend = finalize_model(blender)
+    ----> 2 predict_model(final_blend)
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/classification.py in predict_model(estimator, data, probability_threshold, encoded_labels, raw_score, drift_report, round, verbose)
+       2032         round=round,
+       2033         verbose=verbose,
+    -> 2034         ml_usecase=MLUsecase.CLASSIFICATION,
+       2035     )
+       2036 
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/internal/tabular.py in predict_model(estimator, data, probability_threshold, encoded_labels, drift_report, raw_score, round, verbose, ml_usecase, display)
+       8868         pred = pred.astype(int)
+       8869         if not raw_score:
+    -> 8870             score = [s[pred[i]] for i, s in enumerate(score)]
+       8871         try:
+       8872             score = pd.DataFrame(score)
+    
+
+    /usr/local/lib/python3.7/dist-packages/pycaret/internal/tabular.py in <listcomp>(.0)
+       8868         pred = pred.astype(int)
+       8869         if not raw_score:
+    -> 8870             score = [s[pred[i]] for i, s in enumerate(score)]
+       8871         try:
+       8872             score = pd.DataFrame(score)
+    
+
+    IndexError: index 134900 is out of bounds for axis 0 with size 619
+
+
+# 방정식 만들기
+
+
+```python
+train_data.drop('id',axis=1,inplace=True)
+test_data.drop('id',axis=1,inplace=True)
+```
+
+
+```python
+# feature를 확인합니다.
+train_data.columns
+```
+
+
+
+
+    Index(['Year Built', 'Year Remod/Add', 'Garage Yr Blt', 'Overall Qual',
+           'Exter Qual', 'Bsmt Qual', 'Kitchen Qual', 'Gr Liv Area',
+           'Total Bsmt SF', '1st Flr SF', 'Garage Area', 'Full Bath',
+           'Garage Cars', 'target'],
+          dtype='object')
+
+
+
+
+```python
+# X와 Y를 각각 따로 저장합니다.
+x_feature = 'Gr Liv Area'
+y_feature = 'target'
+
+X = train_data[x_feature]
+Y = train_data[y_feature]
+
+X
+```
+
+
+
+
+    0       2392
+    1       1352
+    2        900
+    3       1174
+    4       1958
+            ... 
+    1345    1756
+    1346    2748
+    1347    1214
+    1348     894
+    1349     907
+    Name: Gr Liv Area, Length: 1350, dtype: int64
+
+
+
+
+```python
+import numpy as np
+
+# 각각의 평균을 구합니다.
+X_mean = np.mean(X)
+Y_mean = np.mean(Y)
+
+# 평균값을 이용하여 관계를 구합니다.
+relation = Y_mean/X_mean
+
+print(f"{x_feature}의 평균:{X_mean:.2f} \n{y_feature}의 평균:{Y_mean:.2f}")
+print(f"따라서 {y_feature}는 {x_feature}의 평균 {relation:.2f}배 입니다.")
+print(f"즉, a = {relation:.2f} 입니다.")
+a = round(relation, 2)
+print(f"업데이트 된 방정식 : Y = {a:.2f} * X + b")
+```
+
+    Gr Liv Area의 평균:1513.54 
+    target의 평균:186406.31
+    따라서 target는 Gr Liv Area의 평균 123.16배 입니다.
+    즉, a = 123.16 입니다.
+    업데이트 된 방정식 : Y = 123.16 * X + b
+    
+
+
+```python
+# b = Y - a * X 를 그대로 작성합니다. 여기서도 평균값을 이용합니다.
+b = Y_mean - a * X_mean
+
+print(f"b는 {b:.2f} 입니다.")
+print(f"업데이트 된 방정식 : Y = {a:.2f} * X + {b:.2f}")
+```
+
+    b는 -1.55 입니다.
+    업데이트 된 방정식 : Y = 123.16 * X + -1.55
+    
+
+
+```python
+predict_Y = a * X + b
+predict_Y
+```
+
+
+
+
+    0       294597.172504
+    1       166510.772504
+    2       110842.452504
+    3       144588.292504
+    4       241145.732504
+                ...      
+    1345    216267.412504
+    1346    338442.132504
+    1347    149514.692504
+    1348    110103.492504
+    1349    111704.572504
+    Name: Gr Liv Area, Length: 1350, dtype: float64
+
+
+
+이 부분은 '데이콘 집값예측 경진대회'에서 코드를 제출하면 '리더보드'에서 순위를 결정 할 때 사용되는 수식이다.
+
+
+```python
+def NMAE(true, pred):
+    mae = np.mean(np.abs(true-pred))
+    score = mae / np.mean(np.abs(true))
+    return score
+```
+
+
+```python
+# 실제 정답 값을 준비합니다.
+real_answer = Y.copy()
+
+# 정답과 예측 값을 함수에 넣어 결과를 확인합니다.
+error = NMAE(real_answer, predict_Y)
+
+print(f"이 방정식의 평균 에러는 {error:.2f} 입니다.")
+```
+
+    이 방정식의 평균 에러는 0.20 입니다.
+    
+
+출처 : https://dacon.io/competitions/official/235869/codeshare/4253?page=1&dtype=recent
+
+# 최종 예측 및 제출
+
+
+```python
+# 예측하고자 하는 test 데이터를 불러옵니다.
+test = pd.read_csv('/content/drive/MyDrive/housing/test.csv')
+
+test.head()
+```
+
+
+
+
+
+  <div id="df-26a0af29-1d6a-4e5d-9879-7c317e71ae08">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>Overall Qual</th>
+      <th>Gr Liv Area</th>
+      <th>Exter Qual</th>
+      <th>Garage Cars</th>
+      <th>Garage Area</th>
+      <th>Kitchen Qual</th>
+      <th>Total Bsmt SF</th>
+      <th>1st Flr SF</th>
+      <th>Bsmt Qual</th>
+      <th>Full Bath</th>
+      <th>Year Built</th>
+      <th>Year Remod/Add</th>
+      <th>Garage Yr Blt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>9</td>
+      <td>1800</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>702</td>
+      <td>Ex</td>
+      <td>1800</td>
+      <td>1800</td>
+      <td>Ex</td>
+      <td>2</td>
+      <td>2007</td>
+      <td>2007</td>
+      <td>2007</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6</td>
+      <td>1082</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>240</td>
+      <td>TA</td>
+      <td>1082</td>
+      <td>1082</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1948</td>
+      <td>1950</td>
+      <td>1948</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6</td>
+      <td>1573</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>440</td>
+      <td>Gd</td>
+      <td>756</td>
+      <td>769</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>2000</td>
+      <td>2000</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6</td>
+      <td>2443</td>
+      <td>Gd</td>
+      <td>3</td>
+      <td>744</td>
+      <td>Gd</td>
+      <td>1158</td>
+      <td>1158</td>
+      <td>Gd</td>
+      <td>2</td>
+      <td>2004</td>
+      <td>2004</td>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>5</td>
+      <td>1040</td>
+      <td>TA</td>
+      <td>2</td>
+      <td>686</td>
+      <td>TA</td>
+      <td>1040</td>
+      <td>1040</td>
+      <td>TA</td>
+      <td>1</td>
+      <td>1968</td>
+      <td>1968</td>
+      <td>1991</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-26a0af29-1d6a-4e5d-9879-7c317e71ae08')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-26a0af29-1d6a-4e5d-9879-7c317e71ae08 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-26a0af29-1d6a-4e5d-9879-7c317e71ae08');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+```python
+# 예측의 재료를 가져옵니다.
+test_X = test[x_feature]
+
+# 예측을 진행합니다.
+predict_test = a * test_X + b
+
+# 예측 결과를 확인합니다.
+predict_test
+```
+
+
+
+
+    0       221686.452504
+    1       133257.572504
+    2       193729.132504
+    3       300878.332504
+    4       128084.852504
+                ...      
+    1345    237943.572504
+    1346    112320.372504
+    1347    106039.212504
+    1348    176117.252504
+    1349    287823.372504
+    Name: Gr Liv Area, Length: 1350, dtype: float64
+
+
+
+
+```python
+# 제출용 sample 파일을 불러옵니다.
+submission = pd.read_csv('/content/drive/MyDrive/housing/sample_submission.csv')
+submission.head()
+```
+
+
+
+
+
+  <div id="df-82e76b9b-3a6d-47cc-98a7-e5813a35a9fd">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-82e76b9b-3a6d-47cc-98a7-e5813a35a9fd')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-82e76b9b-3a6d-47cc-98a7-e5813a35a9fd button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-82e76b9b-3a6d-47cc-98a7-e5813a35a9fd');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+```python
+# 위에서 구한 예측값을 그대로 넣어줍니다.
+submission[y_feature] = predict_test
+
+# 데이터가 잘 들어갔는지 확인합니다.
+submission[y_feature] = predict_test
+
+submission
+```
+
+
+
+
+
+  <div id="df-6b60d579-9732-463c-be36-b6f3ba7f671b">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>221686.452504</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>133257.572504</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>193729.132504</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>300878.332504</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>128084.852504</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1345</th>
+      <td>1346</td>
+      <td>237943.572504</td>
+    </tr>
+    <tr>
+      <th>1346</th>
+      <td>1347</td>
+      <td>112320.372504</td>
+    </tr>
+    <tr>
+      <th>1347</th>
+      <td>1348</td>
+      <td>106039.212504</td>
+    </tr>
+    <tr>
+      <th>1348</th>
+      <td>1349</td>
+      <td>176117.252504</td>
+    </tr>
+    <tr>
+      <th>1349</th>
+      <td>1350</td>
+      <td>287823.372504</td>
+    </tr>
+  </tbody>
+</table>
+<p>1350 rows × 2 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-6b60d579-9732-463c-be36-b6f3ba7f671b')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-6b60d579-9732-463c-be36-b6f3ba7f671b button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-6b60d579-9732-463c-be36-b6f3ba7f671b');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+
+
+
+
+
+```python
+# submission을 csv 파일로 저장합니다.
+# index=False란 추가적인 id를 부여할 필요가 없다는 뜻입니다. 
+# 정확한 채점을 위해 꼭 index=False를 넣어주세요.
+submission.to_csv("submission.csv", index=False)
+```
