@@ -1,13 +1,29 @@
-# Kaggle Tabular Play Ground Series - Dec 2021
+# Kaggle Tabular Play Ground Series - Jan 2022
 
-![](img/kaggle 2021 TPS dec.png)
+
+![](img/kaggle 2022 TPS.png)
 
 -----
+
 ## Outline of the contest (대회개요)
 
 #### 1.대회 설명
 
-Kaggle에서 매달 1일에 초보자 친화적인 데이터를 모두에게 제공하는 대회
+Kaggle 에 대한 모든 것의 공식 판매점 이 되기를 원하는 
+
+Kaggle 상품을 판매하는 두 개의 (가상의) 독립 상점 체인이 있습니다. 
+
+우리는 Kaggle 커뮤니티가 앞으로 어떤 매장 체인이 가장 잘 팔릴지 알아내는데 도움이 될 수 있는지 
+
+알아보기로 결정했습니다. 
+
+그래서 우리는 일부 데이터를 수집했으며 결정에 도움이 되는 
+
+예측 모델을 구축해 달라고 요청했습니다.
+
+KaggleMart 또는 KaggleRama가 공식 Kaggle 매장이 되어야 하는지 
+
+여부를 파악하는 데 도움을 주세요!
 
 #### 2.도전 목표
 

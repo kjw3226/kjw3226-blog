@@ -1,37 +1,3 @@
-# Kaggle Tabular Play Ground Series - Dec 2021
-
-![](img/kaggle 2021 TPS dec.png)
-
------
-## Outline of the contest (대회개요)
-
-#### 1.대회 설명
-
-Kaggle에서 매달 1일에 초보자 친화적인 데이터를 모두에게 제공하는 대회
-
-#### 2.도전 목표
-
-기본 데이터셋을 활용해 시각화를 구현하고 모델링을 진행해 최종 예측값을 출력하는 것
-
-#### 3. 프로젝트 개요
-
-● 기간 : 2021-12-20 ~ 2021-12-31
-
-● 팀 : 단독 프로젝트 (혼자 프로젝트 진행.)
-
-● 사용 언어 : Python
-
-● 사용 데이터 : [Tabular Playground Series - Dec 2021](https://www.kaggle.com/c/tabular-playground-series-dec-2021/data)
-(Train file, Test file, Submission File)
-
-● 라이브러리 : matplotlib, numpy, seabron, pandas, plotly, sklearn, scipy
-
-● 프레임워크 : Light BGM
-
-#### 4. 제출 프로젝트 코드
-
-[TPS_do-it-eda-modelling](Project/Kaggle_Project2/source/TPS_do-it-eda-modeling code.md)
-
 ```python
 # This Python 3 environment comes with many helpful analytics libraries installed
 # It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
@@ -55,7 +21,7 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
     /kaggle/input/tabular-playground-series-dec-2021/sample_submission.csv
     /kaggle/input/tabular-playground-series-dec-2021/train.csv
     /kaggle/input/tabular-playground-series-dec-2021/test.csv
-
+    
 
 # Import Library
 
@@ -527,7 +493,7 @@ print(f'No of missing values in train data: {sum(train.isna().sum())}')
     Number of rows in train data: 4000000
     Number of columns in train data: 55
     No of missing values in train data: 0
-
+    
 
 ## Basic statistics of training data
 
@@ -1473,7 +1439,7 @@ print(f'No of missing values in test data: {sum(test.isna().sum())}')
     Number of rows in test data: 1000000
     Number of columns in test data: 54
     No of missing values in test data: 0
-
+    
 
 <a id="3.3"></a>
 # Submission File
@@ -2475,12 +2441,12 @@ plt.show()
     Total number of features: 54
     Number of categorical features: 44
     Number of continuos features: 10
+    
 
 
-
-
+    
 ![png](output_22_1.png)
-
+    
 
 
 ## Feature Distribution of Continous Features
@@ -2507,9 +2473,9 @@ plt.show()
 ```
 
 
-
+    
 ![png](output_24_0.png)
-
+    
 
 
 ## Feature Distribution of Categorical Features
@@ -2541,9 +2507,9 @@ plt.show()
 ```
 
 
-
+    
 ![png](output_26_0.png)
-
+    
 
 
 ## Target Distribution
@@ -2586,24 +2552,24 @@ require(['plotly'], function(Plotly) {
 
 var gd = document.getElementById('c3b4143e-edfe-40d1-a1f8-1e4d38fc1ef0');
 var x = new MutationObserver(function (mutations, observer) {{
-var display = window.getComputedStyle(gd).display;
-if (!display || display === 'none') {{
-console.log([gd, 'removed!']);
-Plotly.purge(gd);
-observer.disconnect();
-}}
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
 }});
 
 // Listen for the removal of the full notebook cells
 var notebookContainer = gd.closest('#notebook-container');
 if (notebookContainer) {{
-x.observe(notebookContainer, {childList: true});
+    x.observe(notebookContainer, {childList: true});
 }}
 
 // Listen for the clearing of the current output cell
 var outputEl = gd.closest('.output');
 if (outputEl) {{
-x.observe(outputEl, {childList: true});
+    x.observe(outputEl, {childList: true});
 }}
 
                         })                };                });            </script>        </div>
@@ -2769,9 +2735,9 @@ print("Mean Accuracy :", np.mean(lgb_scores))
     ========== Fold=5 ==========
     Fold=5, acc: 0.94886244, Run Time: 146.27
     Mean Accuracy : 0.948839737215609
+    
 
-
-# Submission
+# Submission 
 
 ### LGBM Classifier Submission
 
@@ -2837,4 +2803,5 @@ lgb_submission.head()
   </tbody>
 </table>
 </div>
+
 

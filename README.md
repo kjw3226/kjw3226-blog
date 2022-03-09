@@ -101,7 +101,7 @@
 
 ● 폴더명 : [Kaggle_Project](https://github.com/kjw3226/kjw3226-blog/tree/main/Project/Kaggle_Project)
 
-● 기간 : 2021-12-20 ~ 2021-12-31
+● 기간 : 2022-01-03 ~ 2022-01-14
 
 ● 팀 : 단독 프로젝트 (혼자 프로젝트 진행.)
 
@@ -116,7 +116,26 @@
 
 ● 내용 : 미국 산림청 데이터를 활용해 분석, 시각화, 모델링, 정확도 측정을 진행한 프로젝트.
 
-## 4 Dacon House Price Prediction Contest 2022
+## 4 Kaggle Tabular Play Ground Series - Jan 2022
+
+● 폴더명 : [Kaggle_Project3](https://github.com/kjw3226/kjw3226-blog/tree/main/Project/Kaggle_Project3)
+
+● 기간 : 2021-01-03 ~ 2021-01-14
+
+● 팀 : 단독 프로젝트 (혼자 프로젝트 진행.)
+
+● 사용 언어 : Python
+
+● 사용 데이터 :  [Tabular Playground Series - Jan 2022](https://www.kaggle.com/c/tabular-playground-series-jan-2022/data)
+(Train file, Test file, Submission File)
+
+● 라이브러리 : matplotlib, numpy, seabron, pandas, plotly, pycaret
+
+● 내용 : 가상의 두 상점을 설정해 놓고 어느 상정이 많이 팔리며 'Kaggle 공식 판매점'에
+        어울리는지를 예측하고 모델링을 구축하는 프로젝트
+
+
+## 5 Dacon House Price Prediction Contest 2022
 
 ● 폴더명 : [Dacon_Project](https://github.com/kjw3226/kjw3226-blog/tree/main/Project/Dacon_Project)
 
