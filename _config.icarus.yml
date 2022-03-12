@@ -39,7 +39,7 @@ head:
     open_graph:
         # Page title (og:title) (optional)
         # You should leave this blank for most of the time
-        title: Jae Won's Study Room
+        title:
         # Page type (og:type) (optional)
         # You should leave this blank for most of the time
         type: blog
@@ -54,7 +54,7 @@ head:
         site_name: 
         # Page author (article:author) (optional)
         # You should leave this blank for most of the time
-        author: 
+        author: Jae Won's Study Room
         # Page description (og:description) (optional)
         # You should leave this blank for most of the time
         description: 
@@ -75,7 +75,7 @@ head:
     structured_data:
         # Page title (optional)
         # You should leave this blank for most of the time
-        title: Jae Won's Study Room
+        title:
         # Page description (optional)
         # You should leave this blank for most of the time
         description: 
