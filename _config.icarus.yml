@@ -54,7 +54,7 @@ head:
         site_name: 
         # Page author (article:author) (optional)
         # You should leave this blank for most of the time
-        author: Jae Won's Study Room
+        author:
         # Page description (og:description) (optional)
         # You should leave this blank for most of the time
         description: 
@@ -225,7 +225,7 @@ widgets:
         position: left
         type: profile
         # Author name
-        author: Your name
+        author: Jae Won's Study Room
         # Author title
         author_title: Your title
         # Author's current location
