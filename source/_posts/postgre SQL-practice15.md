@@ -6,7 +6,7 @@ categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
  '데이터 분석을 위한 SQL 레시피' 4장 10강 3. 팬 차트로 상품의 매출 증가율 확인하기
   를  보고 실습을 진해하였다.

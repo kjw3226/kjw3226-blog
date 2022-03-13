@@ -6,7 +6,7 @@ categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
 
 '데이터 분석을 위하 SQL 레시피' 에서 

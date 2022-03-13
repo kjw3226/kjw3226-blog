@@ -6,7 +6,7 @@ categories:	SQL
 ----
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
  오늘 부터는 실무에서 'SQL'을 사용해 '매출'을 알아보는 쿼리문을
  실습한다.

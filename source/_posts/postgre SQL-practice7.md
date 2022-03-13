@@ -6,7 +6,7 @@ categories:	SQL
 ----
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
 어제까지 실습했던 예제 쿼리문들은 하나의 테이블을 다루는 쿼리문
 

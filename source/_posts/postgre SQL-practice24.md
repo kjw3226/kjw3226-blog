@@ -6,7 +6,7 @@ categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
 이제 '5장 사용자를 파악하기 위한 데이터 추출'에서
 

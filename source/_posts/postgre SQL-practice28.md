@@ -6,7 +6,7 @@ categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
 
-[SQL CODE](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
+['SQL CODE'](source/Lecture/sql recipes for data analysis/sql recipes for data analysis example code)
 
 '5장  12강 시계열에 따른 사용자 전체의 상태 변화 찾기 - 4. 액션 수에 따른 정착률 집계하기'
 
