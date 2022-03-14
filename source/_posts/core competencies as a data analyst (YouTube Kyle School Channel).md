@@ -8,13 +8,15 @@ categories: Everyday life (일상 생활)
 
 '변성윤님'이 운영하고 있는 '카일스쿨' 채널에서 
 
-'데이터 분석가로서 필요한 역량'이라는 '동영상'을 보게 되었다.
+'카일데이 데이터 업계 7년 차가 알려주는 데이터 분석가의 핵심 역량'이라는 
+
+'동영상'을 보게 되었다.
 
 아래의 사진은 영상을 보고 너무 인상깊게 봐서 
 
 캡쳐한 것들이다.
 
-참고 : [kyleschool](https://www.youtube.com/c/kyleschool)
+참고 : [kyleschool](https://www.youtube.com/watch?v=Z0PEIqKOhDE&t=660s)
 
 ![Core Competencies as a Data Analyst (YouTube Kyle School Channel)1](https://user-images.githubusercontent.com/96108301/158099459-c1591eed-b1b4-418b-ba8a-c88baf1a7d39.jpg)
 
