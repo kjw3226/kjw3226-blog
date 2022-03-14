@@ -4,7 +4,7 @@ tag: Core Competencies as a Data Analyst (YouTube Kyle School Channel)
 date: 2022-03-14
 categories: Everyday life (일상 생활)
 ---
-오늘 '유튜브'에서 '배달의 민족'에서 근무하셨던 '개발자' 
+오늘 '유튜브'에서 '쏘카'에서 근무하셨던 '개발자' 
 
 '변성윤님'이 운영하고 있는 '카일스쿨' 채널에서 
 
