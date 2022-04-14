@@ -161,6 +161,10 @@ ORDER BY
 
 이를 기반으로 이상적인 순위를 자동 생성할 수 있습니다.
 
+(데이터 분석을 위한 SQL 레시피-7장 데이터 활용의
+
+정밀도를 높이는 분석 기술 20강 여러 개의 데이터셋 비교하기 464 中)
+
 [SQL recipes for data analysis](source/image/sql recipes for data analysis-correction.jpg)
 
 참고 도서 : 데이터 분석을 위한 SQL 레시피
