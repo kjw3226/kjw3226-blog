@@ -1,8 +1,10 @@
 ---
+
 title: Ndata Co., Ltd. -2
 tag: Ndata Co., Ltd. -2
 date: 2022-05-13
 categories:	Everyday life (일상 생활)
+
 ----
 
 오늘은 '서용식 대표님'과 'kt'로 파견을 나가계신 '김태영 차장님'을 함께
