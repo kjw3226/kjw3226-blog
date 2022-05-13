@@ -1,6 +1,6 @@
 ---
-title: Ndata Co., Ltd. -2
-tag: Ndata Co., Ltd. -2
+title: Ndata Co.Ltd-2
+tag: Ndata Co.Ltd-2
 date: 2022-05-13
 categories:	Everyday life (일상 생활)
 published : false
