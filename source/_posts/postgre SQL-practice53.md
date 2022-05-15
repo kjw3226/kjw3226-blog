@@ -1,7 +1,7 @@
 ---
 title: postgre SQL-practice53
 tag: postgre SQL-practice53
-date:2022-04-05
+date: 2022-04-05
 categories:	SQL
 ---
 '예제 코드'는 여기서 다운 받아 실행하면 된다.
