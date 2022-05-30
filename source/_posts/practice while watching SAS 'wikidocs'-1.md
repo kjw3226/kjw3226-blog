@@ -2,7 +2,7 @@
 title: practice while watching SAS 'wikidocs'-1
 tag: practice while watching SAS 'wikidocs'-1
 date: 2022-05-26
-categories: Everyday life (일상 생활)
+categories: SAS
 ---
 
 오늘은 'wikidocs' 홈페이지에 나와있는 
