@@ -133,6 +133,7 @@ ELSE NEW='새칼럼';
 RUN;
 ```
 
+
 <출력 화면>
 
 ![sas data preprocessing command - column conversion using simple if statement-result4](https://user-images.githubusercontent.com/96108301/170964434-454ae9d2-6e8f-44ca-b576-80e26e83a4af.PNG)
