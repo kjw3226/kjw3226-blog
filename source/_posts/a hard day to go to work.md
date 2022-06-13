@@ -3,6 +3,7 @@ title: a hard day to go to work
 tag: a hard day to go to work
 date: 2022-06-08
 categories: Everyday life (일상 생활)
+published : false
 ---
 
 오늘은 집에서 아침에 7:22분에 나와서 버스를 탈려고 
