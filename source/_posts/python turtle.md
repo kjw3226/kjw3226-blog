@@ -3,7 +3,6 @@ title: python turtle(파이썬 터틀 모듈) 이용해 사각형 그리기
 tag: python turtle(파이썬 터틀 모듈) 이용해 사각형 그리기
 date: 2021-11-25
 categories:	Python
- 
 ---
 Python에 있는 'turtle'모듈을 사용해서
 사각형을 그려보았다.
