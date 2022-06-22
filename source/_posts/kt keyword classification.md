@@ -3,7 +3,6 @@ title: kt keyword classification
 tag: kt keyword classification
 date: 2022-06-10
 categories: Everyday life (일상 생활)
-published : false
 ---
 
 오늘로 벌써 'KT 분당 본사'로 

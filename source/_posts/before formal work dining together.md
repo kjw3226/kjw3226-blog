@@ -3,7 +3,6 @@ title: before formal work dining together
 tag: before formal work dining together
 date: 2022-05-25
 categories: Everyday life (일상 생활)
-published : false
 ---
 
 오늘은 저녁 6시 10분까지 

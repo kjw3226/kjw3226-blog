@@ -3,7 +3,6 @@ title: Ndata Co.Ltd-1
 tag: Ndata Co.Ltd-1
 date: 2022-05-12
 categories:	Everyday life (일상 생활)
-published : false
 ----
 
 오늘 엇그제 면접을 봤던 
