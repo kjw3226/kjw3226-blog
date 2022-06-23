@@ -3,7 +3,6 @@ title: the day I went to 'kt Bundang Headquarters' in advance.
 tag: the day I went to 'kt Bundang Headquarters' in advance.
 date: 2022-05-31
 categories: Everyday life (일상 생활)
-published : false
 ---
 
 6월 7일에 출근 하는 것을 
