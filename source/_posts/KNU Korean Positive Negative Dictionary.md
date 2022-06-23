@@ -1,6 +1,6 @@
 ---
-title: 'KNU' Korean Positive Negative Dictionary
-tag: 'KNU' Korean Positive Negative Dictionary
+title: KNU Korean Positive Negative Dictionary
+tag: KNU Korean Positive Negative Dictionary
 date: 2022-06-11
 categories: Everyday life (일상 생활)
 ---
