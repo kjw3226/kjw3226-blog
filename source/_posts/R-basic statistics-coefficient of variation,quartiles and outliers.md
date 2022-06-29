@@ -1,6 +1,6 @@
 ---
-title: R-coefficient of variation, quartiles and outliers
-tag: R-coefficient of variation, quartiles and outliers
+title: R-basic statistics-coefficient of variation, quartiles and outliers
+tag: R-basic statistics-coefficient of variation, quartiles and outliers
 date: 2022-06-27
 categories:	R
 ---

@@ -1,6 +1,6 @@
 ---
-title: R-parameters and statistics
-tag: R-parameters and statistics
+title: R-basic statistics-parameters and statistics
+tag: R-basic statistics-parameters and statistics
 date: 2022-06-26
 categories:	R
 ---
@@ -12,6 +12,7 @@ categories:	R
 '모수와 통계량' 인데
 
 밑의 사진들은 내가 직접 실습한 내용과 결과 화면들이다.
+
 
 ![parameters and statistics](https://user-images.githubusercontent.com/96108301/175891946-4b6593e8-4afe-4125-8d24-b8393ec7135c.PNG)
 ![parameters and statistics2](https://user-images.githubusercontent.com/96108301/175891965-c1625867-36e9-43e7-b684-b264703f2053.PNG)
