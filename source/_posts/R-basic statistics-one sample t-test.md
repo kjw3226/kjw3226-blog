@@ -1,6 +1,6 @@
 ---
-title: R-basic statistics-one sample
-tag: R-basic statistics-one sample
+title: R-basic statistics-one sample t-test
+tag: R-basic statistics-one sample t-test
 date: 2022-06-30
 categories:	R
 ---
