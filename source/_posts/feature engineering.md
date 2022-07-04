@@ -3,7 +3,6 @@ title: Feature Engineering
 tag: Feature Engineering
 date: 2021-11-18
 categories:	Python Machine Learning
-
 ---
 파이썬 머신러닝에서
 Feature Engineering은 데이터 분석에 사용되는 

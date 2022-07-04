@@ -3,7 +3,6 @@ title: hiatogram & colormap 그리기
 tag: hiatogram & colormap 그리기
 date: 2021-11-24
 categories:	Matplotlib
-
 ---
 
 히스토그램 (Histogram)은 도수분포표를 그래프로 나타낸 것으로서, 가로축은 계급, 세로축은 도수 (횟수나 개수 등)를 나타냅니다.

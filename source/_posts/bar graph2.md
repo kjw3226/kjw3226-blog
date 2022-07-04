@@ -3,7 +3,6 @@ title: bar graph2(막대그래프)
 tag: bar graph2(막대그래프)
 date: 2021-11-12
 categories:	Pandas
-
 ---
 
 오늘은 'pandas'를 이용해서 '막대그래프'를 그려보았다.

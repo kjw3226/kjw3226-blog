@@ -3,7 +3,6 @@ title: extract kaggle questions (캐글 질문 항목 출력하기)
 tag: extract kaggle questions (캐글 질문 항목 출력하기)
 date: 2021-11-17
 categories:	kaggle
-
 ---
 오늘은 ‘kaggle-surve-2021’ 질문지에서 질문 항목을
 출력하는 작업을 했다.

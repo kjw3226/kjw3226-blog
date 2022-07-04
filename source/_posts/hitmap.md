@@ -3,7 +3,6 @@ title: hitmap(히트맵) 그리기
 tag: hitmap(히트맵) 그리기
 date: 2021-11-22
 categories:	Matplotlib
-
 ---
  히트맵 (Heatmap)은 다양한 값을 갖는 숫자 데이터를 열분포 형태와 같이 색상을 이용해서 시각화한 것이다.
  matplotlib.pyplot 모듈의 matshow() 함수를 이용해서 2차원 어레이 형태의 숫자 데이터를 히트맵을 그려보자.
